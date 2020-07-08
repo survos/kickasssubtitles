@@ -2,14 +2,21 @@
 
 declare(strict_types=1);
 
+/*
+ * KickAssSubtitles source code file
+ *
+ * @link      https://kickasssubtitles.com
+ * @copyright Copyright (c) 2016-2020
+ * @author    grzesw <contact@kickasssubtitles.com>
+ */
+
 namespace App\Console;
 
 use Illuminate\Console\Command as BaseCommand;
 use Illuminate\Support\Carbon;
 
 /**
- * Class Command
- * @package App\Console
+ * Class Command.
  */
 class Command extends BaseCommand
 {
