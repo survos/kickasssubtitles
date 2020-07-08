@@ -1,0 +1,1 @@
+{!! $content or '<!-- partials.sidebar -->' !!}

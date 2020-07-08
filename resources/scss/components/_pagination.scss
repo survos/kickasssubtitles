@@ -1,0 +1,47 @@
+.app-filter-alphabet,
+.pagination
+{
+    margin: 0;
+    padding: $app-spacer;
+    background: $app-color-wild-sand;
+    list-style: none;
+    overflow: hidden;
+    font-family: Montserrat;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    > li:first-child
+    {
+        margin-left: 0;
+    }
+
+    > li
+    {
+        float: left;
+        margin-left: -1px;
+
+        > span,
+        > a
+        {
+            display: block;
+            float: left;
+            padding: $app-spacer / 4 $app-spacer / 2;
+            border: 1px solid $app-color-silver;
+            background: $app-color-white;
+        }
+    }
+
+    > li.active span
+    {
+        background: $app-color-black;
+        color: $app-color-white;
+        font-weight: 900;
+        border-top-color: $app-color-black;
+        border-bottom-color: $app-color-black;
+    }
+
+    > li.disabled
+    {
+        opacity: 0.4;
+    }
+}

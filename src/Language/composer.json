@@ -1,0 +1,23 @@
+{
+    "name": "kickasssubtitles/language",
+    "description": "List of most popular languages in computer-readable form",
+    "type": "library",
+    "homepage": "https://github.com/kickasssubtitles/language",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "grzesw",
+            "email": "contact@kickasssubtitles.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "myclabs/php-enum": "1.*",
+        "thecodingmachine/safe": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "KickAssSubtitles\\Language\\": "."
+        }
+    }
+}

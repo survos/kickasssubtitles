@@ -1,0 +1,23 @@
+{
+    "name": "kickasssubtitles/storage",
+    "description": "",
+    "type": "library",
+    "homepage": "https://github.com/kickasssubtitles/storage",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "grzesw",
+            "email": "contact@kickasssubtitles.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "kickasssubtitles/support": "*",
+        "league/flysystem": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "KickAssSubtitles\\Storage\\": "."
+        }
+    }
+}

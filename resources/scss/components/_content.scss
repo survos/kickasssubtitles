@@ -1,0 +1,9 @@
+.app-content
+{
+    margin-left: $app-sidebar-width;
+
+    > .content
+    {
+        padding: $app-spacer;
+    }
+}

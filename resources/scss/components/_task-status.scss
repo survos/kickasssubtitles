@@ -1,0 +1,24 @@
+.app-task-status
+{
+    background-color: rgba(lighten($app-color-silver-chalice, 10%), .8);
+
+    &.-pending
+    {
+    }
+
+    &.-processing
+    {
+        background-color: rgba($app-color-orange-peel, .8);
+    }
+
+    &.-completed
+    {
+        background-color: rgba($app-color-spring-green, .8);
+    }
+
+    &.-failed
+    {
+        color: $app-color-white;
+        background-color: rgba($app-color-guardsman-red, .8);
+    }
+}

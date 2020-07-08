@@ -1,0 +1,23 @@
+{
+    "name": "kickasssubtitles/encoding",
+    "description": "Object-oriented character encoding detection/conversion",
+    "type": "library",
+    "homepage": "https://github.com/kickasssubtitles/encoding",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "grzesw",
+            "email": "contact@kickasssubtitles.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "symfony/process": "3.*",
+        "myclabs/php-enum": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "KickAssSubtitles\\Encoding\\": "."
+        }
+    }
+}

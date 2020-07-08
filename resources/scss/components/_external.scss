@@ -1,0 +1,109 @@
+// vue
+
+[v-cloak]
+{
+    display:none;
+}
+
+// perfect-scrollbar
+
+.ps .ps__rail-x:hover,
+.ps .ps__rail-y:hover,
+.ps .ps__rail-x:focus,
+.ps .ps__rail-y:focus,
+.ps .ps__rail-x.ps--clicking,
+.ps .ps__rail-y.ps--clicking
+{
+    background-color: transparent;
+}
+
+.ps__rail-x
+{
+    height: 10px;
+}
+
+.ps__rail-y
+{
+    width: 10px;
+}
+
+.ps__rail-x:hover > .ps__thumb-x,
+.ps__rail-x:focus > .ps__thumb-x,
+.ps__rail-x.ps--clicking .ps__thumb-x
+{
+    background-color: #999;
+    height: 6px;
+}
+
+.ps__rail-y:hover > .ps__thumb-y,
+.ps__rail-y:focus > .ps__thumb-y,
+.ps__rail-y.ps--clicking .ps__thumb-y
+{
+    background-color: #999;
+    width: 6px;
+}
+
+// toastr
+
+.toast-top-right
+{
+    top: 4 * $app-spacer;
+    right: 0;
+}
+
+#toast-container
+{
+    > div
+    {
+        padding: $app-spacer;
+        box-shadow: none;
+        border-radius: 0;
+        opacity: 1;
+        font-family: Montserrat;
+        font-weight: 700;
+
+        &:hover
+        {
+            box-shadow: none;
+            opacity: 1;
+            cursor: pointer;
+        }
+    }
+
+    > .toast-info,
+    > .toast-error,
+    > .toast-success,
+    > .toast-warning
+    {
+        background-image: none !important;
+    }
+}
+
+// federation-sites
+
+.federation-sites
+{
+    margin-left: -1 * $app-spacer;
+    margin-right: -1 * $app-spacer;
+
+    .federationsiteslabel
+    {
+        display: block;
+        padding: $app-spacer / 2;
+        padding-top: 0;
+    }
+
+    .federationsite
+    {
+        display: block;
+        padding: $app-spacer / 2;
+        border-top: 1px solid $app-color-silver-chalice;
+    }
+}
+
+// external
+
+.app-external
+{
+    padding: $app-spacer;
+}

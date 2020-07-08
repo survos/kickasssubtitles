@@ -1,0 +1,14 @@
+* text eol=lf
+
+*.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+
+unix.txt text eol=lf
+dos.txt text eol=crlf
+mac.txt text eol=cr
+dosunix.txt binary
+
+*.png binary
+*.jpg binary
+*.gif binary

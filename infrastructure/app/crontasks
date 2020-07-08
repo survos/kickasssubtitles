@@ -1,0 +1,4 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/app:/app/vendor/bin
+* * * * * root /usr/bin/php /app/artisan schedule:run >> /dev/null 2>&1
+# An empty line is required at the end of this file for a valid cron file.

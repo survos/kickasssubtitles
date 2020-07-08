@@ -1,0 +1,23 @@
+{
+    "name": "kickasssubtitles/line-ending",
+    "description": "Line-ending converter",
+    "type": "library",
+    "homepage": "https://github.com/kickasssubtitles/line-ending",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "grzesw",
+            "email": "contact@kickasssubtitles.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "symfony/process": "3.*",
+        "myclabs/php-enum": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "KickAssSubtitles\\LineEnding\\": "."
+        }
+    }
+}

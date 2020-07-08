@@ -1,0 +1,26 @@
+{
+    "name": "kickasssubtitles/support",
+    "description": "Supporting interfaces/classes for KickAssSubtitles",
+    "type": "library",
+    "homepage": "https://github.com/kickasssubtitles/support",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "grzesw",
+            "email": "contact@kickasssubtitles.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "illuminate/contracts": "5.*",
+        "illuminate/support": "5.*",
+        "jenssegers/model": "1.*",
+        "myclabs/php-enum": "1.*",
+        "ramsey/uuid": "3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "KickAssSubtitles\\Support\\": "."
+        }
+    }
+}

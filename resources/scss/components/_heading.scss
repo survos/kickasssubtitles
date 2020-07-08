@@ -1,0 +1,50 @@
+.app-heading
+{
+    background: $app-color-alto;
+    position: relative;
+    z-index: 20;
+
+    > .title
+    {
+        padding: $app-spacer;
+        position: relative;
+
+        &:before
+        {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: -$app-spacer / 2;
+            bottom: 0;
+            width: $app-spacer / 2;
+            background: $app-color-bahama-blue;
+        }
+
+        h1, h2, h3, h4, h5, h6
+        {
+            margin: 0;
+
+            > span
+            {
+                display: block;
+                color: $app-color-silver-chalice;
+            }
+        }
+    }
+
+    > .more
+    {
+        padding: $app-spacer;
+    }
+
+    > .poster
+    {
+        float: right;
+
+        > img
+        {
+            display: block;
+        }
+    }
+}

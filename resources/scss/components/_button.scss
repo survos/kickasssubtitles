@@ -1,0 +1,33 @@
+.app-button
+{
+    border: $app-spacer / 4 solid $app-color-black;
+    padding: $app-spacer / 2 2 * $app-spacer;
+    background: transparent;
+    font-family: Montserrat;
+    font-weight: 700;
+    transition: all .3s;
+    outline: 0;
+    color: $app-color-black;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+
+    &:hover
+    {
+        background: $app-color-black;
+        color: $app-color-white;
+    }
+
+    &.-inverted
+    {
+        border-color: $app-color-white;
+        background: $app-color-bahama-blue;
+        color: $app-color-white;
+
+        &:hover
+        {
+            background: $app-color-white;
+            color: $app-color-bahama-blue;
+        }
+    }
+}

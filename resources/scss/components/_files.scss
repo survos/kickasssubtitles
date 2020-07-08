@@ -1,0 +1,18 @@
+.app-files
+{
+    padding: $app-spacer;
+    background: url(/img/patterns/dot_4x4.png);
+    text-align: center;
+
+    > .input
+    {
+        background: $app-color-white;
+        padding: $app-spacer / 2;
+        display: inline-block;
+
+        > input
+        {
+            color: $app-color-bahama-blue;
+        }
+    }
+}

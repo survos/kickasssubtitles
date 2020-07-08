@@ -1,0 +1,338 @@
+.app-table
+{
+    width: 100%;
+
+    select
+    {
+        max-width: 160px;
+    }
+
+    th, td
+    {
+        padding: $app-spacer;
+        text-align: left;
+        position: relative;
+
+        &.break
+        {
+            word-break: break-all;
+        }
+
+        &.nowrap
+        {
+            white-space: nowrap;
+        }
+
+        &.wide
+        {
+            width: 100%;
+        }
+
+        &.narrow
+        {
+            width: 1px;
+            white-space: nowrap;
+        }
+
+        &.action
+        {
+            padding: 0;
+            width: 4rem;
+            cursor: pointer;
+            text-align: center;
+
+            .fa
+            {
+                position: relative;
+                transition: all .2s;
+            }
+
+            &:hover
+            {
+                background: $app-color-bahama-blue;
+                color: $app-color-white;
+            }
+
+            &.-dark
+            {
+                &:hover
+                {
+                    background: $app-color-black;
+                }
+            }
+        }
+
+        &.hint
+        {
+            background-color: $app-color-pattens-blue;
+
+            &:before
+            {
+                content: '';
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 $app-spacer / 2 $app-spacer / 2 $app-spacer / 2;
+                border-color: transparent transparent $app-color-pattens-blue transparent;
+                position: absolute;
+                top: -1 * $app-spacer / 2;
+                left: $app-spacer;
+            }
+
+            &.-failed
+            {
+                background-color: $app-color-guardsman-red;
+                color: $app-color-white;
+
+                &:before
+                {
+                    border-color: transparent transparent $app-color-guardsman-red transparent;
+                }
+            }
+        }
+    }
+
+    th
+    {
+        font-weight: normal;
+        background: $app-color-tundora;
+        color: $app-color-white;
+
+        a
+        {
+            color: lighten($app-color-bahama-blue, 20%);
+
+            &:hover
+            {
+                color: lighten($app-color-bahama-blue, 40%);
+            }
+        }
+    }
+
+    thead
+    {
+        > tr
+        {
+            background-color: $app-color-pattens-blue;
+        }
+    }
+
+    tbody
+    {
+        > tr:nth-child(even)
+        {
+            background-color: $app-color-alto;
+        }
+    }
+
+    tr.lines,
+    tr.linesend
+    {
+        > th:first-child,
+        > td:first-child
+        {
+            padding-left: $app-spacer * 4;
+
+            &:before,
+            &:after
+            {
+                content: '';
+                display: block;
+                position: absolute;
+                background: $app-color-silver-chalice;
+            }
+
+            &:before
+            {
+                top: 0;
+                left: $app-spacer * 1.5;
+                bottom: 0;
+                width: 1px;
+            }
+
+            &:after
+            {
+                top: 50%;
+                right: 0;
+                left: $app-spacer * 1.5;
+                height: 1px;
+                width: $app-spacer * 1.5;
+            }
+        }
+    }
+
+    tr.linesend
+    {
+        > th:first-child,
+        > td:first-child
+        {
+            &:before
+            {
+                bottom: 50%;
+            }
+        }
+    }
+}
+
+// .app-tableold
+// {
+//     width: 100%;
+
+//     th, td
+//     {
+//         padding: $app-spacer;
+//         position: relative;
+//         text-align: left;
+//         word-break: break-all;
+
+//         &.wide
+//         {
+//             width: 100%;
+//         }
+
+//         &.narrow
+//         {
+//             width: 1px;
+//             white-space: nowrap;
+//         }
+
+//         &.action
+//         {
+//             padding: 0;
+//             width: 4rem;
+//             cursor: pointer;
+//             text-align: center;
+
+//             &:hover
+//             {
+//                 background: $app-color-bahama-blue;
+//                 color: $app-color-white;
+//             }
+//         }
+//     }
+
+//     thead
+//     {
+//         > tr
+//         {
+//             background-color: $app-color-pattens-blue;
+//         }
+//     }
+
+//     tbody
+//     {
+//        > tr:nth-child(even)
+//        {
+//            background-color: $app-color-alto;
+//        }
+//    }
+// }
+
+//.app-table
+//{
+//
+//
+//    caption
+//    {
+//        font-weight: 900;
+//        color: palette(White, 500);
+//        padding: $app-spacer;
+//        background-color: palette(Light Blue, 900);
+//        text-align: left;
+//        text-transform: uppercase;
+//    }
+//
+//    th, td
+//    {
+
+//
+//        &.narrow
+//        {
+//            width: 1em;
+//            white-space: nowrap;
+//        }
+//
+//        &.icon
+//        {
+//            padding: 0;
+//            height: $icon-size + $app-spacer;
+//        }
+//
+//        &.error
+//        {
+//            color: palette(White, 500);
+//            background: palette(Red, A700);
+//
+//            &:before
+//            {
+//                content: '';
+//                width: 0;
+//                height: 0;
+//                border-style: solid;
+//                border-width: 0 $app-spacer/2 $app-spacer/2 $app-spacer/2;
+//                border-color: transparent transparent palette(Red, A700) transparent;
+//                position: absolute;
+//                top: -$app-spacer/2;
+//                left: $app-spacer;
+//            }
+//        }
+//
+//        &.preview
+//        {
+//            &:before
+//            {
+//                content: '';
+//                width: 0;
+//                height: 0;
+//                border-style: solid;
+//                border-width: 0 $app-spacer/2 $app-spacer/2 $app-spacer/2;
+//                border-color: transparent transparent palette(Grey, 200) transparent;
+//                position: absolute;
+//                top: -$app-spacer/2;
+//                left: $app-spacer;
+//            }
+//        }
+//    }
+//
+
+//
+//    tbody
+//    {
+//        tr:nth-child(even),
+//        tr.even
+//        {
+//            background-color: palette(Grey, 200);
+//        }
+//    }
+//
+//    tfoot
+//    {
+//        > tr:first-child
+//        {
+//            th, td
+//            {
+//                border-top: 1px solid palette(Grey, 400);
+//            }
+//        }
+//
+//        th, td
+//        {
+//            color: palette(Grey, 600);
+//        }
+//    }
+//
+//    .app-icon
+//    {
+//        position: absolute;
+//        width: 100%;
+//        height: 100%;
+//        line-height: normal;
+//        top: 0;
+//        left: 0;
+//    }
+//
+//    .pagination
+//    {
+//        margin: -$app-spacer;
+//    }
+//}

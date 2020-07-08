@@ -1,0 +1,141 @@
+declare(strict_types=1);
+
+namespace KickAssSubtitles\Encoding;
+
+use function Safe\substr;
+use MyCLabs\Enum\Enum;
+use UnexpectedValueException;
+use Throwable;
+
+/**
+<?php foreach ($encodings as $k => $v) : ?>
+ * @method static Encoding <?php echo $k ?>()
+<?php endforeach ?>
+ * @method static Encoding WINDOWS_1250()
+ * @method static Encoding WINDOWS_1256()
+ */
+class Encoding extends Enum
+{
+<?php foreach ($encodings as $k => $v) : ?>
+    const <?php echo $k ?> = '<?php echo strtolower($v['encoding']) ?>';
+
+<?php endforeach ?>
+    const WINDOWS_1250 = 'windows-1250';
+
+    const WINDOWS_1256 = 'windows-1256';
+
+    /**
+     * @var array
+     */
+    protected static $names = [
+<?php foreach ($encodings as $k => $v) : ?>
+        self::<?php echo $k ?> => '<?php echo $v['encoding'] ?>',
+<?php endforeach ?>
+        self::WINDOWS_1250 => 'Windows-1250',
+        self::WINDOWS_1256 => 'Windows-1256',
+    ];
+
+    /**
+     * @var array
+     */
+    protected static $aliases = [
+<?php foreach ($encodings as $k => $v) : ?>
+        self::<?php echo $k ?> => [
+        <?php foreach ($v['aliases'] as $alias) : ?>
+    '<?php echo $alias ?>',
+        <?php endforeach ?>
+],
+<?php endforeach ?>
+        self::WINDOWS_1250 => [
+            'CP1250',
+            'CP-1250',
+            'WINDOWS-1250',
+        ],
+        self::WINDOWS_1256 => [
+            'CP1256',
+            'CP-1256',
+            'WINDOWS-1256',
+            'WinArabic',
+        ],
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __construct($value)
+    {
+        try {
+            parent::__construct(\strtolower($value));
+        } catch (UnexpectedValueException $e) {
+            foreach (self::values() as $encoding) {
+                if ($encoding->hasAlias($value)) {
+                    parent::__construct($encoding->getValue());
+
+                    return;
+                }
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return self::$names[$this->getValue()];
+    }
+
+    /**
+     * @return array
+     */
+    public function getAliases(): array
+    {
+        return self::$aliases[$this->getValue()];
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasAlias(string $alias): bool
+    {
+        $normalize = function (string $value): string {
+            $value = \strtolower($value);
+            $value = \str_replace('-', '', $value);
+            $value = \str_replace('_', '', $value);
+
+            return $value;
+        };
+
+        $aliases = \array_map($normalize, $this->getAliases());
+
+        return \in_array($normalize($alias), $aliases, true);
+    }
+
+    /**
+     * @return bool
+     *
+     * @throws Throwable
+     */
+    public function isWindows(): bool
+    {
+        return 'WINDOWS' === substr($this->getKey(), 0, 7);
+    }
+
+    /**
+     * @return array
+     *
+     * @throws Throwable
+     */
+    public function asArray(): array
+    {
+        return [
+            'key' => $this->getKey(),
+            'value' => $this->getValue(),
+            'name' => $this->getName(),
+            'aliases' => $this->getAliases(),
+            'is_windows' => $this->isWindows(),
+        ];
+    }
+}

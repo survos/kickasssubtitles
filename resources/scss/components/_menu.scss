@@ -1,0 +1,186 @@
+.app-menu
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li
+    {
+        margin-top: -1px;
+
+        > a
+        {
+            color: $app-color-black;
+            font-family: Montserrat;
+            font-weight: 700;
+            display: block;
+            text-transform: uppercase;
+            padding: $app-spacer / 2;
+            border: 1px solid $app-color-silver-chalice;
+            margin-right: -$app-spacer;
+            margin-left: $app-spacer / 2;
+            text-align: left;
+            position: relative;
+            transition: background-color .3s, color .3s;
+
+            > .fa
+            {
+                position: absolute;
+                top: $app-spacer / 2;
+                right: $app-spacer / 2;
+                color: $app-color-dove-gray;
+            }
+
+            > em
+            {
+                display: inline-block;
+                font-style: normal;
+            }
+
+            > span
+            {
+                font-family: Roboto;
+                font-weight: 400;
+                display: block;
+                text-transform: none;
+                font-size: 1.2rem;
+                color: $app-color-dove-gray;
+            }
+
+            > b
+            {
+                color: $app-color-wild-sand;
+                transition: color .3s;
+            }
+
+            &:hover
+            {
+                text-decoration: none;
+                background-color: $app-color-white;
+
+                > b
+                {
+                    color: $app-color-silver-chalice;
+                }
+            }
+        }
+
+        &.active
+        {
+            > a
+            {
+                background: $app-color-white;
+                margin-right: -$app-spacer;
+                margin-left: 0;
+                border-right-color: $app-color-white;
+
+                > em
+                {
+                    border-bottom: $app-spacer / 4  solid $app-color-bahama-blue;
+                }
+
+                > span
+                {
+                    padding-top: $app-spacer / 2;
+                }
+
+                > b
+                {
+                    color: $app-color-orange-peel;
+                }
+            }
+        }
+    }
+}
+
+.app-menu-lang
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: auto;
+
+    > li
+    {
+        float: left;
+        margin-left: $app-spacer / 2;
+
+        > a
+        {
+            display: block;
+            float: left;
+            width: (4/3) * $app-spacer;
+            height: $app-spacer;
+            text-indent: -9999px;
+            webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+            transition: filter .3s;
+
+            &:hover
+            {
+                webkit-filter: grayscale(0);
+                filter: grayscale(0);
+            }
+        }
+
+        &.active
+        {
+            > a
+            {
+                webkit-filter: grayscale(0);
+                filter: grayscale(0);
+            }
+        }
+    }
+}
+
+.app-menu-auth
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: auto;
+
+    > li
+    {
+        float: left;
+
+        > a
+        {
+            display: block;
+            float: left;
+            font-family: Montserrat;
+            font-weight: 700;
+            padding: $app-spacer / 2;
+            color: $app-color-white;
+            transition: background-color .3s ease, color .3s ease;
+
+            > em
+            {
+                color: lighten($app-color-bahama-blue, 20%);
+            }
+
+            > .fa
+            {
+                color: $app-color-dove-gray;
+                margin-right: $app-spacer / 2;
+            }
+
+            &:hover
+            {
+                text-decoration: none;
+                background-color: $app-color-white;
+                color: $app-color-black;
+            }
+        }
+
+        &.active
+        {
+            > a
+            {
+                background-color: $app-color-alto;
+                color: $app-color-black;
+            }
+        }
+    }
+}

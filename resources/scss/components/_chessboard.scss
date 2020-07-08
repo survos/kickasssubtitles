@@ -1,0 +1,10 @@
+.app-chessboard
+{
+    > .square:nth-child(8n+1),
+    > .square:nth-child(8n+3),
+    > .square:nth-child(8n+6),
+    > .square:nth-child(8n+8)
+    {
+        background-color: $app-color-wild-sand;
+    }
+}

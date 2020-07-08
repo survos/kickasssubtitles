@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="App">
+            <directory suffix="Test.php">./tests/App</directory>
+        </testsuite>
+        <testsuite name="App\Feature">
+            <directory suffix="Test.php">./tests/App/Feature</directory>
+        </testsuite>
+        <testsuite name="App\Unit">
+            <directory suffix="Test.php">./tests/App/Unit</directory>
+        </testsuite>
+        <testsuite name="Encoding">
+            <directory suffix="Test.php">./tests/Encoding</directory>
+        </testsuite>
+        <testsuite name="Movie">
+            <directory suffix="Test.php">./tests/Movie</directory>
+        </testsuite>
+        <testsuite name="LineEnding">
+            <directory suffix="Test.php">./tests/LineEnding</directory>
+        </testsuite>
+        <testsuite name="Storage">
+            <directory suffix="Test.php">./tests/Storage</directory>
+        </testsuite>
+        <testsuite name="Subtitle">
+            <directory suffix="Test.php">./tests/Subtitle</directory>
+        </testsuite>
+        <testsuite name="Support">
+            <directory suffix="Test.php">./tests/Support</directory>
+        </testsuite>
+        <testsuite name="Processor">
+            <directory suffix="Test.php">./tests/Processor</directory>
+        </testsuite>
+        <testsuite name="Subtitle">
+            <directory suffix="Test.php">./tests/Subtitle</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./app</directory>
+        </whitelist>
+    </filter>
+    <php>
+        <ini name="error_reporting" value="-1" />
+
+        <env name="APP_ENV" value="testing" force="true" />
+        <env name="CACHE_DRIVER" value="array" force="true" />
+        <env name="SESSION_DRIVER" value="array" force="true" />
+        <env name="QUEUE_DRIVER" value="sync" force="true" />
+        <env name="DB_CONNECTION" value="test" force="true" />
+        <env name="MEDIALIBRARY_DISK_NAME" value="medialibrary_testing" force="true" />
+    </php>
+</phpunit>

@@ -1,0 +1,98 @@
+{
+    "name": "kickasssubtitles/kickasssubtitles",
+    "description": "Open-source movie and TV subtitles",
+    "type": "project",
+    "homepage": "https://kickasssubtitles.com",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "grzesw",
+            "email": "contact@kickasssubtitles.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4.0",
+        "ext-json": "*",
+        "ext-pcntl": "*",
+        "ext-simplexml": "*",
+        "ext-xmlrpc": "*",
+        "ext-zend-opcache": "*",
+        "ext-zlib": "*",
+        "gemorroj/archive7z": "4.0.0",
+        "guzzlehttp/guzzle": "6.3.3",
+        "intervention/image": "2.5.1",
+        "jaybizzle/laravel-crawler-detect": "1.2.0",
+        "jenssegers/model": "1.2.2",
+        "laravel/framework": "5.5.49",
+        "lavary/laravel-menu": "1.7.6",
+        "mantas-done/subtitles": "0.3.9",
+        "mariuzzo/laravel-js-localization": "1.4.7",
+        "mcamara/laravel-localization": "1.3.20",
+        "myclabs/php-enum": "1.7.2",
+        "patrickschur/language-detection": "3.4.2",
+        "php-tmdb/api": "2.1.17",
+        "ramsey/uuid": "3.8.0",
+        "sentry/sentry-laravel": "1.7.1",
+        "spatie/laravel-medialibrary": "7.10.0",
+        "thecodingmachine/safe": "1.1.2",
+        "vinkla/hashids": "3.3.0"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "3.2.7",
+        "phpstan/phpstan": "0.11.19",
+        "phpunit/phpunit": "~6.0",
+        "umpirsky/list-generator": "1.2.1"
+    },
+    "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "KickAssSubtitles\\": "src/"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump"
+        ],
+        "test": [
+            "phpunit"
+        ],
+        "tests": [
+            "@test"
+        ],
+        "t": [
+            "@test"
+        ],
+        "static-analysis": [
+            "phpstan analyse app src tests --level=max --memory-limit=256M"
+        ],
+        "sa": [
+            "@static-analysis"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "classmap-authoritative": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "*"
+            ]
+        }
+    }
+}

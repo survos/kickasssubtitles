@@ -1,0 +1,8 @@
+parameters:
+    excludes_analyse:
+        - %rootDir%/../../../app/Console/*
+        - %rootDir%/../../../app/Providers/RouteServiceProvider.php
+#    ignoreErrors:
+#        -
+#            message: '#Call to an undefined static method [a-zA-Z0-9\\_]+::createCopy\(\)#'
+#            path: src/Subtitle/TaskTrait.php

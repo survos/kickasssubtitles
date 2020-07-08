@@ -1,0 +1,78 @@
+.app-form
+{
+    .app-form-field
+    {
+        margin-bottom: $app-spacer;
+
+        &.-submit
+        {
+            margin-left: -$app-spacer;
+            margin-right: -$app-spacer;
+        }
+    }
+}
+
+.app-form-field
+{
+    > label
+    {
+        cursor: pointer;
+        font-family: Montserrat;
+        font-weight: 700;
+        display: block;
+        margin: 0;
+    }
+
+    > .hint
+    {
+        font-size: 1.2rem;
+        line-height: $app-spacer / 1.2rem;
+        color: $app-color-dove-gray;
+    }
+
+    > .error
+    {
+        font-weight: 900;
+        text-transform: uppercase;
+        color: $app-color-guardsman-red;
+        padding-top: $app-spacer / 4;
+    }
+
+    &.-input
+    {
+        > input
+        {
+            width: 100%;
+            display: block;
+            border: 0;
+            background: transparent;
+            padding: $app-spacer / 2;
+            box-shadow: inset 0 -1px 0 $app-color-silver, inset 0 1px 0 $app-color-silver, inset 1px 0 0 $app-color-silver, inset -1px 0 0 $app-color-silver;
+
+            &:focus {
+                box-shadow: inset 0 -1px 0 $app-color-bahama-blue, inset 0 1px 0 $app-color-bahama-blue, inset 1px 0 0 $app-color-bahama-blue, inset -1px 0 0 $app-color-bahama-blue;
+                outline: 0;
+            }
+        }
+    }
+
+    &.-checkbox
+    {
+        position: relative;
+        padding-left: $app-spacer;
+
+        input
+        {
+            position: absolute;
+            top: $app-spacer / 4;
+            left: 0;
+        }
+    }
+
+    &.-submit
+    {
+        text-align: center;
+        background: $app-color-bahama-blue;
+        padding: $app-spacer;
+    }
+}

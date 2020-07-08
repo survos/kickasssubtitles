@@ -1,0 +1,122 @@
+.app-movie
+{
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: $app-spacer;
+    margin-bottom: $app-spacer;
+
+    a
+    {
+        display: block;
+        text-decoration: none;
+    }
+
+    img
+    {
+        height: auto;
+        max-width: 100%;
+        display: block;
+    }
+
+    .info
+    {
+        display: table-caption;
+        caption-side: bottom;
+        text-align: left;
+        font-family: Montserrat;
+        font-weight: 700;
+
+        a
+        {
+            padding-top: $app-spacer / 4;
+
+            .year
+            {
+                display: block;
+                color: $app-color-silver-chalice;
+            }
+
+            &:hover
+            {
+                .title
+                {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+/**
+ * movie
+ */
+//.app-movie
+//{
+//    text-align: center;
+//
+//    > .title
+//    {
+//        a
+//        {
+//            display: block;
+//            padding: $u/4 0;
+//        }
+//
+//        h1
+//        {
+//            margin: 0;
+//            padding: $u/4 0;
+//        }
+//    }
+//
+//    > .meta
+//    {
+//        padding: $u/4 0;
+//    }
+//
+//    > .poster
+//    {
+//        img
+//        {
+//            height: auto;
+//            max-width: 100%;
+//            display: block;
+//            margin-left: auto;
+//            margin-right: auto;
+//        }
+//    }
+//
+//    &.-show
+//    {
+//        max-width: 300px;
+//        margin-left: auto;
+//        margin-right: auto;
+//    }
+//}
+//
+//@media all and (min-width: $responsive-breakpoint)
+//{
+//    .app-movie
+//    {
+//        text-align: left;
+//        display: inline-block;
+//
+//        > .poster
+//        {
+//            img
+//            {
+//                width: 100%;
+//                max-width: none;
+//                margin-left: 0;
+//                margin-right: 0;
+//            }
+//        }
+//
+//        &.-show
+//        {
+//            max-width: 300px;
+//            margin: $u;
+//        }
+//    }
+//}

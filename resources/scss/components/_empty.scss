@@ -1,0 +1,30 @@
+.app-empty
+{
+    display: table;
+    width: 100%;
+    font-family: Montserrat;
+    font-weight: 700;
+    color: $app-color-silver-chalice;
+
+    > .icon
+    {
+        display: table-cell;
+        padding: 2 * $app-spacer $app-spacer;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    > .text
+    {
+        display: table-cell;
+        padding: 2 * $app-spacer $app-spacer;
+        padding-left: 0;
+        vertical-align: middle;
+        width: 100%;
+
+        strong
+        {
+            color: $app-color-black;
+        }
+    }
+}

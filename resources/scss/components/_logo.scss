@@ -1,0 +1,96 @@
+.app-logo
+{
+    position: relative;
+
+    > .link
+    {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+
+        > a
+        {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-indent: -9999px;
+        }
+    }
+
+    > .scene
+    {
+        position: relative;
+
+        &:before
+        {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url(/img/patterns/pattern_2x2.png);
+            z-index: 1;
+        }
+
+        > img
+        {
+            display: block;
+            width: 100%;
+            webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+        }
+
+        > .name
+        {
+            position: absolute;
+            z-index: 2;
+            text-transform: uppercase;
+            bottom: $app-spacer;
+            left: $app-spacer;
+            font-size: 30px;
+            line-height: 30px;
+            font-family: Montserrat;
+            font-weight: 700;
+
+            span
+            {
+                display: inline-block;
+                border-radius: 3px;
+                padding: $app-spacer / 4;
+                padding-bottom: $app-spacer / 4 - 0.1rem;
+                background: rgba($app-color-black, 0.8);
+                color: $app-color-white;
+                margin-top: $app-spacer / 4;
+                transition: background-color .3s;
+            }
+        }
+    }
+
+    > .tagline
+    {
+        background: $app-color-black;
+        color: $app-color-white;
+        padding: $app-spacer / 4;
+        text-align: center;
+        font-family: Montserrat;
+        font-weight: 700;
+        transition: background-color .3s ease;
+    }
+
+    &:hover
+    {
+        > .scene > .name span
+        {
+            background-color: $app-color-bahama-blue;
+        }
+
+        .tagline
+        {
+            background-color: $app-color-bahama-blue;
+        }
+    }
+}

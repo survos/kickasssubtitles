@@ -1,0 +1,25 @@
+.app-bar
+{
+    background: $app-color-black;
+    color: $app-color-white;
+    margin-left: $app-sidebar-width;
+    position: sticky;
+    z-index: 30;
+    top: 0;
+    padding: $app-spacer / 2;
+    overflow: hidden;
+
+    > .app-menu-lang
+    {
+        float: left;
+        margin-left: -$app-spacer / 2;
+    }
+
+    > .app-menu-auth
+    {
+        float: right;
+        margin-top: -$app-spacer / 2;
+        margin-right: -$app-spacer / 2;
+        margin-bottom: -$app-spacer / 2;
+    }
+}

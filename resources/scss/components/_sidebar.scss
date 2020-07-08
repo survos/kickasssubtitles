@@ -1,0 +1,60 @@
+.app-sidebar
+{
+    background: $app-color-silver;
+    width: $app-sidebar-width;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    flex-flow: column;
+    box-shadow: inset -1px 0 0 $app-color-silver-chalice;
+
+    a
+    {
+        color: $app-color-black;
+    }
+
+    > .app-logo
+    {
+        flex: 0 1 auto;
+    }
+
+    > .app-sidebar-scrolling
+    {
+        flex: 1 1 auto;
+    }
+}
+
+.app-sidebar-section
+{
+    color: $app-color-tundora;
+    text-align: center;
+    padding-top: $app-spacer;
+    font-size: 1.3rem;
+    line-height: $app-spacer / 1.3rem;
+
+    .fa
+    {
+        transition: all .2s;
+
+        &:hover
+        {
+            color: $app-color-white;
+        }
+    }
+
+    .logo
+    {
+        height: 2 * $app-spacer;
+        display: block;
+        margin: auto;
+    }
+}
+
+.app-sidebar-scrolling
+{
+    position: relative;
+    padding: $app-spacer;
+}

@@ -1,0 +1,13 @@
+.app-number-bullet
+{
+    display: inline-block;
+    background: $app-color-black;
+    color: $app-color-white;
+    width: $app-spacer;
+    height: $app-spacer;
+    line-height: $app-spacer + 0.1rem;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 900;
+}

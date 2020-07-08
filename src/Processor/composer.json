@@ -1,0 +1,23 @@
+{
+    "name": "kickasssubtitles/processor",
+    "description": "Abstractions for async task processing",
+    "type": "library",
+    "homepage": "https://github.com/kickasssubtitles/task-processor",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "grzesw",
+            "email": "contact@kickasssubtitles.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "kickasssubtitles/support": "*",
+        "kickasssubtitles/storage": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "KickAssSubtitles\\Processor\\": "."
+        }
+    }
+}
