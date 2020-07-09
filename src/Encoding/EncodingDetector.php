@@ -82,7 +82,7 @@ class EncodingDetector implements EncodingDetectorInterface
         $detectors = $this->detectors;
 
         // if `$language` is passed, prioritize language-aware detectors
-        if ($language !== null) {
+        if (null !== $language) {
             $detectors = $this->sortByLanguageAwareDetectors($detectors);
         }
 
@@ -101,6 +101,7 @@ class EncodingDetector implements EncodingDetectorInterface
 
     /**
      * @param array $detectors
+     *
      * @return array
      */
     protected function sortByLanguageAwareDetectors(array $detectors): array
@@ -109,7 +110,7 @@ class EncodingDetector implements EncodingDetectorInterface
         $other = [];
 
         foreach ($detectors as $detector) {
-            if (in_array(get_class($detector), $this->languageAwareDetectors)) {
+            if (in_array(get_class($detector), $this->languageAwareDetectors, true)) {
                 $languageAware[] = $detector;
             } else {
                 $other[] = $detector;
