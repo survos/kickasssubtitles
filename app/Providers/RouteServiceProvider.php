@@ -12,8 +12,10 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Services\RouteBinds;
 use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Routing\Router;
 use Mcamara\LaravelLocalization\LaravelLocalization;
 use Mcamara\LaravelLocalization\Traits\LoadsTranslatedCachedRoutes;
 
@@ -38,16 +40,17 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        /** @var Router $router */
+        $router = $this->app->make(Registrar::class);
+        $router->bind('id', RouteBinds::class . '@bindId');
+
         parent::boot();
     }
 
     public function map(): void
     {
+        /** @var Router $router */
         $router = $this->app->make(Registrar::class);
-
-        $router->bind('id', function ($value, $route) {
-            return hashid_decode($value);
-        });
 
         $this->mapWebRoutes($router);
         $this->mapApiRoutes($router);
