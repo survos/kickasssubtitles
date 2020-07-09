@@ -42,7 +42,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         /** @var Router $router */
         $router = $this->app->make(Registrar::class);
-        $router->bind('id', RouteBinds::class . '@bindId');
+        $router->bind('id', RouteBinds::class.'@bindId');
 
         parent::boot();
     }
