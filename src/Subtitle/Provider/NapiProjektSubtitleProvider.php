@@ -187,7 +187,7 @@ class NapiProjektSubtitleProvider extends AbstractSubtitleProvider
         $encoding = Encoding::WINDOWS_1250(); // default
 
         try {
-            $encoding = $this->encodingDetector->detectFile($subtitle7z);
+            $encoding = $this->encodingDetector->detectFile($subtitle7z, $options->getLanguage());
         } catch (Throwable $e) {
         }
 

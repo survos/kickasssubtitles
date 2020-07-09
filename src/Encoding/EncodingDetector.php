@@ -31,6 +31,13 @@ class EncodingDetector implements EncodingDetectorInterface
     protected $detectors = [];
 
     /**
+     * @var array
+     */
+    protected $languageAwareDetectors = [
+        CharedEncodingDetector::class,
+    ];
+
+    /**
      * @return EncodingDetectorInterface
      *
      * @throws Throwable
@@ -72,7 +79,14 @@ class EncodingDetector implements EncodingDetectorInterface
     public function detect(string $input, ?Language $language = null): Encoding
     {
         $exception = null;
-        foreach ($this->detectors as $detector) {
+        $detectors = $this->detectors;
+
+        // if `$language` is passed, prioritize language-aware detectors
+        if ($language !== null) {
+            $detectors = $this->sortByLanguageAwareDetectors($detectors);
+        }
+
+        foreach ($detectors as $detector) {
             try {
                 return $detector->detect($input, $language);
             } catch (Throwable $e) {
@@ -83,5 +97,25 @@ class EncodingDetector implements EncodingDetectorInterface
         if ($exception) {
             throw $exception;
         }
+    }
+
+    /**
+     * @param array $detectors
+     * @return array
+     */
+    protected function sortByLanguageAwareDetectors(array $detectors): array
+    {
+        $languageAware = [];
+        $other = [];
+
+        foreach ($detectors as $detector) {
+            if (in_array(get_class($detector), $this->languageAwareDetectors)) {
+                $languageAware[] = $detector;
+            } else {
+                $other[] = $detector;
+            }
+        }
+
+        return array_merge($languageAware, $other);
     }
 }

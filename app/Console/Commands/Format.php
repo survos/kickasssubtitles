@@ -17,6 +17,8 @@ use App\Enums\Filesystem;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Filesystem\FilesystemManager;
 use KickAssSubtitles\Support\Str;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 use function Safe\scandir;
 use function Safe\unlink;
 
@@ -60,6 +62,8 @@ class Format extends Command
             return;
         }
 
+        $this->stopSupervisor();
+
         $this->call('migrate:fresh');
 
         foreach (Filesystem::values() as $filesystem) {
@@ -67,6 +71,8 @@ class Format extends Command
         }
 
         $this->clearLogs();
+
+        $this->startSupervisor();
     }
 
     /**
@@ -94,6 +100,34 @@ class Format extends Command
             $filePath = $logsPath.DIRECTORY_SEPARATOR.$file;
             unlink($filePath);
             $this->info('File deleted: '.$filePath);
+        }
+    }
+
+    protected function stopSupervisor(): void
+    {
+        $this->callSupervisor(['stop', 'app:']);
+    }
+
+    protected function startSupervisor(): void
+    {
+        $this->callSupervisor(['start', 'app:']);
+    }
+
+    protected function callSupervisor(array $command): void
+    {
+        $process = new Process(array_merge([
+            'supervisorctl',
+        ], $command));
+
+        $process->run();
+
+        if (!$process->isSuccessful()) {
+            throw new ProcessFailedException();
+        }
+
+        $output = explode(PHP_EOL, $process->getOutput());
+        foreach ($output as $line) {
+            $this->info($line);
         }
     }
 }

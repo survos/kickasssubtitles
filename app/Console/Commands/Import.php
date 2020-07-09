@@ -176,6 +176,7 @@ class Import extends Command
                             continue;
                         }
                         $imdbId = new ImdbId('tt'.$imdbId);
+                        $language = new Language($subtitle->language);
 
                         $folder = uniqid();
                         $filename = $folder.DIRECTORY_SEPARATOR.'subtitle.srt';
@@ -186,7 +187,7 @@ class Import extends Command
                         $path = $this->storage->disk(Filesystem::TMP)->path($filename);
 
                         $detectedFormat = $this->subtitleFormatDetector->detectFile($path);
-                        $detectedEncoding = $this->encodingDetector->detectFile($path);
+                        $detectedEncoding = $this->encodingDetector->detectFile($path, $language);
                         if (!$detectedFormat->equals(SubtitleFormat::SUBRIP())) {
                             $this->info('Invalid format');
 
