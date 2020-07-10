@@ -172,6 +172,7 @@ class TaskCompletedListener extends AbstractListener implements ShouldQueue
         } catch (ModelNotFoundException $e) {
             $savedMovie = $this->movieRepository->createFromMovie($movie);
             $savedMovie->setProvider(MovieProvider::KICKASSSUBTITLES());
+            $savedMovie->touchSearchedAt();
         }
     }
 
