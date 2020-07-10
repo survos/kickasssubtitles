@@ -19,6 +19,7 @@
         "ext-xmlrpc": "*",
         "ext-zend-opcache": "*",
         "ext-zlib": "*",
+        "fideloper/proxy": "3.3.4",
         "gemorroj/archive7z": "4.0.0",
         "guzzlehttp/guzzle": "6.3.3",
         "intervention/image": "2.5.1",
