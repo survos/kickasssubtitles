@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\AbstractController;
+use App\Jobs\DeleteTemporaryUser;
 use Illuminate\Contracts\Cookie\Factory as CookieFactory;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -92,7 +93,7 @@ class LoginController extends AbstractController
         $user = $request->user();
         $response = $this->baseLogout($request);
         if ($user->isTemporary()) {
-            $user->delete();
+            DeleteTemporaryUser::dispatch($user);
             $response->withCookie(
                 $cookie->forever('temporary', 'no')
             );

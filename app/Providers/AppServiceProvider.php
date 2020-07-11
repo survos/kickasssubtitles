@@ -144,8 +144,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             UserRepository::class,
-            function () {
-                return new UserRepository(User::class);
+            function (Container $app) {
+                $taskRepository = $app->make(TaskRepositoryInterface::class);
+
+                return new UserRepository(User::class, $taskRepository);
             }
         );
 

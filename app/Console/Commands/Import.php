@@ -53,7 +53,7 @@ class Import extends Command
      *
      * @var string
      */
-    protected $description = 'Imports data from legacy KickAssSubtitles database';
+    protected $description = 'Import data from legacy KickAssSubtitles database';
 
     /**
      * @var DatabaseManager

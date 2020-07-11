@@ -13,14 +13,21 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use Exception;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Carbon;
+use KickAssSubtitles\Processor\TaskRepositoryInterface;
+use KickAssSubtitles\Support\Exception\NotImplementedException;
+use KickAssSubtitles\Support\FiltersInterface;
+use KickAssSubtitles\Support\ModelInterface;
+use KickAssSubtitles\Support\RepositoryInterface;
 use KickAssSubtitles\Support\UserInterface;
 use Throwable;
 
 /**
  * Class UserRepository.
  */
-class UserRepository
+class UserRepository implements RepositoryInterface
 {
     const ERR_INVALID_TOKEN = 'Invalid token';
 
@@ -30,11 +37,18 @@ class UserRepository
     protected $userClass;
 
     /**
-     * @param string $userClass
+     * @var TaskRepositoryInterface
      */
-    public function __construct(string $userClass)
+    protected $taskRepository;
+
+    /**
+     * @param string $userClass
+     * @param TaskRepositoryInterface $taskRepository
+     */
+    public function __construct(string $userClass, TaskRepositoryInterface $taskRepository)
     {
         $this->userClass = $userClass;
+        $this->taskRepository = $taskRepository;
     }
 
     /**
@@ -101,5 +115,34 @@ class UserRepository
         }
 
         return $user;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function findByIdOrFail(int $id): ModelInterface
+    {
+        $userClass = $this->userClass;
+
+        return $userClass::findOrFail($id);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function findAll(FiltersInterface $filters): LengthAwarePaginator
+    {
+        throw new NotImplementedException();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function delete(object $entity): void
+    {
+        /** @var ModelInterface $user */
+        $user = $entity;
+        $this->taskRepository->deleteTasksOlderThan(Carbon::now()->addDays(30), $user);
+        $user->delete();
     }
 }

@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Jobs;
 
 use App\Services\SubtitleConverter;
+use KickAssSubtitles\Processor\TaskInterface;
 use Throwable;
 
 /**
@@ -20,6 +21,19 @@ use Throwable;
  */
 class ProcessSubtitleConversionTask extends AbstractJob
 {
+    /**
+     * @var TaskInterface
+     */
+    protected $task;
+
+    /**
+     * @param TaskInterface $task
+     */
+    public function __construct(TaskInterface $task)
+    {
+        $this->task = $task;
+    }
+
     /**
      * @param SubtitleConverter $converter
      *

@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace KickAssSubtitles\Processor;
 
 use DateTime;
+use KickAssSubtitles\Support\ModelInterface;
 use KickAssSubtitles\Support\RepositoryInterface;
 use Throwable;
 
@@ -61,8 +62,8 @@ interface TaskRepositoryInterface extends RepositoryInterface
 
     /**
      * @param DateTime $cutOffDate
-     *
+     * @param ModelInterface|null $user
      * @throws Throwable
      */
-    public function deleteTasksOlderThan(DateTime $cutOffDate): void;
+    public function deleteTasksOlderThan(DateTime $cutOffDate, ?ModelInterface $user = null): void;
 }

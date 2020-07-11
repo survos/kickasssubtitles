@@ -33,7 +33,7 @@ class Purge extends Command
      *
      * @var string
      */
-    protected $description = 'Purges app database from old items';
+    protected $description = 'Purge app database from old items';
 
     /**
      * @var TaskRepositoryInterface

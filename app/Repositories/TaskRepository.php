@@ -131,16 +131,21 @@ class TaskRepository extends BaseTaskRepository
     /**
      * {@inheritdoc}
      */
-    public function deleteTasksOlderThan(DateTime $cutOffDate): void
+    public function deleteTasksOlderThan(DateTime $cutOffDate, ?ModelInterface $user = null): void
     {
         $taskClass = $this->taskClass;
 
         $cutOffDateSql = $cutOffDate->format(ModelInterface::MYSQL_DATETIME);
 
-        $tasks = $taskClass::whereNull(Task::PARENT_ID)
+        $query = $taskClass::whereNull(Task::PARENT_ID)
             ->where(Model::CREATED_AT, '<', $cutOffDateSql)
-            ->get()
         ;
+
+        if ($user !== null) {
+            $query->where(Task::USER_ID, (int) $user->getId());
+        }
+
+        $tasks = $query->get();
 
         foreach ($tasks as $task) {
             $this->delete($task);

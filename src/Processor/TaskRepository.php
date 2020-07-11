@@ -15,6 +15,7 @@ namespace KickAssSubtitles\Processor;
 use DateTime;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use InvalidArgumentException;
+use KickAssSubtitles\Processor\Exception\TaskIsProcessingException;
 use KickAssSubtitles\Support\Exception\NotImplementedException;
 use KickAssSubtitles\Support\FiltersInterface;
 use KickAssSubtitles\Support\ModelInterface;
@@ -124,6 +125,11 @@ class TaskRepository implements TaskRepositoryInterface
     {
         /** @var TaskInterface $task */
         $task = $entity;
+
+        if ($task->getStatus()->equals(TaskStatus::PROCESSING())) {
+            throw new TaskIsProcessingException();
+        }
+
         foreach ($task->getChildren() as $childTask) {
             $childTask->tearDownStorage();
             $childTask->delete();
@@ -135,7 +141,7 @@ class TaskRepository implements TaskRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function deleteTasksOlderThan(DateTime $cutOffDate): void
+    public function deleteTasksOlderThan(DateTime $cutOffDate, ?ModelInterface $user = null): void
     {
         throw new NotImplementedException();
     }

@@ -39,7 +39,7 @@ class Format extends Command
      *
      * @var string
      */
-    protected $description = 'Formats database & storage folders';
+    protected $description = 'Format database & storage folders';
 
     /**
      * Create a new command instance.

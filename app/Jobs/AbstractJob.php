@@ -42,17 +42,4 @@ abstract class AbstractJob implements ShouldQueue
      * @var int
      */
     public $timeout = 120;
-
-    /**
-     * @var TaskInterface
-     */
-    protected $task;
-
-    /**
-     * @param TaskInterface $task
-     */
-    public function __construct(TaskInterface $task)
-    {
-        $this->task = $task;
-    }
 }

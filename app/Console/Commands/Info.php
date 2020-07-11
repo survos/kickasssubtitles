@@ -27,7 +27,7 @@ class Info extends Command
     /**
      * @var string
      */
-    protected $description = 'Displays basic application info';
+    protected $description = 'Display basic application info';
 
     public function handle()
     {
