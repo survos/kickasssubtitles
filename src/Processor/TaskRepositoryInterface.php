@@ -61,8 +61,9 @@ interface TaskRepositoryInterface extends RepositoryInterface
     public function findByIdentifierOrFail(string $identifier): TaskInterface;
 
     /**
-     * @param DateTime $cutOffDate
+     * @param DateTime            $cutOffDate
      * @param ModelInterface|null $user
+     *
      * @throws Throwable
      */
     public function deleteTasksOlderThan(DateTime $cutOffDate, ?ModelInterface $user = null): void;

@@ -141,7 +141,7 @@ class TaskRepository extends BaseTaskRepository
             ->where(Model::CREATED_AT, '<', $cutOffDateSql)
         ;
 
-        if ($user !== null) {
+        if (null !== $user) {
             $query->where(Task::USER_ID, (int) $user->getId());
         }
 

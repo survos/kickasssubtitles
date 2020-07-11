@@ -42,7 +42,7 @@ class UserRepository implements RepositoryInterface
     protected $taskRepository;
 
     /**
-     * @param string $userClass
+     * @param string                  $userClass
      * @param TaskRepositoryInterface $taskRepository
      */
     public function __construct(string $userClass, TaskRepositoryInterface $taskRepository)
@@ -118,7 +118,7 @@ class UserRepository implements RepositoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function findByIdOrFail(int $id): ModelInterface
     {
@@ -128,7 +128,7 @@ class UserRepository implements RepositoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function findAll(FiltersInterface $filters): LengthAwarePaginator
     {
@@ -136,7 +136,7 @@ class UserRepository implements RepositoryInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function delete(object $entity): void
     {

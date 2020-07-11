@@ -1,5 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * KickAssSubtitles source code file
+ *
+ * @link      https://kickasssubtitles.com
+ * @copyright Copyright (c) 2016-2020
+ * @author    grzesw <contact@kickasssubtitles.com>
+ */
+
 namespace App\Jobs;
 
 use App\Repositories\UserRepository;
@@ -8,8 +18,7 @@ use KickAssSubtitles\Support\UserInterface;
 use Throwable;
 
 /**
- * Class DeleteTemporaryUser
- * @package App\Jobs
+ * Class DeleteTemporaryUser.
  */
 class DeleteTemporaryUser extends AbstractJob
 {
@@ -28,6 +37,7 @@ class DeleteTemporaryUser extends AbstractJob
 
     /**
      * @param UserRepository $userRepository
+     *
      * @throws Throwable
      */
     public function handle(UserRepository $userRepository)
