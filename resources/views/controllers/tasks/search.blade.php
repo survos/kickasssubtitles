@@ -16,7 +16,7 @@ $options = (new KickAssSubtitles\Subtitle\SubtitleSearchOptions([
     <div id="app" v-cloak>
         <searcher
             :options='{!! json_encode($options) !!}'
-            endpoint="{{ route(App\Enums\Route::SEARCH_CREATE) }}"
+            endpoint="{{ route(App\Enums\Route::SEARCH_CREATE, [], false) }}"
             limit="{{ config('app.search.limit') }}">
         </searcher>
     </div>

@@ -16,7 +16,7 @@ $options = (new KickAssSubtitles\Subtitle\SubtitleConversionOptions([
     <div id="app" v-cloak>
         <converter
                 :options='{!! json_encode($options) !!}'
-                endpoint="{{ route(App\Enums\Route::CONVERT_CREATE) }}"
+                endpoint="{{ route(App\Enums\Route::CONVERT_CREATE, [], false) }}"
                 limit="{{ config('app.conversion.limit') }}"
                 filesize="{{ config('app.conversion.filesize') }}">
         </converter>

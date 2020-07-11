@@ -37,7 +37,7 @@
 
     @if (!$movie->getVideos()->isEmpty())
 
-        <form id="download" method="post" action="{{ route(App\Enums\Route::DOWNLOAD_CREATE) }}">
+        <form id="download" method="post" action="{{ route(App\Enums\Route::DOWNLOAD_CREATE, [], false) }}">
 
             {{ csrf_field() }}
 
@@ -76,7 +76,7 @@
                                         <a
                                             href="#"
                                             class="js-toggle-preview"
-                                            data-endpoint="{{ route(App\Enums\Route::SUBTITLES_SHOW, [$subtitle]) }}"
+                                            data-endpoint="{{ route(App\Enums\Route::SUBTITLES_SHOW, [$subtitle], false) }}"
                                         >{{ __('messages.preview') }} <span>+</span><span style="display: none">-</span>
                                         </a>
                                     </td>

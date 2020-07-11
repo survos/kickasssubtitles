@@ -116,7 +116,7 @@ class TasksController extends AbstractController
         $response = \response();
 
         return $response->json([
-           'url' => \route(Route::TASKS_GROUP, [$group]),
+           'url' => \route(Route::TASKS_GROUP, [$group], false),
         ]);
     }
 
@@ -191,7 +191,7 @@ class TasksController extends AbstractController
         $response = \response();
 
         return $response->json([
-           'url' => \route(Route::TASKS_GROUP, [$group]),
+           'url' => \route(Route::TASKS_GROUP, [$group], false),
         ]);
     }
 
@@ -253,7 +253,7 @@ class TasksController extends AbstractController
         $response = \response();
 
         return $response->json([
-           'url' => \route(Route::TASKS_GROUP, [$group]),
+           'url' => \route(Route::TASKS_GROUP, [$group], false),
         ]);
     }
 
