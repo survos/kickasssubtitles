@@ -108,7 +108,10 @@ class UserRepository implements RepositoryInterface
                 $user->save();
                 $continue = false;
             } catch (QueryException $e) {
-                if (23000 !== $e->getCode()) {
+                $exceptionCode = (string) $e->getCode();
+                if ($exceptionCode === '23000') {
+                    // integrity constraint violation - username already taken - continue loop
+                } else {
                     throw $e;
                 }
             }
