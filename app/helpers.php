@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 use Hashids\HashidsException;
 use MyCLabs\Enum\Enum;
-use Vinkla\Hashids\HashidsManager;
 use function Safe\sprintf;
+use Vinkla\Hashids\HashidsManager;
 
 if (!\function_exists('hashid_encode')) {
     /**
