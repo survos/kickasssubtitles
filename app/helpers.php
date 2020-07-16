@@ -10,8 +10,10 @@ declare(strict_types=1);
  * @author    grzesw <contact@kickasssubtitles.com>
  */
 
+use Hashids\HashidsException;
 use MyCLabs\Enum\Enum;
 use Vinkla\Hashids\HashidsManager;
+use function Safe\sprintf;
 
 if (!\function_exists('hashid_encode')) {
     /**
@@ -34,6 +36,10 @@ if (!\function_exists('hashid_decode')) {
     function hashid_decode(string $value): int
     {
         $ids = app(HashidsManager::class)->decode($value);
+
+        if (empty($ids)) {
+            throw new HashidsException(sprintf('Unable to decode value [%s]', $value));
+        }
 
         return \current($ids);
     }

@@ -22,6 +22,12 @@ return [
             'native' => 'english',
             'regional' => 'en_GB',
         ],
+        'es' => [
+            'name' => 'Spanish',
+            'script' => 'Latn',
+            'native' => 'español',
+            'regional' => 'es_ES',
+        ],
         'pl' => [
             'name' => 'Polish',
             'script' => 'Latn',
