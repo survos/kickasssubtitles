@@ -27,6 +27,7 @@ return [
     'movie_type' => [
         'movie' => 'movie',
         'series' => 'TV series',
+        'episode' => 'episode',
     ],
     'task_type' => [
         'subtitle_conversion' => 'subtitles conversion',

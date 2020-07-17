@@ -25,17 +25,18 @@ return [
         'uk' => 'ukrainian',
     ],
     'movie_type' => [
-        'movie' => 'movie',
-        'series' => 'TV series',
+        'movie' => 'la película',
+        'series' => 'la serie de televisión',
+        'episode' => 'el episodio',
     ],
     'task_type' => [
         'subtitle_conversion' => 'subtitles conversion',
         'subtitle_search' => 'subtitles search',
     ],
     'task_status' => [
-        'pending' => 'pending',
-        'processing' => 'processing',
-        'completed' => 'completed',
-        'failed' => 'failed',
+        'pending' => 'pendiente',
+        'processing' => 'procesando',
+        'completed' => 'completo',
+        'failed' => 'fallido',
     ],
 ];

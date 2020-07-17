@@ -27,6 +27,7 @@ return [
     'movie_type' => [
         'movie' => 'film fabularny',
         'series' => 'serial telewizyjny',
+        'episode' => 'odcinek',
     ],
     'task_type' => [
         'subtitle_conversion' => 'konwersja napisów',

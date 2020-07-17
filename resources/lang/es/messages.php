@@ -18,16 +18,16 @@ return [
     'version' => 'version',
 
     'search' => 'Buscar',
-    'search_hint' => 'Search subtitles by given video file querying popular subtitles services',
+    'search_hint' => 'Buscar subtítulos por archivo de video dado consultando servicios de subtítulos populares',
 
     'convert' => 'Convertir',
-    'convert_hint' => 'Convert subtitles between popular formats',
+    'convert_hint' => 'Convierte subtítulos entre formatos populares',
 
     'history' => 'Historia',
-    'history_hint' => 'Show my recently submitted search & conversion tasks',
+    'history_hint' => 'Mostrar mis tareas de búsqueda y conversión enviadas recientemente',
 
     'browse' => 'Navegar',
-    'browse_hint' => 'Browse our movie & TV subtitles database',
+    'browse_hint' => 'Navegar nuestra base de datos de subtítulos',
 
     'register' => 'Regístrate',
     'register_activate' => 'Successfully created a new account - please check your e-mail and activate your account',
@@ -53,9 +53,9 @@ return [
     'activate_success' => 'Activation successful',
     'activate_error' => 'Activation error',
 
-    'contact_us' => 'Drop us an e-mail',
+    'contact_us' => 'Envíenos un correo electrónico',
 
-    'open_source' => ':project is an open-source project. Contributions are welcome :)',
+    'open_source' => ':project es un proyecto de código abierto. Las contribuciones son bienvenidas :)',
     'credits' => 'Credits',
 
     'filename' => 'File name',
