@@ -16,6 +16,7 @@ use App\Models\Task;
 use App\Models\TaskFilters;
 use DateTime;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Connection;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator as LengthAwarePaginatorAlias;
@@ -67,8 +68,10 @@ class TaskRepository extends BaseTaskRepository
         }
 
         if ($taskFilters->getGroupByGroup()) {
+            /** @var Connection $db */
             $db = app(DatabaseManager::class);
-            $groups = $db
+
+            $groupsQuery = $db
                 ->table($taskClass::getTableName())
                 ->select($db->raw(
                     sprintf(
@@ -83,9 +86,17 @@ class TaskRepository extends BaseTaskRepository
                 ->whereNotNull($taskClass::GROUP)
                 ->groupBy($taskClass::GROUP)
                 ->orderBy($taskClass::CREATED_AT, 'desc')
-                ->paginate($taskFilters->getLimit())
             ;
+
+            if ($taskFilters->getUser()) {
+                /** @var ModelInterface $user */
+                $user = $taskFilters->getUser();
+                $groupsQuery->where($taskClass::USER_ID, (int) $user->getId());
+            }
+
+            $groups = $groupsQuery->paginate($taskFilters->getLimit());
             $g = $groups->toArray();
+
             $query->whereIn(
                 $taskClass::GROUP,
                 $groups->pluck($taskClass::GROUP)->all()
