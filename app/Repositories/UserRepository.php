@@ -99,22 +99,27 @@ class UserRepository implements RepositoryInterface
      */
     public function registerTemporary(): UserInterface
     {
+        $randomUsernames = [];
+        for ($i = 1; $i <= 10; $i++) {
+            $randomUsernames[] = 'u'.\rand(1, 100000);
+        }
+
         $userClass = $this->userClass;
-        $user = new $userClass();
-        $continue = true;
-        while ($continue) {
+        $exception = null;
+        foreach ($randomUsernames as $username) {
             try {
-                $user->setAttribute(UserInterface::USERNAME, 'u'.\rand(1, 10000));
+                $user = new $userClass();
+                $user->setAttribute(UserInterface::USERNAME, $username);
                 $user->save();
-                $continue = false;
-            } catch (QueryException $e) {
-                $exceptionCode = (string) $e->getCode();
-                if ('23000' === $exceptionCode) {
-                    // integrity constraint violation - username already taken - continue loop
-                } else {
-                    throw $e;
-                }
+                $exception = null;
+                break;
+            } catch (Throwable $e) {
+                $exception = $e;
             }
+        }
+
+        if ($exception !== null) {
+            throw $exception;
         }
 
         return $user;
