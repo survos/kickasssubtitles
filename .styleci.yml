@@ -5,6 +5,5 @@ risky: true
 enabled:
     - alpha_ordered_imports
     - declare_strict_types
-    - short_array_syntax
     - strict_comparison
     - strict_param
