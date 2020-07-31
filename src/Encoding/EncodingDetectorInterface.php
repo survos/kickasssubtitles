@@ -23,21 +23,11 @@ interface EncodingDetectorInterface
     const ERR_DETECTION_FAILED = 'Detection failed';
 
     /**
-     * @param string        $input
-     * @param Language|null $language
-     *
-     * @return Encoding
-     *
      * @throws Throwable
      */
     public function detect(string $input, ?Language $language = null): Encoding;
 
     /**
-     * @param string        $file
-     * @param Language|null $language
-     *
-     * @return Encoding
-     *
      * @throws Throwable
      */
     public function detectFile(string $file, ?Language $language = null): Encoding;

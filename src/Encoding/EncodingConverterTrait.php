@@ -22,10 +22,6 @@ use Throwable;
 trait EncodingConverterTrait
 {
     /**
-     * @param string   $file
-     * @param Encoding $from
-     * @param Encoding $to
-     *
      * @throws Throwable
      */
     public function convertFile(string $file, Encoding $from, Encoding $to): void

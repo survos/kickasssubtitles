@@ -31,9 +31,6 @@ class TaskRepository implements TaskRepositoryInterface
      */
     protected $taskClass;
 
-    /**
-     * @param string $taskClass
-     */
     public function __construct(string $taskClass)
     {
         $this->taskClass = $taskClass;

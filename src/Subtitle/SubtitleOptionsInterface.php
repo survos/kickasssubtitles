@@ -25,23 +25,11 @@ interface SubtitleOptionsInterface
 
     const FILESIZE = 'filesize';
 
-    /**
-     * @return string
-     */
     public function getFilename(): string;
 
-    /**
-     * @return int
-     */
     public function getFilesize(): int;
 
-    /**
-     * @return Encoding
-     */
     public function getEncoding(): Encoding;
 
-    /**
-     * @return SubtitleFormat
-     */
     public function getFormat(): SubtitleFormat;
 }

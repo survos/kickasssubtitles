@@ -28,7 +28,7 @@ trait CreatesApplication
      */
     public function createApplication()
     {
-        $app = require __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'bootstrap'.DIRECTORY_SEPARATOR.'app.php';
+        $app = require __DIR__.\DIRECTORY_SEPARATOR.'..'.\DIRECTORY_SEPARATOR.'..'.\DIRECTORY_SEPARATOR.'bootstrap'.\DIRECTORY_SEPARATOR.'app.php';
 
         $app->make(Kernel::class)->bootstrap();
 

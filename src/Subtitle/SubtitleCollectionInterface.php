@@ -20,16 +20,9 @@ interface SubtitleCollectionInterface
     /**
      * Will move subtitles having given format to the begining of collection.
      *
-     * @param SubtitleFormat $format
-     *
      * @return $this
      */
     public function sortByFormat(SubtitleFormat $format): self;
 
-    /**
-     * @param SubtitleProvider $provider
-     *
-     * @return bool
-     */
     public function containsProvider(SubtitleProvider $provider): bool;
 }

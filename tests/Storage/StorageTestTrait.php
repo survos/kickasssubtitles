@@ -81,8 +81,8 @@ trait StorageTestTrait
     public function testAddFile(): void
     {
         $addedFile = $this->storage->addFile(static::$keyInput, $this->file);
-        $this->assertEquals(true, \file_exists($addedFile));
-        $this->assertEquals(true, \file_exists($this->file));
+        $this->assertEquals(true, file_exists($addedFile));
+        $this->assertEquals(true, file_exists($this->file));
     }
 
     /**
@@ -92,7 +92,7 @@ trait StorageTestTrait
     {
         $contents = 'lorem ipsum';
         $addedFile = $this->storage->addFileContents(static::$keyInput, $contents);
-        $this->assertEquals(true, \file_exists($addedFile));
+        $this->assertEquals(true, file_exists($addedFile));
         $this->assertEquals($contents, file_get_contents($addedFile));
     }
 
@@ -102,9 +102,9 @@ trait StorageTestTrait
     public function testTearDown(): void
     {
         $addedFile = $this->storage->addFile(static::$keyInput, $this->file);
-        $this->assertEquals(true, \file_exists($addedFile));
+        $this->assertEquals(true, file_exists($addedFile));
         $this->storage->tearDown();
-        $this->assertEquals(false, \file_exists($addedFile));
+        $this->assertEquals(false, file_exists($addedFile));
     }
 
     /**
@@ -112,7 +112,7 @@ trait StorageTestTrait
      */
     protected function createTemporaryFile(): void
     {
-        $this->file = \sys_get_temp_dir().DIRECTORY_SEPARATOR.\uniqid().'.'.static::$ext;
+        $this->file = sys_get_temp_dir().\DIRECTORY_SEPARATOR.uniqid().'.'.static::$ext;
         touch($this->file);
     }
 
@@ -121,22 +121,18 @@ trait StorageTestTrait
      */
     protected function removeTemporaryFile(): void
     {
-        if (\file_exists($this->file)) {
+        if (file_exists($this->file)) {
             unlink($this->file);
         }
     }
 
     /**
-     * @param string $dir
-     *
-     * @return array
-     *
      * @throws Throwable
      */
     protected function scanDir(string $dir): array
     {
         $scandir = scandir($dir);
 
-        return \array_values(\array_diff($scandir, ['..', '.']));
+        return array_values(array_diff($scandir, ['..', '.']));
     }
 }

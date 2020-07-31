@@ -48,9 +48,6 @@ abstract class AbstractProcessor implements ProcessorInterface, LoggerAwareInter
         $this->setLogger(new NullLogger());
     }
 
-    /**
-     * @param EventDispatcherInterface $eventDispatcher
-     */
     public function setEventDispatcher(EventDispatcherInterface $eventDispatcher): void
     {
         $this->eventDispatcher = $eventDispatcher;
@@ -109,8 +106,6 @@ abstract class AbstractProcessor implements ProcessorInterface, LoggerAwareInter
     }
 
     /**
-     * @param TaskInterface $task
-     *
      * @throws Throwable
      */
     protected function beforeProcessTask(TaskInterface $task): void
@@ -118,24 +113,17 @@ abstract class AbstractProcessor implements ProcessorInterface, LoggerAwareInter
     }
 
     /**
-     * @param TaskInterface $task
-     *
      * @throws Throwable
      */
     abstract protected function processTask(TaskInterface $task): void;
 
     /**
-     * @param TaskInterface $task
-     *
      * @throws Throwable
      */
     protected function afterProcessTask(TaskInterface $task): void
     {
     }
 
-    /**
-     * @param Throwable $e
-     */
     protected function log(Throwable $e): void
     {
         foreach ($this->logSkip as $className) {

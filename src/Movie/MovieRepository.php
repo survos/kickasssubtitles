@@ -33,10 +33,6 @@ class MovieRepository implements MovieRepositoryInterface
      */
     protected $slugger;
 
-    /**
-     * @param string           $movieClass
-     * @param SluggerInterface $slugger
-     */
     public function __construct(
         string $movieClass,
         SluggerInterface $slugger

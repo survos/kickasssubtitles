@@ -37,21 +37,12 @@ interface StorageInterface
 
     /**
      * Checks if file exists in storage under given `$key`.
-     *
-     * @param string $key
-     *
-     * @return bool
      */
     public function hasFile(string $key): bool;
 
     /**
      * Returns full path to the file stored under given `$key`.
      * Returned path is passed to `pathinfo()` if `$element` is provided.
-     *
-     * @param string   $key
-     * @param int|null $element
-     *
-     * @return string
      *
      * @throws Throwable
      */
@@ -62,11 +53,6 @@ interface StorageInterface
      * It will copy original file to storage destination path.
      * Returns destination path.
      *
-     * @param string $key
-     * @param string $file
-     *
-     * @return string
-     *
      * @throws Throwable
      */
     public function addFile(string $key, string $file): string;
@@ -75,12 +61,6 @@ interface StorageInterface
      * Creates file from contents and adds it to the storage under given `$key`.
      * It will generate random name if `$name` is not passed.
      * Returns destination path.
-     *
-     * @param string      $key
-     * @param string      $contents
-     * @param string|null $name
-     *
-     * @return string
      *
      * @throws Throwable
      */
@@ -95,19 +75,12 @@ interface StorageInterface
      * It will generate random `$key` if not passed.
      * The file is not actually created on the disk.
      *
-     * @param string      $name
-     * @param string|null $key
-     *
-     * @return string
-     *
      * @throws Throwable
      */
     public function tmpFile(string $name, ?string $key = null): string;
 
     /**
      * Deletes file from storage under given `$key`.
-     *
-     * @param string $key
      *
      * @throws Throwable
      */
@@ -116,16 +89,12 @@ interface StorageInterface
     /**
      * Copies file under given `$key` to new "copy key".
      *
-     * @param string $key
-     *
      * @throws Throwable
      */
     public function copyFile(string $key): void;
 
     /**
      * Copies file under "copy key" back to `$key` and deletes the copy.
-     *
-     * @param string $key
      *
      * @throws Throwable
      */

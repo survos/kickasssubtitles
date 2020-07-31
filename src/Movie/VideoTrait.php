@@ -66,20 +66,20 @@ trait VideoTrait
      */
     public function addFilename(string $filename): void
     {
-        $filename = \trim($filename);
+        $filename = trim($filename);
         if (empty($filename)) {
             throw new InvalidVideoFilenameException('Filename is empty string');
         }
-        $extension = \pathinfo($filename, PATHINFO_EXTENSION);
+        $extension = pathinfo($filename, PATHINFO_EXTENSION);
         if (!VideoFormat::isValidExtension($extension)) {
             throw new InvalidVideoFilenameException(sprintf('Filename has invalid extension [%s]', $filename));
         }
         $filenames = $this->getFilenames();
         $existing = [];
         foreach ($filenames as $fn) {
-            $existing[] = \mb_strtolower($fn);
+            $existing[] = mb_strtolower($fn);
         }
-        if (\in_array(\mb_strtolower($filename), $existing, true)) {
+        if (\in_array(mb_strtolower($filename), $existing, true)) {
             throw new InvalidVideoFilenameException(sprintf('Filename already added [%s]', $filename));
         }
         $filenames[] = $filename;

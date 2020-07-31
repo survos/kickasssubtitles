@@ -61,21 +61,15 @@ class LocalStorage implements StorageInterface, JsonSerializable, Arrayable, Hyd
      */
     protected $filesystemConfig;
 
-    /**
-     * @param string $path
-     */
     public static function setDefaultRootPath(string $path): void
     {
         static::$defaultRootPath = $path;
     }
 
-    /**
-     * @return string
-     */
     public static function getDefaultRootPath(): string
     {
         if (null === static::$defaultRootPath) {
-            return \sys_get_temp_dir();
+            return sys_get_temp_dir();
         }
 
         return static::$defaultRootPath;
@@ -97,11 +91,6 @@ class LocalStorage implements StorageInterface, JsonSerializable, Arrayable, Hyd
     }
 
     /**
-     * @param string|null $identifier
-     * @param string|null $rootPath
-     *
-     * @return StorageInterface
-     *
      * @throws Throwable
      */
     public static function create(
@@ -123,10 +112,6 @@ class LocalStorage implements StorageInterface, JsonSerializable, Arrayable, Hyd
         return new static($identifier, $rootPath);
     }
 
-    /**
-     * @param string $identifier
-     * @param string $rootPath
-     */
     protected function __construct(string $identifier, string $rootPath)
     {
         $this->identifier = $identifier;
@@ -158,7 +143,7 @@ class LocalStorage implements StorageInterface, JsonSerializable, Arrayable, Hyd
             return $keyPath;
         }
 
-        return \pathinfo($keyPath, $element);
+        return pathinfo($keyPath, $element);
     }
 
     /**
@@ -174,7 +159,7 @@ class LocalStorage implements StorageInterface, JsonSerializable, Arrayable, Hyd
 
         $resource = fopen($file, 'r');
 
-        $this->files[$key] = \pathinfo($file, PATHINFO_BASENAME);
+        $this->files[$key] = pathinfo($file, PATHINFO_BASENAME);
 
         $this->filesystem->writeStream($this->getKeyPathRelative($key), $resource, $this->filesystemConfig);
         fclose($resource);
@@ -218,7 +203,7 @@ class LocalStorage implements StorageInterface, JsonSerializable, Arrayable, Hyd
             throw new Exception(static::ERR_FILE_ALREADY_ADDED);
         }
 
-        $path = \implode(DIRECTORY_SEPARATOR, [
+        $path = implode(\DIRECTORY_SEPARATOR, [
             $this->identifier,
             $key,
         ]);
@@ -242,7 +227,7 @@ class LocalStorage implements StorageInterface, JsonSerializable, Arrayable, Hyd
         unset($this->files[$key]);
 
         $this->filesystem->deleteDir(
-            $this->identifier.DIRECTORY_SEPARATOR.$key
+            $this->identifier.\DIRECTORY_SEPARATOR.$key
         );
     }
 
@@ -285,24 +270,14 @@ class LocalStorage implements StorageInterface, JsonSerializable, Arrayable, Hyd
         $this->filesystem->deleteDir($this->identifier);
     }
 
-    /**
-     * @param string $key
-     *
-     * @return string
-     */
     protected function getKeyPath(string $key): string
     {
-        return $this->rootPath.DIRECTORY_SEPARATOR.$this->getKeyPathRelative($key);
+        return $this->rootPath.\DIRECTORY_SEPARATOR.$this->getKeyPathRelative($key);
     }
 
-    /**
-     * @param string $key
-     *
-     * @return string
-     */
     protected function getKeyPathRelative(string $key): string
     {
-        return \implode(DIRECTORY_SEPARATOR, [
+        return implode(\DIRECTORY_SEPARATOR, [
             $this->identifier,
             $key,
             $this->files[$key],

@@ -43,13 +43,13 @@ use Throwable;
  */
 class Task extends Model implements ModelInterface, TaskInterface, HasStorageInterface, HasMedia, DownloadableInterface
 {
-    use ModelTrait;
-    use TaskTrait;
+    use HasMediaTrait;
     use HasStorageTrait {
         tearDownStorage as tearDownStorageTrait;
     }
-    use HasMediaTrait;
+    use ModelTrait;
     use ObjectCastsTrait;
+    use TaskTrait;
 
     const ERR_INVALID_GROUP = 'Invalid group';
 
@@ -102,17 +102,12 @@ class Task extends Model implements ModelInterface, TaskInterface, HasStorageInt
         return $this->getStatus()->equals(TaskStatus::COMPLETED());
     }
 
-    /**
-     * @return string|null
-     */
     public function getGroup(): ?string
     {
         return $this->getAttribute(static::GROUP);
     }
 
     /**
-     * @param string $group
-     *
      * @throws Throwable
      */
     public function setGroup(string $group): void
@@ -124,17 +119,12 @@ class Task extends Model implements ModelInterface, TaskInterface, HasStorageInt
         $this->save();
     }
 
-    /**
-     * @return int|null
-     */
     public function getUserId(): ?int
     {
         return $this->getAttribute(static::USER_ID);
     }
 
     /**
-     * @param int|null $id
-     *
      * @throws Throwable
      */
     public function setUserId(?int $id): void
@@ -144,8 +134,6 @@ class Task extends Model implements ModelInterface, TaskInterface, HasStorageInt
     }
 
     /**
-     * @return StorageInterface
-     *
      * @throws Throwable
      */
     protected function createStorage(): StorageInterface
@@ -193,9 +181,6 @@ class Task extends Model implements ModelInterface, TaskInterface, HasStorageInt
         $this->children()->save($model);
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function parent(): BelongsTo
     {
         /** @var Builder $relation */
@@ -208,9 +193,6 @@ class Task extends Model implements ModelInterface, TaskInterface, HasStorageInt
         return $belongsTo;
     }
 
-    /**
-     * @return HasMany
-     */
     public function children(): HasMany
     {
         return $this->hasMany(
@@ -220,8 +202,6 @@ class Task extends Model implements ModelInterface, TaskInterface, HasStorageInt
     }
 
     /**
-     * @param array $models
-     *
      * @return Collection
      */
     public function newCollection(array $models = [])
@@ -229,9 +209,6 @@ class Task extends Model implements ModelInterface, TaskInterface, HasStorageInt
         return new TaskCollection($models);
     }
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

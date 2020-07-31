@@ -25,10 +25,6 @@ use Throwable;
 trait CreatesTaskTrait
 {
     /**
-     * @param TaskType|null $type
-     *
-     * @return TaskInterface
-     *
      * @throws Throwable
      */
     protected function createTask(?TaskType $type = null): TaskInterface

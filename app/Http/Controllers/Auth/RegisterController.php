@@ -53,9 +53,6 @@ class RegisterController extends AbstractController
      */
     protected $userRepository;
 
-    /**
-     * @param UserRepository $userRepository
-     */
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
@@ -63,8 +60,6 @@ class RegisterController extends AbstractController
 
     /**
      * Show the application registration form.
-     *
-     * @return Response
      */
     public function showRegistrationForm(): Response
     {
@@ -77,10 +72,6 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @param Request $request
-     *
-     * @return RedirectResponse
-     *
      * @throws ValidationException
      */
     public function register(Request $request): RedirectResponse
@@ -103,8 +94,6 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @return RedirectResponse
-     *
      * @throws Throwable
      */
     public function registerTemporary(): RedirectResponse
@@ -125,10 +114,6 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @param string $token
-     *
-     * @return RedirectResponse
-     *
      * @throws Throwable
      */
     public function activate(string $token): RedirectResponse
@@ -155,10 +140,6 @@ class RegisterController extends AbstractController
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param array $data
-     *
-     * @return ValidatorContract
-     *
      * @throws ReflectionException
      */
     protected function validator(array $data): ValidatorContract
@@ -175,10 +156,6 @@ class RegisterController extends AbstractController
 
     /**
      * Create a new user instance after a valid registration.
-     *
-     * @param array $data
-     *
-     * @return UserInterface
      */
     protected function create(array $data): UserInterface
     {

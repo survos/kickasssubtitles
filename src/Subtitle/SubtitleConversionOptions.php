@@ -25,10 +25,10 @@ use Throwable;
  */
 class SubtitleConversionOptions extends TaskOptions implements SubtitleOptionsInterface
 {
-    use SubtitleOptionsTrait;
     use ObjectCastsTrait;
+    use SubtitleOptionsTrait;
 
-    const DEFAULT_FILE = DIRECTORY_SEPARATOR.'tmp'.DIRECTORY_SEPARATOR.'nonexistentfile';
+    const DEFAULT_FILE = \DIRECTORY_SEPARATOR.'tmp'.\DIRECTORY_SEPARATOR.'nonexistentfile';
 
     const FILE = 'file';
 
@@ -57,17 +57,12 @@ class SubtitleConversionOptions extends TaskOptions implements SubtitleOptionsIn
         self::FPS => null,
     ];
 
-    /**
-     * @return string
-     */
     public function getFile(): string
     {
         return $this->getAttribute(static::FILE);
     }
 
     /**
-     * @param string $file
-     *
      * @throws Throwable
      */
     public function setFile(string $file): void
@@ -75,33 +70,21 @@ class SubtitleConversionOptions extends TaskOptions implements SubtitleOptionsIn
         $this->setAttribute(static::FILE, realpath($file));
     }
 
-    /**
-     * @return Encoding|null
-     */
     public function getInputEncoding(): ?Encoding
     {
         return $this->getAttribute(static::INPUT_ENCODING);
     }
 
-    /**
-     * @return Language|null
-     */
     public function getLanguage(): ?Language
     {
         return $this->getAttribute(SubtitleInterface::LANGUAGE);
     }
 
-    /**
-     * @return VideoFps|null
-     */
     public function getFps(): ?VideoFps
     {
         return $this->getAttribute(static::FPS);
     }
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

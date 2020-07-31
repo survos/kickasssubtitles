@@ -50,9 +50,6 @@ class OpenSubtitlesSubtitleProvider extends AbstractSubtitleProvider
 
     const VTT = 'vtt';
 
-    /**
-     * @return EnumMapper
-     */
     public function createFormatMapper(): EnumMapper
     {
         return EnumMapper::create([
@@ -72,10 +69,6 @@ class OpenSubtitlesSubtitleProvider extends AbstractSubtitleProvider
      */
     protected $client;
 
-    /**
-     * @param SubtitleRepositoryInterface $subtitleRepository
-     * @param OpenSubtitlesClient         $client
-     */
     public function __construct(
         SubtitleRepositoryInterface $subtitleRepository,
         OpenSubtitlesClient $client

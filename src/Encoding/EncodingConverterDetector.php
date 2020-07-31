@@ -29,10 +29,6 @@ class EncodingConverterDetector implements EncodingConverterDetectorInterface
      */
     protected $detector;
 
-    /**
-     * @param EncodingConverterInterface $converter
-     * @param EncodingDetectorInterface  $detector
-     */
     public function __construct(
         EncodingConverterInterface $converter,
         EncodingDetectorInterface $detector

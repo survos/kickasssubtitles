@@ -25,10 +25,6 @@ use Throwable;
 class MovieProvider extends BulkProcessor
 {
     /**
-     * @param ImdbId $imdbId
-     *
-     * @return array
-     *
      * @throws Throwable
      */
     public function search(ImdbId $imdbId): array

@@ -64,7 +64,7 @@ class EloquentStorageTest extends TestCase
     {
         $addedFile = $this->storage->tmpFile('test.txt');
         $dir = \dirname($addedFile);
-        $this->assertEquals(true, \file_exists($dir));
+        $this->assertEquals(true, file_exists($dir));
         $scannedDir = $this->scanDir($dir);
         $this->assertEquals(0, \count($scannedDir));
     }

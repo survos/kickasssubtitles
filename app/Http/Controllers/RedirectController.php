@@ -21,11 +21,6 @@ use Illuminate\Routing\Controller;
  */
 class RedirectController extends Controller
 {
-    /**
-     * @param string $hashid
-     *
-     * @return RedirectResponse
-     */
     public function movie(string $hashid): RedirectResponse
     {
         return redirect()->route(
@@ -35,9 +30,6 @@ class RedirectController extends Controller
         );
     }
 
-    /**
-     * @return RedirectResponse
-     */
     public function browse(): RedirectResponse
     {
         return redirect()->route(
@@ -47,9 +39,6 @@ class RedirectController extends Controller
         );
     }
 
-    /**
-     * @return RedirectResponse
-     */
     public function find(): RedirectResponse
     {
         return redirect()->route(

@@ -23,9 +23,9 @@ use KickAssSubtitles\Support\TablelessModel;
  */
 class Video extends TablelessModel implements VideoInterface
 {
-    use VideoTrait;
-    use VideoHashesTrait;
     use ObjectCastsTrait;
+    use VideoHashesTrait;
+    use VideoTrait;
 
     /**
      * @var array
@@ -42,9 +42,6 @@ class Video extends TablelessModel implements VideoInterface
         self::FILENAMES => '[]',
     ];
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

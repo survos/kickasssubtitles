@@ -45,15 +45,15 @@ class MbEncodingConverter implements EncodingConverterInterface
             return $input;
         }
 
-        \set_error_handler(function (int $errno, string $errstr) {
+        set_error_handler(function (int $errno, string $errstr) {
             throw new Exception($errstr, $errno);
         });
-        $result = \mb_convert_encoding(
+        $result = mb_convert_encoding(
             $input,
             $to->getValue(),
             $from->getValue()
         );
-        \restore_error_handler();
+        restore_error_handler();
 
         return $result;
     }

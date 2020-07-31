@@ -25,19 +25,11 @@ interface ModelInterface
     const ID = 'id';
 
     /**
-     * @return string
-     *
      * @throws Throwable
      */
     public static function getTableName(): string;
 
-    /**
-     * @return string
-     */
     public function getId(): string;
 
-    /**
-     * @return Carbon
-     */
     public function getCreatedAt(): Carbon;
 }

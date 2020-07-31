@@ -22,11 +22,6 @@ trait FiltersTrait
      */
     protected $limit = 24;
 
-    /**
-     * @param int $limit
-     *
-     * @return FiltersInterface
-     */
     public function setLimit(int $limit): FiltersInterface
     {
         $this->limit = $limit;
@@ -34,9 +29,6 @@ trait FiltersTrait
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getLimit(): int
     {
         return $this->limit;

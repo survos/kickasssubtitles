@@ -49,12 +49,6 @@ class SubtitleRepository implements SubtitleRepositoryInterface
      */
     protected $subtitleFormatDetector;
 
-    /**
-     * @param string                          $subtitleClass
-     * @param LanguageDetectorInterface       $languageDetector
-     * @param EncodingDetectorInterface       $encodingDetector
-     * @param SubtitleFormatDetectorInterface $subtitleFormatDetector
-     */
     public function __construct(
         string $subtitleClass,
         LanguageDetectorInterface $languageDetector,
@@ -92,7 +86,7 @@ class SubtitleRepository implements SubtitleRepositoryInterface
         $subtitleClass = $this->subtitleClass;
         $subtitle = new $subtitleClass();
         // $subtitle->contents = $contents;
-        $subtitle->setAttribute(SubtitleInterface::HASH, \md5($contents));
+        $subtitle->setAttribute(SubtitleInterface::HASH, md5($contents));
         $subtitle->setAttribute(SubtitleInterface::ENCODING, $encoding);
         $subtitle->setAttribute(SubtitleInterface::LANGUAGE, $language);
         $subtitle->setAttribute(SubtitleInterface::FORMAT, $format);

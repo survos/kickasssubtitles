@@ -22,19 +22,15 @@ use function Safe\file_get_contents;
 abstract class AbstractTest extends TestCase
 {
     /**
-     * @param string $filename
-     *
-     * @return string
-     *
      * @throws Exception
      */
     public function loadFilename(string $filename): string
     {
         $contents = file_get_contents(
             __DIR__.
-            DIRECTORY_SEPARATOR.
+            \DIRECTORY_SEPARATOR.
             'Files'.
-            DIRECTORY_SEPARATOR.
+            \DIRECTORY_SEPARATOR.
             $filename.
             '.txt'
         );

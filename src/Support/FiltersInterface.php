@@ -19,22 +19,9 @@ use Illuminate\Http\Request;
  */
 interface FiltersInterface
 {
-    /**
-     * @param Request $request
-     *
-     * @return self
-     */
     public static function createFromRequest(Request $request): self;
 
-    /**
-     * @param int $limit
-     *
-     * @return self
-     */
     public function setLimit(int $limit): self;
 
-    /**
-     * @return int
-     */
     public function getLimit(): int;
 }

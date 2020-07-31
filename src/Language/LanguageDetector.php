@@ -26,9 +26,6 @@ class LanguageDetector implements LanguageDetectorInterface
      */
     protected $detector;
 
-    /**
-     * @return LanguageDetectorInterface
-     */
     public static function create(): LanguageDetectorInterface
     {
         $languages = [];
@@ -41,9 +38,6 @@ class LanguageDetector implements LanguageDetectorInterface
         return new static($detector);
     }
 
-    /**
-     * @param Detector $detector
-     */
     public function __construct(Detector $detector)
     {
         $this->detector = $detector;
@@ -60,7 +54,7 @@ class LanguageDetector implements LanguageDetectorInterface
             ->close()
         ;
 
-        return new Language(\array_key_first($result));
+        return new Language(array_key_first($result));
     }
 
     /**

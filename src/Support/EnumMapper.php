@@ -35,9 +35,6 @@ class EnumMapper
     protected $enumClass;
 
     /**
-     * @param array  $map
-     * @param string $enumClass
-     *
      * @return EnumMapper
      */
     public static function create(array $map, string $enumClass): self
@@ -45,14 +42,10 @@ class EnumMapper
         return new static($map, $enumClass);
     }
 
-    /**
-     * @param array  $map
-     * @param string $enumClass
-     */
     protected function __construct(array $map, string $enumClass)
     {
         foreach ($map as $mapping) {
-            $key = \array_key_first($mapping);
+            $key = array_key_first($mapping);
             /** @var Enum $enumClass */
             if (!$enumClass::isValid($key)) {
                 throw new EnumMapperException(static::ERR_INVALID_ENUM_KEY);
@@ -64,10 +57,6 @@ class EnumMapper
     }
 
     /**
-     * @param Enum $enum
-     *
-     * @return string
-     *
      * @throws EnumMapperException
      */
     public function to(Enum $enum): string
@@ -84,8 +73,6 @@ class EnumMapper
     /**
      * @param mixed $value
      *
-     * @return Enum
-     *
      * @throws EnumMapperException
      */
     public function from($value): Enum
@@ -93,7 +80,7 @@ class EnumMapper
         $enumClass = $this->enumClass;
 
         foreach ($this->map as $mapping) {
-            $key = \array_key_first($mapping);
+            $key = array_key_first($mapping);
             $mappingValue = $mapping[$key];
 
             if ($value === $mappingValue) {

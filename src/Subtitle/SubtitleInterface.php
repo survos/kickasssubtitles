@@ -41,64 +41,31 @@ interface SubtitleInterface
 
     const CONTENTS = 'contents';
 
-    /**
-     * @return SubtitleFormat
-     */
     public function getFormat(): SubtitleFormat;
 
-    /**
-     * @return Language
-     */
     public function getLanguage(): Language;
 
-    /**
-     * @return Encoding
-     */
     public function getEncoding(): Encoding;
 
-    /**
-     * @return ImdbId|null
-     */
     public function getImdbId(): ?ImdbId;
 
-    /**
-     * @return SubtitleProvider|null
-     */
     public function getProvider(): ?SubtitleProvider;
 
-    /**
-     * @param SubtitleProvider $provider
-     */
     public function setProvider(SubtitleProvider $provider): void;
 
-    /**
-     * @return SubtitleProvider|null
-     */
     public function getProviderPrevious(): ?SubtitleProvider;
 
     /**
-     * @param int|null $element
-     *
-     * @return string
-     *
      * @throws Throwable
      */
     public function getFile(?int $element = null): string;
 
     /**
-     * @return string
-     *
      * @throws Throwable
      */
     public function getContents(): string;
 
-    /**
-     * @return string
-     */
     public function getHash(): string;
 
-    /**
-     * @return VideoInterface|null
-     */
     public function getVideo(): ?VideoInterface;
 }

@@ -33,7 +33,7 @@ class FileLineEndingDetector implements LineEndingDetectorInterface
      */
     public function __construct()
     {
-        $file = `which file`;
+        $file = shell_exec('which file');
 
         if ($file) {
             return;

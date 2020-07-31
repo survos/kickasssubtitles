@@ -29,17 +29,11 @@ class MoviesController extends AbstractController
      */
     protected $movieRepository;
 
-    /**
-     * @param MovieRepositoryInterface $movieRepository
-     */
     public function __construct(MovieRepositoryInterface $movieRepository)
     {
         $this->movieRepository = $movieRepository;
     }
 
-    /**
-     * @return Response
-     */
     public function index(Request $request): Response
     {
         /** @var MovieFilters $filters */
@@ -56,8 +50,6 @@ class MoviesController extends AbstractController
     }
 
     /**
-     * @return Response
-     *
      * @throws Throwable
      */
     public function recentlySearched(Request $request): Response
@@ -76,11 +68,6 @@ class MoviesController extends AbstractController
         ]);
     }
 
-    /**
-     * @param int $id
-     *
-     * @return Response
-     */
     public function show(int $id): Response
     {
         $movie = $this->movieRepository->findByIdOrFail($id);

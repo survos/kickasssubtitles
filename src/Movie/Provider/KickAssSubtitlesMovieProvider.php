@@ -35,12 +35,6 @@ class KickAssSubtitlesMovieProvider extends AbstractMovieProvider
      */
     protected $tablelessImageRepository;
 
-    /**
-     * @param MovieRepositoryInterface $movieRepository
-     * @param ImageRepositoryInterface $imageRepository
-     * @param MovieRepository          $tablelessMovieRepository
-     * @param ImageRepository          $tablelessImageRepository
-     */
     public function __construct(
         MovieRepositoryInterface $movieRepository,
         ImageRepositoryInterface $imageRepository,

@@ -22,11 +22,6 @@ use Throwable;
 trait EncodingDetectorTrait
 {
     /**
-     * @param string        $file
-     * @param Language|null $language
-     *
-     * @return Encoding
-     *
      * @throws Throwable
      */
     public function detectFile(string $file, ?Language $language = null): Encoding

@@ -20,15 +20,6 @@ use Throwable;
  */
 interface MovieRepositoryInterface extends RepositoryInterface
 {
-    /**
-     * @param string        $title
-     * @param ImdbId        $imdbId
-     * @param MovieYear     $year
-     * @param MovieType     $type
-     * @param MovieProvider $provider
-     *
-     * @return MovieInterface
-     */
     public function create(
         string $title,
         ImdbId $imdbId,
@@ -38,19 +29,11 @@ interface MovieRepositoryInterface extends RepositoryInterface
     ): MovieInterface;
 
     /**
-     * @param MovieInterface $movie
-     *
-     * @return MovieInterface
-     *
      * @throws Throwable
      */
     public function createFromMovie(MovieInterface $movie): MovieInterface;
 
     /**
-     * @param ImdbId $imdbId
-     *
-     * @return MovieInterface
-     *
      * @throws Throwable
      */
     public function findByImdbIdOrFail(ImdbId $imdbId): MovieInterface;

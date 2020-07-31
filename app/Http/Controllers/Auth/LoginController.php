@@ -47,9 +47,6 @@ class LoginController extends AbstractController
      */
     protected $redirectTo = '/';
 
-    /**
-     * @return string
-     */
     public function username(): string
     {
         return 'username';
@@ -57,8 +54,6 @@ class LoginController extends AbstractController
 
     /**
      * Show the application's login form.
-     *
-     * @return Response
      */
     public function showLoginForm(): Response
     {
@@ -81,8 +76,6 @@ class LoginController extends AbstractController
 
     /**
      * Log the user out of the application.
-     *
-     * @param Request $request
      *
      * @return Response
      */

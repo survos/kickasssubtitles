@@ -36,58 +36,31 @@ interface MovieInterface
     const PROVIDER_PREVIOUS = 'provider_previous';
 
     /**
-     * @return string
-     *
      * @throws Throwable
      */
     public function getTitle(): string;
 
     /**
-     * @return string
-     *
      * @throws Throwable
      */
     public function getSlug(): string;
 
-    /**
-     * @return string
-     */
     public function getFolder(): string;
 
-    /**
-     * @return ImdbId
-     */
     public function getImdbId(): ImdbId;
 
-    /**
-     * @return MovieYear
-     */
     public function getYear(): MovieYear;
 
     /**
-     * @return MovieType
-     *
      * @throws Throwable
      */
     public function getType(): MovieType;
 
-    /**
-     * @return MovieProvider
-     */
     public function getProvider(): MovieProvider;
 
-    /**
-     * @param MovieProvider $provider
-     */
     public function setProvider(MovieProvider $provider): void;
 
-    /**
-     * @return null|MovieProvider
-     */
     public function getProviderPrevious(): ?MovieProvider;
 
-    /**
-     * @return ImageInterface|null
-     */
     public function getPoster(): ?ImageInterface;
 }

@@ -45,9 +45,6 @@ class Task extends Model implements HasMedia
         return $instance;
     }
 
-    /**
-     * @return StorageInterface
-     */
     protected function createStorage(): StorageInterface
     {
         return EloquentStorage::create($this);

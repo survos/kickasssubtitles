@@ -28,12 +28,9 @@ class LogoComposer
         'annihilation',
     ];
 
-    /**
-     * @param View $view
-     */
     public function compose(View $view): void
     {
-        $scene = $this->scenes[\array_rand($this->scenes)];
+        $scene = $this->scenes[array_rand($this->scenes)];
         $view->with('scene', $scene);
     }
 }

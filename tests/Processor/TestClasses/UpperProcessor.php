@@ -27,6 +27,6 @@ class UpperProcessor extends AbstractProcessor implements ProcessorInterface
     protected function processTask(TaskInterface $task): void
     {
         $options = $task->getOptions();
-        echo \strtoupper($options['text']).PHP_EOL;
+        echo strtoupper($options['text']).PHP_EOL;
     }
 }

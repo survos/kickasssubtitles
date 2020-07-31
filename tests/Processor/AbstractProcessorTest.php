@@ -36,9 +36,9 @@ class AbstractProcessorTest extends TestCase
         $task = $this->createTask();
         $processor = new LowerProcessor();
 
-        \ob_start();
+        ob_start();
         $processor->processOne($task);
-        $contents = \ob_get_clean();
+        $contents = ob_get_clean();
 
         $this->assertEquals("lorem ipsum\n", $contents);
         $this->assertEquals(TaskStatus::COMPLETED, $task->getStatus()->getValue());
@@ -56,9 +56,9 @@ class AbstractProcessorTest extends TestCase
 
         $processor = new LowerProcessor();
 
-        \ob_start();
+        ob_start();
         $processor->processMany($collection);
-        $contents = \ob_get_clean();
+        $contents = ob_get_clean();
 
         $this->assertEquals("lorem ipsum\nlorem ipsum\n", $contents);
     }
@@ -71,9 +71,9 @@ class AbstractProcessorTest extends TestCase
         $task = $this->createTask();
         $processor = new FailingProcessor();
 
-        \ob_start();
+        ob_start();
         $processor->processOne($task);
-        $contents = \ob_get_clean();
+        $contents = ob_get_clean();
 
         $this->assertEquals(TaskStatus::FAILED, $task->getStatus()->getValue());
         $this->assertInstanceOf(TaskErrorInterface::class, $task->getError());
@@ -87,9 +87,9 @@ class AbstractProcessorTest extends TestCase
         $task = $this->createTask(TaskType::TEST());
         $processor = new LowerProcessor();
 
-        \ob_start();
+        ob_start();
         $processor->processOne($task);
-        $contents = \ob_get_clean();
+        $contents = ob_get_clean();
 
         $this->assertEquals(TaskStatus::FAILED, $task->getStatus()->getValue());
         $this->assertInstanceOf(TaskErrorInterface::class, $task->getError());

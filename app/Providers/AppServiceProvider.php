@@ -612,9 +612,6 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * @return LoggerInterface
-     */
     protected function getProcessorLogger(): LoggerInterface
     {
         $logger = (Environment::TESTING === $this->app->environment()) ?
@@ -625,9 +622,6 @@ class AppServiceProvider extends ServiceProvider
         return $logger;
     }
 
-    /**
-     * @return array
-     */
     protected function getProcessorLogSkip(): array
     {
         return [

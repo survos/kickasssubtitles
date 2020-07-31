@@ -29,8 +29,6 @@ class EncodingConverter implements EncodingConverterInterface
     protected $converters = [];
 
     /**
-     * @return EncodingConverterInterface
-     *
      * @throws Throwable
      */
     public static function create(): EncodingConverterInterface
@@ -51,9 +49,6 @@ class EncodingConverter implements EncodingConverterInterface
         return new static($converters);
     }
 
-    /**
-     * @param array $converters
-     */
     public function __construct(array $converters)
     {
         $this->converters = $converters;

@@ -45,11 +45,6 @@ class TmdbMovieProvider extends AbstractMovieProvider
      */
     protected $imageBaseUrl;
 
-    /**
-     * @param MovieRepositoryInterface $movieRepository
-     * @param ImageRepositoryInterface $imageRepository
-     * @param TmdbClient               $client
-     */
     public function __construct(
         MovieRepositoryInterface $movieRepository,
         ImageRepositoryInterface $imageRepository,
@@ -127,11 +122,6 @@ class TmdbMovieProvider extends AbstractMovieProvider
     }
 
     /**
-     * @param array  $data
-     * @param ImdbId $imdbId
-     *
-     * @return ImageInterface|null
-     *
      * @throws Throwable
      */
     protected function checkImage(array $data, ImdbId $imdbId): ?ImageInterface

@@ -28,13 +28,6 @@ interface VideoRepositoryInterface extends RepositoryInterface
     const ERR_MISSING_REQUIRED_HASHES = 'Missing required hashes';
 
     /**
-     * @param array  $hashes
-     * @param array  $filenames
-     * @param int    $filesize
-     * @param ImdbId $imdbId
-     *
-     * @return VideoInterface
-     *
      * @throws Throwable
      */
     public function create(
@@ -45,11 +38,6 @@ interface VideoRepositoryInterface extends RepositoryInterface
     ): VideoInterface;
 
     /**
-     * @param string           $hash
-     * @param SubtitleProvider $provider
-     *
-     * @return VideoInterface
-     *
      * @throws Throwable
      */
     public function findByProviderHashOrFail(

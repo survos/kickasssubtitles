@@ -19,8 +19,5 @@ interface DownloadableInterface
 {
     const ERR_NOT_DOWNLOADABLE = 'Not downloadable';
 
-    /**
-     * @return bool
-     */
     public function isDownloadable(): bool;
 }

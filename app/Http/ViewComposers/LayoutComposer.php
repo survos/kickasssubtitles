@@ -30,18 +30,15 @@ use function Safe\sprintf;
 class LayoutComposer
 {
     /**
-     * @var null|LaravelLocalization
+     * @var LaravelLocalization|null
      */
     protected static $localization;
 
     /**
-     * @var null|LavaryMenu
+     * @var LavaryMenu|null
      */
     protected static $menu;
 
-    /**
-     * @return LaravelLocalization
-     */
     public static function getLocalization(): LaravelLocalization
     {
         if (null !== static::$localization) {
@@ -52,9 +49,6 @@ class LayoutComposer
         return static::$localization;
     }
 
-    /**
-     * @return LavaryMenu
-     */
     public static function getMenu(): LavaryMenu
     {
         if (null !== static::$menu) {
@@ -163,9 +157,6 @@ class LayoutComposer
         return static::$menu;
     }
 
-    /**
-     * @param View $view
-     */
     public function compose(View $view): void
     {
         $view->with('_menu', static::getMenu());

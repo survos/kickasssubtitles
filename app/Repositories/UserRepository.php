@@ -14,7 +14,6 @@ namespace App\Repositories;
 
 use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\QueryException;
 use Illuminate\Support\Carbon;
 use KickAssSubtitles\Processor\TaskRepositoryInterface;
 use KickAssSubtitles\Support\Exception\NotImplementedException;
@@ -41,10 +40,6 @@ class UserRepository implements RepositoryInterface
      */
     protected $taskRepository;
 
-    /**
-     * @param string                  $userClass
-     * @param TaskRepositoryInterface $taskRepository
-     */
     public function __construct(string $userClass, TaskRepositoryInterface $taskRepository)
     {
         $this->userClass = $userClass;
@@ -52,10 +47,6 @@ class UserRepository implements RepositoryInterface
     }
 
     /**
-     * @param string $token
-     *
-     * @return UserInterface
-     *
      * @throws Throwable
      */
     public function activate(string $token): UserInterface
@@ -73,13 +64,6 @@ class UserRepository implements RepositoryInterface
         return $user;
     }
 
-    /**
-     * @param string $username
-     * @param string $email
-     * @param string $password
-     *
-     * @return UserInterface
-     */
     public function register(string $username, string $email, string $password): UserInterface
     {
         $userClass = $this->userClass;
@@ -88,20 +72,18 @@ class UserRepository implements RepositoryInterface
             UserInterface::USERNAME => $username,
             UserInterface::EMAIL => $email,
             UserInterface::PASSWORD => bcrypt($password),
-            UserInterface::ACTIVATION_TOKEN => str_random(30).\time(),
+            UserInterface::ACTIVATION_TOKEN => str_random(30).time(),
         ]);
     }
 
     /**
-     * @return UserInterface
-     *
      * @throws Throwable
      */
     public function registerTemporary(): UserInterface
     {
         $randomUsernames = [];
-        for ($i = 1; $i <= 10; $i++) {
-            $randomUsernames[] = 'u'.\rand(1, 100000);
+        for ($i = 1; $i <= 10; ++$i) {
+            $randomUsernames[] = 'u'.rand(1, 100000);
         }
 
         $userClass = $this->userClass;
@@ -118,7 +100,7 @@ class UserRepository implements RepositoryInterface
             }
         }
 
-        if ($exception !== null) {
+        if (null !== $exception) {
             throw $exception;
         }
 

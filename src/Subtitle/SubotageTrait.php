@@ -19,9 +19,6 @@ use KickAssSubtitles\Support\EnumMapper;
  */
 trait SubotageTrait
 {
-    /**
-     * @return EnumMapper
-     */
     public function createFormatMapper(): EnumMapper
     {
         return EnumMapper::create([

@@ -30,11 +30,11 @@ use Throwable;
  */
 class Subtitle extends TablelessModel implements SubtitleInterface, HasStorageInterface, HydratableInterface
 {
-    use SubtitleTrait;
     use HasStorageTrait {
         createStorage as createStorageTrait;
     }
     use ObjectCastsTrait;
+    use SubtitleTrait;
 
     /**
      * {@inheritdoc}
@@ -58,13 +58,11 @@ class Subtitle extends TablelessModel implements SubtitleInterface, HasStorageIn
     }
 
     /**
-     * @return StorageInterface
-     *
      * @throws Throwable
      */
     protected function createStorage(): StorageInterface
     {
-        if (function_exists('app') && app()->has('path.storage')) {
+        if (\function_exists('app') && app()->has('path.storage')) {
             return LocalStorage::create(
                 sprintf(
                     '%s%s%s%s%s',
@@ -81,9 +79,6 @@ class Subtitle extends TablelessModel implements SubtitleInterface, HasStorageIn
         return $this->createStorageTrait();
     }
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

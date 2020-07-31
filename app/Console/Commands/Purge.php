@@ -40,9 +40,6 @@ class Purge extends Command
      */
     protected $taskRepository;
 
-    /**
-     * @param TaskRepositoryInterface $taskRepository
-     */
     public function __construct(TaskRepositoryInterface $taskRepository)
     {
         parent::__construct();

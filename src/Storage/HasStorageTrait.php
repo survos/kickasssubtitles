@@ -25,8 +25,6 @@ trait HasStorageTrait
     protected $storage;
 
     /**
-     * @return StorageInterface
-     *
      * @throws Throwable
      */
     public function getStorage(): StorageInterface
@@ -38,9 +36,6 @@ trait HasStorageTrait
         return $this->storage;
     }
 
-    /**
-     * @param StorageInterface $storage
-     */
     public function setStorage(StorageInterface $storage): void
     {
         $this->storage = $storage;
@@ -55,8 +50,6 @@ trait HasStorageTrait
     }
 
     /**
-     * @return StorageInterface
-     *
      * @throws Throwable
      */
     protected function createStorage(): StorageInterface

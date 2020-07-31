@@ -28,18 +28,12 @@ abstract class AbstractSubtitleProvider extends AbstractProcessor
      */
     protected $subtitleRepository;
 
-    /**
-     * @param SubtitleRepositoryInterface $subtitleRepository
-     */
     public function __construct(SubtitleRepositoryInterface $subtitleRepository)
     {
         parent::__construct();
         $this->subtitleRepository = $subtitleRepository;
     }
 
-    /**
-     * @return SubtitleRepositoryInterface
-     */
     public function getSubtitleRepository(): SubtitleRepositoryInterface
     {
         return $this->subtitleRepository;

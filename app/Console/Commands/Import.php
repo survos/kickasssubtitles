@@ -95,16 +95,6 @@ class Import extends Command
      */
     protected $storage;
 
-    /**
-     * @param DatabaseManager                 $db
-     * @param MovieRepositoryInterface        $movieRepository
-     * @param ImageRepositoryInterface        $imageRepository
-     * @param VideoRepositoryInterface        $videoRepository
-     * @param SubtitleRepositoryInterface     $subtitleRepository
-     * @param EncodingDetectorInterface       $encodingDetector
-     * @param SubtitleFormatDetectorInterface $subtitleFormatDetector
-     * @param FilesystemManager               $storage
-     */
     public function __construct(
         DatabaseManager $db,
         MovieRepositoryInterface $movieRepository,
@@ -179,7 +169,7 @@ class Import extends Command
                         $language = new Language($subtitle->language);
 
                         $folder = uniqid();
-                        $filename = $folder.DIRECTORY_SEPARATOR.'subtitle.srt';
+                        $filename = $folder.\DIRECTORY_SEPARATOR.'subtitle.srt';
                         $this->storage->disk(Filesystem::TMP)->put(
                             $filename,
                             gzuncompress($this->decodeBase64($subtitle->contents__data__encoded))
@@ -274,30 +264,25 @@ class Import extends Command
         ;
     }
 
-    /**
-     * @param string $base64data
-     *
-     * @return string
-     */
     protected function decodeBase64(string $base64data): string
     {
         // strip out data uri scheme information (see RFC 2397)
-        if (false !== \strpos($base64data, ';base64')) {
-            [$_, $base64data] = \explode(';', $base64data);
-            [$_, $base64data] = \explode(',', $base64data);
+        if (false !== strpos($base64data, ';base64')) {
+            [$_, $base64data] = explode(';', $base64data);
+            [$_, $base64data] = explode(',', $base64data);
         }
 
         // strict mode filters for non-base64 alphabet characters
-        if (false === \base64_decode($base64data, true)) {
+        if (false === base64_decode($base64data, true)) {
             throw new InvalidArgumentException();
         }
 
         // decoding and then reencoding should not change the data
-        if (\base64_encode(\base64_decode($base64data, true)) !== $base64data) {
+        if (base64_encode(base64_decode($base64data, true)) !== $base64data) {
             throw new InvalidArgumentException();
         }
 
-        $binaryData = \base64_decode($base64data, true);
+        $binaryData = base64_decode($base64data, true);
 
         return $binaryData;
     }

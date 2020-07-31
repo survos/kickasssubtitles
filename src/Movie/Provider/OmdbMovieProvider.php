@@ -43,12 +43,6 @@ class OmdbMovieProvider extends AbstractMovieProvider
      */
     protected $httpClient;
 
-    /**
-     * @param MovieRepositoryInterface $movieRepository
-     * @param ImageRepositoryInterface $imageRepository
-     * @param HttpClientInterface      $httpClient
-     * @param string                   $apiKey
-     */
     public function __construct(
         MovieRepositoryInterface $movieRepository,
         ImageRepositoryInterface $imageRepository,
@@ -102,11 +96,6 @@ class OmdbMovieProvider extends AbstractMovieProvider
     }
 
     /**
-     * @param array  $data
-     * @param ImdbId $imdbId
-     *
-     * @return ImageInterface|null
-     *
      * @throws Throwable
      */
     protected function checkImage(array $data, ImdbId $imdbId): ?ImageInterface

@@ -27,17 +27,12 @@ class SubtitlesController extends AbstractController
      */
     protected $subtitleRepository;
 
-    /**
-     * @param SubtitleRepositoryInterface $subtitleRepository
-     */
     public function __construct(SubtitleRepositoryInterface $subtitleRepository)
     {
         $this->subtitleRepository = $subtitleRepository;
     }
 
     /**
-     * @return JsonResponse
-     *
      * @throws Throwable
      */
     public function show(int $id): JsonResponse

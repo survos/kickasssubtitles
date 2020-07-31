@@ -75,7 +75,6 @@ class TaskDownloader implements TaskDownloaderInterface
                     break;
                 default:
                     throw new Exception(static::ERR_UNSUPPORTED_TASK_TYPE);
-
                     break;
             }
             $zip->finish();
@@ -100,7 +99,7 @@ class TaskDownloader implements TaskDownloaderInterface
         $self = $this;
         $filename = (null !== $filename) ?
             $filename :
-            sprintf('%s.zip', \uniqid())
+            sprintf('%s.zip', uniqid())
         ;
 
         $response = new StreamedResponse(function () use ($self, $tasks, $filename) {
@@ -125,7 +124,6 @@ class TaskDownloader implements TaskDownloaderInterface
                         break;
                     default:
                         throw new Exception(static::ERR_UNSUPPORTED_TASK_TYPE);
-
                         break;
                 }
             }
@@ -136,10 +134,6 @@ class TaskDownloader implements TaskDownloaderInterface
     }
 
     /**
-     * @param TaskInterface $task
-     * @param ZipStream     $zip
-     * @param string        $location
-     *
      * @throws Throwable
      */
     protected function addSubtitleConversionTaskToZip(
@@ -182,10 +176,6 @@ class TaskDownloader implements TaskDownloaderInterface
     }
 
     /**
-     * @param TaskInterface $task
-     * @param ZipStream     $zip
-     * @param string        $location
-     *
      * @throws Throwable
      */
     protected function addSubtitleSearchTaskToZip(
@@ -226,7 +216,7 @@ class TaskDownloader implements TaskDownloaderInterface
                     $folder,
                     $childTask->getOptions()->getFilename(PATHINFO_FILENAME).'.'.$subtitle->getFormat()->getExtensions()[0]
                 );
-                if (in_array($name, $names, true)) {
+                if (\in_array($name, $names, true)) {
                     $name = sprintf(
                         '%s/%s',
                         $folder,

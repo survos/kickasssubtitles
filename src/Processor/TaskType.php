@@ -33,9 +33,6 @@ class TaskType extends Enum
 
     const SUBTITLE_CONVERSION = 'subtitle_conversion';
 
-    /**
-     * @return array
-     */
     protected static function getOptionsClassNameMap(): array
     {
         $map = [];
@@ -55,9 +52,6 @@ class TaskType extends Enum
         return $map;
     }
 
-    /**
-     * @return string
-     */
     public function getOptionsClassName(): string
     {
         $value = $this->getValue();

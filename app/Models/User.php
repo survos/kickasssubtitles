@@ -27,8 +27,8 @@ use KickAssSubtitles\Support\UserInterface;
  */
 class User extends Authenticatable implements ModelInterface, UserInterface
 {
-    use Notifiable;
     use ModelTrait;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.

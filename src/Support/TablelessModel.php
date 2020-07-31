@@ -24,8 +24,6 @@ class TablelessModel extends Model implements ModelInterface
     use ModelTrait;
 
     /**
-     * @param array $options
-     *
      * @throws Throwable
      */
     public function save(array $options = [])

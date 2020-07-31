@@ -33,10 +33,10 @@ use KickAssSubtitles\Support\ObjectCastsTrait;
  */
 class Movie extends Model implements MovieInterface, ModelInterface, HydratableInterface
 {
-    use MovieTrait;
-    use ModelTrait;
-    use ObjectCastsTrait;
     use HydratableTrait;
+    use ModelTrait;
+    use MovieTrait;
+    use ObjectCastsTrait;
 
     const SEARCHED_AT = 'searched_at';
 
@@ -77,9 +77,6 @@ class Movie extends Model implements MovieInterface, ModelInterface, HydratableI
         $this->save();
     }
 
-    /**
-     * @return ImageInterface|null
-     */
     public function getPoster(): ?ImageInterface
     {
         $images = $this->getAttribute(static::IMAGES)->filter(function ($image) {
@@ -93,17 +90,11 @@ class Movie extends Model implements MovieInterface, ModelInterface, HydratableI
         return $images->first();
     }
 
-    /**
-     * @return Collection
-     */
     public function getVideos(): Collection
     {
         return $this->getAttribute(static::VIDEOS);
     }
 
-    /**
-     * @return HasMany
-     */
     public function images(): HasMany
     {
         return $this->hasMany(
@@ -113,9 +104,6 @@ class Movie extends Model implements MovieInterface, ModelInterface, HydratableI
         );
     }
 
-    /**
-     * @return HasMany
-     */
     public function videos(): HasMany
     {
         return $this->hasMany(
@@ -125,9 +113,6 @@ class Movie extends Model implements MovieInterface, ModelInterface, HydratableI
         );
     }
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

@@ -19,10 +19,5 @@ interface SluggerInterface
 {
     const SEPARATOR = '-';
 
-    /**
-     * @param string $input
-     *
-     * @return string
-     */
     public function slugify(string $input): string;
 }

@@ -24,17 +24,11 @@ class MovieSearchOptions extends TaskOptions
 
     const IMDB_ID = 'imdb_id';
 
-    /**
-     * @return ImdbId
-     */
     public function getImdbId(): ImdbId
     {
         return $this->getAttribute(static::IMDB_ID);
     }
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

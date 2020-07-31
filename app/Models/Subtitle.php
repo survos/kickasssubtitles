@@ -43,12 +43,12 @@ use Throwable;
  */
 class Subtitle extends Model implements ModelInterface, SubtitleInterface, HasStorageInterface, HasMedia, HydratableInterface
 {
-    use ModelTrait;
-    use SubtitleTrait;
-    use HasStorageTrait;
     use HasMediaTrait;
+    use HasStorageTrait;
     use HydratableTrait;
+    use ModelTrait;
     use ObjectCastsTrait;
+    use SubtitleTrait;
 
     const VIDEO_ID = 'video_id';
 
@@ -90,8 +90,6 @@ class Subtitle extends Model implements ModelInterface, SubtitleInterface, HasSt
     }
 
     /**
-     * @return StorageInterface
-     *
      * @throws Throwable
      */
     protected function createStorage(): StorageInterface
@@ -99,17 +97,12 @@ class Subtitle extends Model implements ModelInterface, SubtitleInterface, HasSt
         return EloquentStorage::create($this, Filesystem::SUBTITLES);
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function video(): BelongsTo
     {
         return $this->belongsTo(Video::class);
     }
 
     /**
-     * @param array $models
-     *
      * @return Collection
      */
     public function newCollection(array $models = [])
@@ -117,9 +110,6 @@ class Subtitle extends Model implements ModelInterface, SubtitleInterface, HasSt
         return new SubtitleCollection($models);
     }
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

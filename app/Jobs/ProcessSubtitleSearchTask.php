@@ -26,17 +26,12 @@ class ProcessSubtitleSearchTask extends AbstractJob
      */
     protected $task;
 
-    /**
-     * @param TaskInterface $task
-     */
     public function __construct(TaskInterface $task)
     {
         $this->task = $task;
     }
 
     /**
-     * @param SubtitleProvider $provider
-     *
      * @throws Throwable
      */
     public function handle(SubtitleProvider $provider): void

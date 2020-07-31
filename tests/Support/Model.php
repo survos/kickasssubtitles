@@ -32,9 +32,6 @@ class Model extends BaseModel
         self::OPTIONS => 'array',
     ];
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

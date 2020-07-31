@@ -21,9 +21,8 @@ use Throwable;
 class ConversionFailedException extends Exception
 {
     /**
-     * @param string         $message
-     * @param int            $code
-     * @param Throwable|null $previous
+     * @param string $message
+     * @param int    $code
      */
     public function __construct(
         $message = 'Conversion failed',

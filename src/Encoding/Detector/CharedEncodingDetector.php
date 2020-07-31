@@ -33,7 +33,7 @@ class CharedEncodingDetector implements EncodingDetectorInterface
      */
     public function __construct()
     {
-        $chared = `which chared`;
+        $chared = shell_exec('which chared');
 
         if (!$chared) {
             throw new Exception(static::ERR_MISSING_EXECUTABLE);
@@ -58,7 +58,7 @@ class CharedEncodingDetector implements EncodingDetectorInterface
         }
 
         $output = $process->getOutput();
-        $output = \str_replace("\n", '', $output);
+        $output = str_replace("\n", '', $output);
 
         return new Encoding($output);
     }

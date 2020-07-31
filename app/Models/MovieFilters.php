@@ -29,7 +29,7 @@ class MovieFilters implements FiltersInterface
     protected $recentlySearched = false;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $letter = null;
 
@@ -46,9 +46,6 @@ class MovieFilters implements FiltersInterface
         return new static($request);
     }
 
-    /**
-     * @param Request $request
-     */
     public function __construct(Request $request)
     {
         $this->request = $request->duplicate();
@@ -57,24 +54,16 @@ class MovieFilters implements FiltersInterface
         $letters[] = 'number';
 
         $letter = $this->request->get('letter', null);
-        if (in_array($letter, $letters, true)) {
+        if (\in_array($letter, $letters, true)) {
             $this->letter = $letter;
         }
     }
 
-    /**
-     * @return string|null
-     */
     public function getLetter(): ?string
     {
         return $this->letter;
     }
 
-    /**
-     * @param bool $recentlySearched
-     *
-     * @return self
-     */
     public function setRecentlySearched(bool $recentlySearched): self
     {
         $this->recentlySearched = $recentlySearched;
@@ -82,17 +71,11 @@ class MovieFilters implements FiltersInterface
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function getRecentlySearched(): bool
     {
         return $this->recentlySearched;
     }
 
-    /**
-     * @return string
-     */
     public function render(): string
     {
         $html = '<ul class="app-filter-alphabet">';

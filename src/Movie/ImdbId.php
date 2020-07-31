@@ -38,18 +38,14 @@ class ImdbId
     protected $numericId;
 
     /**
-     * @param string $url
-     *
-     * @return self
-     *
      * @throws Throwable
      */
     public static function createFromUrl(string $url): self
     {
         $path = parse_url($url, PHP_URL_PATH);
 
-        $path = \trim($path, '/');
-        $pathArr = \explode('/', $path);
+        $path = trim($path, '/');
+        $pathArr = explode('/', $path);
 
         foreach ($pathArr as $k => $el) {
             if (\in_array($el, ['title', 'name'], true)) {
@@ -83,7 +79,7 @@ class ImdbId
             throw new InvalidArgumentException();
         }
 
-        if (\filter_var($value, FILTER_VALIDATE_URL)) {
+        if (filter_var($value, FILTER_VALIDATE_URL)) {
             $imdbId = static::createFromUrl($value);
             $this->numericId = $imdbId->getNumericId();
             $this->prefix = $imdbId->getPrefix();
@@ -91,7 +87,7 @@ class ImdbId
             return;
         }
 
-        $intval = \intval($value);
+        $intval = (int) $value;
         if (0 !== $intval) {
             $this->numericId = $intval;
 
@@ -100,46 +96,35 @@ class ImdbId
 
         $prefix = substr($value, 0, 2);
 
-        if (!\defined(static::class.'::PREFIX_'.\strtoupper($prefix))) {
+        if (!\defined(static::class.'::PREFIX_'.strtoupper($prefix))) {
             throw new InvalidArgumentException();
         }
 
         $this->prefix = $prefix;
-        $value = \ltrim($value, $prefix);
-        $this->numericId = \intval($value);
+        $value = ltrim($value, $prefix);
+        $this->numericId = (int) $value;
 
         if (0 === $this->numericId) {
             throw new InvalidArgumentException();
         }
     }
 
-    /**
-     * @return string
-     */
     public function getValue(): string
     {
-        return $this->prefix.\str_pad((string) $this->numericId, 7, '0', STR_PAD_LEFT);
+        return $this->prefix.str_pad((string) $this->numericId, 7, '0', STR_PAD_LEFT);
     }
 
-    /**
-     * @return string
-     */
     public function getPrefix(): string
     {
         return $this->prefix;
     }
 
-    /**
-     * @return int
-     */
     public function getNumericId(): int
     {
         return $this->numericId;
     }
 
     /**
-     * @return string
-     *
      * @throws Throwable
      */
     public function getUrl(): string
@@ -147,9 +132,6 @@ class ImdbId
         return sprintf('https://www.imdb.com/title/%s/', $this->getValue());
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return $this->getValue();

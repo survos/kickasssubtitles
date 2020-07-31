@@ -27,10 +27,6 @@ class LineEndingConverterDetector implements LineEndingConverterDetectorInterfac
      */
     protected $detector;
 
-    /**
-     * @param LineEndingConverterInterface $converter
-     * @param LineEndingDetectorInterface  $detector
-     */
     public function __construct(
         LineEndingConverterInterface $converter,
         LineEndingDetectorInterface $detector

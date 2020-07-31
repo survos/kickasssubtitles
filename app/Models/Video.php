@@ -28,8 +28,8 @@ use KickAssSubtitles\Support\ModelTrait;
 class Video extends Model implements ModelInterface, VideoInterface
 {
     use ModelTrait;
-    use VideoTrait;
     use VideoHashesTrait;
+    use VideoTrait;
 
     const SUBTITLES = 'subtitles';
 

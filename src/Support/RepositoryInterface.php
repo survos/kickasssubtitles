@@ -21,26 +21,16 @@ use Throwable;
 interface RepositoryInterface
 {
     /**
-     * @param int $id
-     *
-     * @return ModelInterface
-     *
      * @throws Throwable
      */
     public function findByIdOrFail(int $id): ModelInterface;
 
     /**
-     * @param FiltersInterface $filters
-     *
-     * @return LengthAwarePaginator
-     *
      * @throws Throwable
      */
     public function findAll(FiltersInterface $filters): LengthAwarePaginator;
 
     /**
-     * @param object $entity
-     *
      * @throws Throwable
      */
     public function delete(object $entity): void;

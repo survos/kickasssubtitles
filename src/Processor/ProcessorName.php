@@ -30,33 +30,22 @@ class ProcessorName
      */
     protected $name;
 
-    /**
-     * @param string $name
-     */
     public function __construct(string $name)
     {
         $this->name = $name;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string
-     */
     public function getNameSnakeCase(): string
     {
         return $this->snakeCase($this->getName());
     }
 
     /**
-     * @return string
-     *
      * @throws ReflectionException
      */
     public function getShortName(): string
@@ -67,8 +56,6 @@ class ProcessorName
     }
 
     /**
-     * @return string
-     *
      * @throws ReflectionException
      */
     public function getShortNameSnakeCase(): string
@@ -76,18 +63,13 @@ class ProcessorName
         return $this->snakeCase($this->getShortName());
     }
 
-    /**
-     * @param string $name
-     *
-     * @return string
-     */
     protected function snakeCase(string $name): string
     {
-        $nameArray = \array_map(function ($el) {
+        $nameArray = array_map(function ($el) {
             return Str::snake($el);
-        }, \explode(static::NAMESPACE_SEPARATOR, $name));
+        }, explode(static::NAMESPACE_SEPARATOR, $name));
 
-        return \implode(static::NAMESPACE_SEPARATOR_SNAKE_CASE, $nameArray);
+        return implode(static::NAMESPACE_SEPARATOR_SNAKE_CASE, $nameArray);
     }
 
     /**

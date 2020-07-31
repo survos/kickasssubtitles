@@ -58,7 +58,7 @@ class KickAssSubtitlesMovieProviderTest extends TestCase
 
         $imageRepository = $movieProvider->getImageRepository();
         $image = $imageRepository->createFromUrlOrPath(
-            __DIR__.DIRECTORY_SEPARATOR.'tt0114436.poster.jpg',
+            __DIR__.\DIRECTORY_SEPARATOR.'tt0114436.poster.jpg',
             $this->task->getOptions()->getImdbId(),
             ImageType::POSTER(),
             ImageProvider::KICKASSSUBTITLES()

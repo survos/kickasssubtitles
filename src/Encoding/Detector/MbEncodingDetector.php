@@ -43,7 +43,7 @@ class MbEncodingDetector implements EncodingDetectorInterface
      */
     public function detect(string $input, ?Language $language = null): Encoding
     {
-        $encoding = \mb_detect_encoding($input, mb_detect_order(), true);
+        $encoding = mb_detect_encoding($input, mb_detect_order(), true);
         if (false === $encoding) {
             throw new Exception(static::ERR_DETECTION_FAILED);
         }

@@ -24,7 +24,6 @@ trait VideoHashesTrait
 {
     /**
      * @param string|SubtitleProvider $provider
-     * @param string                  $hash
      *
      * @throws Exception
      */
@@ -41,9 +40,6 @@ trait VideoHashesTrait
         $this->save();
     }
 
-    /**
-     * @return array
-     */
     public function getHashes(): array
     {
         $hashes = [];
@@ -58,8 +54,6 @@ trait VideoHashesTrait
     }
 
     /**
-     * @param array $hashes
-     *
      * @throws Exception
      */
     public function setHashes(array $hashes): void
@@ -71,8 +65,6 @@ trait VideoHashesTrait
 
     /**
      * @param string|SubtitleProvider $provider
-     *
-     * @return string
      *
      * @throws Exception
      */

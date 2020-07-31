@@ -170,10 +170,6 @@ class VideoFormat extends Enum
 
     /**
      * Check if passed extension (case-insensitive) is valid.
-     *
-     * @param string $extension
-     *
-     * @return bool
      */
     public static function isValidExtension(string $extension): bool
     {
@@ -184,28 +180,19 @@ class VideoFormat extends Enum
             }
         }
 
-        return \in_array(\strtolower($extension), \array_unique($extensions), true);
+        return \in_array(strtolower($extension), array_unique($extensions), true);
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return self::$names[$this->getValue()];
     }
 
-    /**
-     * @return array
-     */
     public function getExtensions(): array
     {
         return self::$extensions[$this->getValue()];
     }
 
-    /**
-     * @return array
-     */
     public function asArray(): array
     {
         return [

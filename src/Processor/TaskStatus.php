@@ -63,8 +63,6 @@ class TaskStatus extends Enum
 
     /**
      * @param TaskStatus $status
-     *
-     * @return bool
      */
     public function isValidStatusChange(self $status): bool
     {

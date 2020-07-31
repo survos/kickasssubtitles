@@ -34,9 +34,6 @@ abstract class AbstractMovieProvider extends AbstractProcessor
      */
     protected $imageRepository;
 
-    /**
-     * @param MovieRepositoryInterface $movieRepository
-     */
     public function __construct(
         MovieRepositoryInterface $movieRepository,
         ImageRepositoryInterface $imageRepository
@@ -46,17 +43,11 @@ abstract class AbstractMovieProvider extends AbstractProcessor
         $this->imageRepository = $imageRepository;
     }
 
-    /**
-     * @return MovieRepositoryInterface
-     */
     public function getMovieRepository(): MovieRepositoryInterface
     {
         return $this->movieRepository;
     }
 
-    /**
-     * @return ImageRepositoryInterface
-     */
     public function getImageRepository(): ImageRepositoryInterface
     {
         return $this->imageRepository;

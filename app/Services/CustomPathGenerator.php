@@ -20,41 +20,21 @@ use Spatie\MediaLibrary\PathGenerator\PathGenerator;
  */
 class CustomPathGenerator implements PathGenerator
 {
-    /**
-     * @param Media $media
-     *
-     * @return string
-     */
     public function getPath(Media $media): string
     {
         return $this->getBasePath($media).'/';
     }
 
-    /**
-     * @param Media $media
-     *
-     * @return string
-     */
     public function getPathForConversions(Media $media): string
     {
         return $this->getBasePath($media).'/conversions/';
     }
 
-    /**
-     * @param Media $media
-     *
-     * @return string
-     */
     public function getPathForResponsiveImages(Media $media): string
     {
         return $this->getBasePath($media).'/responsive-images/';
     }
 
-    /**
-     * @param Media $media
-     *
-     * @return string
-     */
     protected function getBasePath(Media $media): string
     {
         /** @var \App\Models\Media $model */

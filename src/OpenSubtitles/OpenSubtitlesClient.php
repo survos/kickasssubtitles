@@ -19,7 +19,7 @@ use function Safe\file_get_contents;
  * @method OpenSubtitlesApiResponse logIn(string $username, string $password, string $language, string $useragent)
  * @method OpenSubtitlesApiResponse searchSubtitles(array $data)
  * @method OpenSubtitlesApiResponse downloadSubtitles(array $data)
- * @method void logOut(string $token)
+ * @method void                     logOut(string $token)
  */
 class OpenSubtitlesClient
 {
@@ -76,8 +76,6 @@ class OpenSubtitlesClient
     /**
      * Create client instance.
      *
-     * @param array $options
-     *
      * @return OpenSubtitlesClient
      *
      * @throws OpenSubtitlesClientException
@@ -89,8 +87,6 @@ class OpenSubtitlesClient
 
     /**
      * Constructor.
-     *
-     * @param array $options
      *
      * @throws OpenSubtitlesClientException
      */
@@ -119,8 +115,6 @@ class OpenSubtitlesClient
 
     /**
      * Obtain token.
-     *
-     * @return string
      */
     public function obtainToken(): string
     {
@@ -140,15 +134,10 @@ class OpenSubtitlesClient
 
     /**
      * Build XML-RPC request.
-     *
-     * @param string $method
-     * @param array  $params
-     *
-     * @return string
      */
     public function buildRequest(string $method, array $params = []): string
     {
-        $request = \xmlrpc_encode_request($method, $params, [
+        $request = xmlrpc_encode_request($method, $params, [
             'encoding' => 'UTF-8',
         ]);
 
@@ -158,15 +147,11 @@ class OpenSubtitlesClient
     /**
      * Send XML-RPC request.
      *
-     * @param string $request
-     *
-     * @return array
-     *
      * @throws Exception
      */
     public function sendRequest(string $request): array
     {
-        $context = \stream_context_create([
+        $context = stream_context_create([
             'http' => [
                 'method' => 'POST',
                 'header' => 'Content-Type: text/xml',
@@ -174,8 +159,8 @@ class OpenSubtitlesClient
             ],
         ]);
         $file = file_get_contents($this->endpoint, false, $context);
-        $response = \xmlrpc_decode($file, 'UTF-8');
-        if (\is_array($response) && \xmlrpc_is_fault($response)) {
+        $response = xmlrpc_decode($file, 'UTF-8');
+        if (\is_array($response) && xmlrpc_is_fault($response)) {
             throw new OpenSubtitlesClientException($response['faultString'], $response['faultCode']);
         }
         if (empty($response['status']) || '200 OK' !== $response['status']) {
@@ -188,23 +173,18 @@ class OpenSubtitlesClient
     /**
      * Call API method.
      *
-     * @param string $method
-     * @param array  $params
-     *
-     * @return OpenSubtitlesApiResponse
-     *
      * @throws Exception
      */
     public function __call(string $method, array $params = []): OpenSubtitlesApiResponse
     {
-        $method = \ucfirst($method);
+        $method = ucfirst($method);
         if (!\in_array($method, [
             static::METHOD_SERVER_INFO,
             static::METHOD_LOG_IN,
             static::METHOD_LOG_OUT,
         ], true)) {
             $token = $this->obtainToken();
-            \array_unshift($params, $token);
+            array_unshift($params, $token);
         }
         $request = $this->buildRequest($method, $params);
         $response = $this->sendRequest($request);

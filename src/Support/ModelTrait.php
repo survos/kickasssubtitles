@@ -22,8 +22,6 @@ use ReflectionException;
 trait ModelTrait
 {
     /**
-     * @return string
-     *
      * @throws ReflectionException
      */
     public static function getTableName(): string
@@ -34,17 +32,11 @@ trait ModelTrait
         return Str::plural(Str::snake($shortName));
     }
 
-    /**
-     * @return string
-     */
     public function getId(): string
     {
         return (string) $this->getAttribute(static::ID);
     }
 
-    /**
-     * @return Carbon
-     */
     public function getCreatedAt(): Carbon
     {
         $createdAt = $this->getAttribute('created_at');

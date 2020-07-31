@@ -36,10 +36,6 @@ class DownloadsController extends AbstractController
      */
     protected $taskDownloader;
 
-    /**
-     * @param TaskRepositoryInterface $taskRepository
-     * @param TaskDownloaderInterface $taskDownloader
-     */
     public function __construct(
         TaskRepositoryInterface $taskRepository,
         TaskDownloaderInterface $taskDownloader
@@ -49,10 +45,6 @@ class DownloadsController extends AbstractController
     }
 
     /**
-     * @param int $id
-     *
-     * @return StreamedResponse
-     *
      * @throws Throwable
      */
     public function downloadTask(int $id): StreamedResponse
@@ -64,10 +56,6 @@ class DownloadsController extends AbstractController
     }
 
     /**
-     * @param string $group
-     *
-     * @return StreamedResponse
-     *
      * @throws Throwable
      */
     public function downloadTasksGroup(string $group): StreamedResponse

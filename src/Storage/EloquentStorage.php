@@ -45,9 +45,6 @@ class EloquentStorage implements StorageInterface
 
     /**
      * @param HasMedia&Model $model
-     * @param string         $diskName
-     *
-     * @return StorageInterface
      *
      * @throws Exception
      */
@@ -58,7 +55,6 @@ class EloquentStorage implements StorageInterface
 
     /**
      * @param HasMedia&Model $model
-     * @param string         $diskName
      *
      * @throws Exception
      */
@@ -98,7 +94,7 @@ class EloquentStorage implements StorageInterface
             static::CUSTOM_PROPERTY_KEY => $key,
         ]);
 
-        return (bool) count($media);
+        return (bool) \count($media);
     }
 
     /**
@@ -119,7 +115,7 @@ class EloquentStorage implements StorageInterface
             return $path;
         }
 
-        return \pathinfo($path, $element);
+        return pathinfo($path, $element);
     }
 
     /**
@@ -177,7 +173,7 @@ class EloquentStorage implements StorageInterface
             throw new Exception(static::ERR_FILE_ALREADY_ADDED);
         }
 
-        $dummyFile = \sys_get_temp_dir().DIRECTORY_SEPARATOR.$key;
+        $dummyFile = sys_get_temp_dir().\DIRECTORY_SEPARATOR.$key;
         touch($dummyFile);
 
         $media = $this->model

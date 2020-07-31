@@ -20,13 +20,6 @@ use Throwable;
 interface ImageRepositoryInterface
 {
     /**
-     * @param string        $urlOrPath
-     * @param ImdbId        $imdbId
-     * @param ImageType     $type
-     * @param ImageProvider $provider
-     *
-     * @return ImageInterface
-     *
      * @throws Throwable
      */
     public function createFromUrlOrPath(
@@ -37,19 +30,11 @@ interface ImageRepositoryInterface
     ): ImageInterface;
 
     /**
-     * @param ImageInterface $image
-     *
-     * @return ImageInterface
-     *
      * @throws Throwable
      */
     public function createFromImage(ImageInterface $image): ImageInterface;
 
     /**
-     * @param ImdbId $imdbId
-     *
-     * @return ImageInterface
-     *
      * @throws Throwable
      */
     public function findByImdbIdOrFail(ImdbId $imdbId): ImageInterface;

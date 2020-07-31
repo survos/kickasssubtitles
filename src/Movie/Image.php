@@ -27,11 +27,11 @@ use Throwable;
  */
 class Image extends TablelessModel implements ImageInterface, HasStorageInterface, HydratableInterface
 {
-    use ImageTrait;
-    use ObjectCastsTrait;
     use HasStorageTrait {
         createStorage as createStorageTrait;
     }
+    use ImageTrait;
+    use ObjectCastsTrait;
 
     /**
      * {@inheritdoc}
@@ -55,13 +55,11 @@ class Image extends TablelessModel implements ImageInterface, HasStorageInterfac
     }
 
     /**
-     * @return StorageInterface
-     *
      * @throws Throwable
      */
     protected function createStorage(): StorageInterface
     {
-        if (function_exists('app') && app()->has('path.storage')) {
+        if (\function_exists('app') && app()->has('path.storage')) {
             return LocalStorage::create(
                 sprintf(
                     '%s%s%s%s%s',
@@ -78,9 +76,6 @@ class Image extends TablelessModel implements ImageInterface, HasStorageInterfac
         return $this->createStorageTrait();
     }
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

@@ -25,12 +25,12 @@ use Throwable;
  */
 class Task extends TablelessModel implements TaskInterface, HasStorageInterface
 {
-    use TaskTrait;
     use HasStorageTrait {
         tearDownStorage as tearDownStorageTrait;
         createStorage as createStorageTrait;
     }
     use ObjectCastsTrait;
+    use TaskTrait;
 
     /**
      * @var array
@@ -49,13 +49,11 @@ class Task extends TablelessModel implements TaskInterface, HasStorageInterface
     ];
 
     /**
-     * @return StorageInterface
-     *
      * @throws Throwable
      */
     protected function createStorage(): StorageInterface
     {
-        if (function_exists('app') && app()->has('path.storage')) {
+        if (\function_exists('app') && app()->has('path.storage')) {
             return LocalStorage::create(
                 sprintf(
                     '%s%s%s%s%s',
@@ -86,9 +84,6 @@ class Task extends TablelessModel implements TaskInterface, HasStorageInterface
         $this->tearDownStorageTrait();
     }
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

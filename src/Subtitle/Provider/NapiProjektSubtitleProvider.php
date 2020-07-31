@@ -76,12 +76,6 @@ class NapiProjektSubtitleProvider extends AbstractSubtitleProvider
      */
     protected $sevenZipPassword = 'iBlm8NTigvru0Jr0';
 
-    /**
-     * @param SubtitleRepositoryInterface     $subtitleRepository
-     * @param SubtitleFormatDetectorInterface $subtitleFormatDetector
-     * @param EncodingDetectorInterface       $encodingDetector
-     * @param ClientInterface                 $httpClient
-     */
     public function __construct(
         SubtitleRepositoryInterface $subtitleRepository,
         SubtitleFormatDetectorInterface $subtitleFormatDetector,
@@ -94,9 +88,6 @@ class NapiProjektSubtitleProvider extends AbstractSubtitleProvider
         $this->httpClient = $httpClient;
     }
 
-    /**
-     * @return EnumMapper
-     */
     public function getLanguageMapper(): EnumMapper
     {
         return EnumMapper::create([
@@ -106,8 +97,6 @@ class NapiProjektSubtitleProvider extends AbstractSubtitleProvider
     }
 
     /**
-     * @param TaskInterface $task
-     *
      * @throws Throwable
      */
     protected function processTask(TaskInterface $task): void

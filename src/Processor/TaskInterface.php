@@ -45,9 +45,6 @@ interface TaskInterface
 
     const PROCESSOR_NAME = 'processor_name';
 
-    /**
-     * @return self|null
-     */
     public function getParent(): ?self;
 
     /**
@@ -55,76 +52,34 @@ interface TaskInterface
      */
     public function setParent(self $parent): void;
 
-    /**
-     * @return TaskCollectionInterface
-     */
     public function getChildren(): TaskCollectionInterface;
 
-    /**
-     * @param self $task
-     */
     public function addChild(self $task): void;
 
-    /**
-     * @return string
-     */
     public function getIdentifier(): string;
 
-    /**
-     * @return TaskType
-     */
     public function getType(): TaskType;
 
-    /**
-     * @return TaskStatus
-     */
     public function getStatus(): TaskStatus;
 
     /**
-     * @param TaskStatus     $status
-     * @param Throwable|null $e
-     *
      * @throws Throwable
      */
     public function setStatus(TaskStatus $status, ?Throwable $e = null): void;
 
-    /**
-     * @return null|TaskErrorInterface
-     */
     public function getError(): ?TaskErrorInterface;
 
-    /**
-     * @return TaskOptions
-     */
     public function getOptions(): TaskOptions;
 
-    /**
-     * @param Arrayable $result
-     */
     public function addResult(Arrayable $result): void;
 
-    /**
-     * @param Arrayable $result
-     */
     public function prependResult(Arrayable $result): void;
 
-    /**
-     * @return Collection
-     */
     public function getResults(): Collection;
 
-    /**
-     * @return ProcessorName|null
-     */
     public function getProcessorName(): ?ProcessorName;
 
-    /**
-     * @param ProcessorName $processorName
-     */
     public function setProcessorName(ProcessorName $processorName): void;
 
-    /**
-     * @return bool
-     */
     public function isProcessed(): bool;
 }

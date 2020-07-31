@@ -37,8 +37,6 @@ class ForgotPasswordController extends AbstractController
 
     /**
      * Display the form to request a password reset link.
-     *
-     * @return Response
      */
     public function showLinkRequestForm(): Response
     {

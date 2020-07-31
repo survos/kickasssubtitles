@@ -36,9 +36,6 @@ class MovieProvider extends Enum
         self::KICKASSSUBTITLES => 'KickAssSubtitles',
     ];
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return self::$names[$this->getValue()];

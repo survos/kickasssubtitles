@@ -75,9 +75,6 @@ class Format extends Command
         $this->startSupervisor();
     }
 
-    /**
-     * @param Filesystem $filesystem
-     */
     protected function formatDisk(Filesystem $filesystem): void
     {
         $this->info('Formatting disk: '.$filesystem->getValue());
@@ -97,7 +94,7 @@ class Format extends Command
             if (!Str::endsWith($file, '.log')) {
                 continue;
             }
-            $filePath = $logsPath.DIRECTORY_SEPARATOR.$file;
+            $filePath = $logsPath.\DIRECTORY_SEPARATOR.$file;
             unlink($filePath);
             $this->info('File deleted: '.$filePath);
         }

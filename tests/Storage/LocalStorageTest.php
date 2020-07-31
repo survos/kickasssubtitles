@@ -53,8 +53,8 @@ class LocalStorageTest extends TestCase
     {
         $addedFile = $this->storage->tmpFile('test.txt');
         $dir = \dirname($addedFile);
-        $dirArr = \explode(DIRECTORY_SEPARATOR, $dir);
-        $this->assertEquals(true, \file_exists($dir));
+        $dirArr = explode(\DIRECTORY_SEPARATOR, $dir);
+        $this->assertEquals(true, file_exists($dir));
         $this->assertEquals(true, Str::uuidValid($dirArr[\count($dirArr) - 1]));
         $scannedDir = $this->scanDir($dir);
         $this->assertEquals(0, \count($scannedDir));

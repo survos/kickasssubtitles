@@ -22,10 +22,6 @@ interface SubtitleFormatDetectorInterface
     const ERR_DETECTION_FAILED = 'Detection failed';
 
     /**
-     * @param string $file
-     *
-     * @return SubtitleFormat
-     *
      * @throws Throwable
      */
     public function detectFile(string $file): SubtitleFormat;

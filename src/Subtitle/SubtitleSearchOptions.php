@@ -23,9 +23,9 @@ use KickAssSubtitles\Support\ObjectCastsTrait;
  */
 class SubtitleSearchOptions extends TaskOptions implements SubtitleOptionsInterface
 {
+    use ObjectCastsTrait;
     use SubtitleOptionsTrait;
     use VideoHashesTrait;
-    use ObjectCastsTrait;
 
     /**
      * @var array
@@ -45,19 +45,11 @@ class SubtitleSearchOptions extends TaskOptions implements SubtitleOptionsInterf
         SubtitleInterface::LANGUAGE => Language::EN,
     ];
 
-    /**
-     * @return Language
-     */
     public function getLanguage(): Language
     {
         return $this->{SubtitleInterface::LANGUAGE};
     }
 
-    /**
-     * @param SubtitleInterface $subtitle
-     *
-     * @return bool
-     */
     public function needsConversion(SubtitleInterface $subtitle): bool
     {
         if (!$subtitle->getFormat()->equals($this->getFormat())) {
@@ -71,9 +63,6 @@ class SubtitleSearchOptions extends TaskOptions implements SubtitleOptionsInterf
         return false;
     }
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

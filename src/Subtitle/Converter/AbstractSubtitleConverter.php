@@ -29,7 +29,7 @@ use KickAssSubtitles\Support\EnumMapper;
 abstract class AbstractSubtitleConverter extends AbstractProcessor
 {
     /**
-     * @var null|EnumMapper
+     * @var EnumMapper|null
      */
     protected $formatMapper;
 
@@ -53,11 +53,6 @@ abstract class AbstractSubtitleConverter extends AbstractProcessor
      */
     protected $subtitleFormatDetector;
 
-    /**
-     * @param LineEndingConverterDetectorInterface $lineEndingConverterDetector
-     * @param EncodingConverterDetectorInterface   $encodingConverterDetector
-     * @param SubtitleFormatDetectorInterface      $subtitleFormatDetector
-     */
     public function __construct(
         LineEndingConverterDetectorInterface $lineEndingConverterDetector,
         EncodingConverterDetectorInterface $encodingConverterDetector,
@@ -69,9 +64,6 @@ abstract class AbstractSubtitleConverter extends AbstractProcessor
         $this->subtitleFormatDetector = $subtitleFormatDetector;
     }
 
-    /**
-     * @return EnumMapper
-     */
     public function getFormatMapper(): EnumMapper
     {
         if (null === $this->formatMapper) {
@@ -81,9 +73,6 @@ abstract class AbstractSubtitleConverter extends AbstractProcessor
         return $this->formatMapper;
     }
 
-    /**
-     * @return EnumMapper
-     */
     abstract public function createFormatMapper(): EnumMapper;
 
     /**

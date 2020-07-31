@@ -94,17 +94,11 @@ class Language extends Enum
         self::UK => 'ukrainian',
     ];
 
-    /**
-     * @return string
-     */
     public function getIso6392(): string
     {
         return static::$iso6392[$this->getValue()];
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return static::$names[$this->getValue()];

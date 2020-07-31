@@ -26,16 +26,6 @@ interface SubtitleRepositoryInterface extends RepositoryInterface
     const DEFAULT_FILENAME_WITHOUT_EXTENSION = 'subtitle';
 
     /**
-     * @param string                $contents
-     * @param SubtitleFormat        $format
-     * @param Language|null         $language
-     * @param Encoding|null         $encoding
-     * @param ImdbId|null           $imdbId
-     * @param SubtitleProvider|null $provider
-     * @param string                $filenameWithoutExtension
-     *
-     * @return SubtitleInterface
-     *
      * @throws Throwable
      */
     public function create(
@@ -49,16 +39,6 @@ interface SubtitleRepositoryInterface extends RepositoryInterface
     ): SubtitleInterface;
 
     /**
-     * @param string                $file
-     * @param SubtitleFormat|null   $format
-     * @param Language|null         $language
-     * @param Encoding|null         $encoding
-     * @param ImdbId|null           $imdbId
-     * @param SubtitleProvider|null $provider
-     * @param string                $filenameWithoutExtension
-     *
-     * @return SubtitleInterface
-     *
      * @throws Throwable
      */
     public function createFromFile(
@@ -72,11 +52,6 @@ interface SubtitleRepositoryInterface extends RepositoryInterface
     ): SubtitleInterface;
 
     /**
-     * @param SubtitleInterface $subtitle
-     * @param string            $filenameWithoutExtension
-     *
-     * @return SubtitleInterface
-     *
      * @throws Throwable
      */
     public function createFromSubtitle(
@@ -85,12 +60,6 @@ interface SubtitleRepositoryInterface extends RepositoryInterface
     ): SubtitleInterface;
 
     /**
-     * @param string           $hash
-     * @param SubtitleProvider $provider
-     * @param Language         $language
-     *
-     * @return SubtitleCollectionInterface
-     *
      * @throws Throwable
      */
     public function findByProviderHashAndLanguage(

@@ -29,9 +29,6 @@ class EncodingTest extends AbstractTest
         $this->assertInstanceOf(Encoding::class, $encoding);
     }
 
-    /**
-     * @return array
-     */
     public function validEncodings(): array
     {
         return [
@@ -52,9 +49,6 @@ class EncodingTest extends AbstractTest
         new Encoding($encoding);
     }
 
-    /**
-     * @return array
-     */
     public function invalidEncodings(): array
     {
         return [

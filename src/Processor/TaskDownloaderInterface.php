@@ -23,11 +23,6 @@ interface TaskDownloaderInterface
     const ERR_UNSUPPORTED_TASK_TYPE = 'Unsupported task type';
 
     /**
-     * @param TaskInterface $task
-     * @param string|null   $filename
-     *
-     * @return StreamedResponse
-     *
      * @throws Throwable
      */
     public function downloadTask(
@@ -36,11 +31,6 @@ interface TaskDownloaderInterface
     ): StreamedResponse;
 
     /**
-     * @param TaskCollectionInterface $tasks
-     * @param string|null             $filename
-     *
-     * @return StreamedResponse
-     *
      * @throws Throwable
      */
     public function downloadTaskCollection(

@@ -81,26 +81,20 @@ class SubtitleEditSubtitleConverter extends AbstractSubtitleConverter
      */
     protected $subtitleEditPath;
 
-    /**
-     * @param string $path
-     */
     public function setSubtitleEditPath(string $path): void
     {
         $this->subtitleEditPath = $path;
     }
 
-    /**
-     * @return string
-     */
     public function getSubtitleEditPath(): string
     {
         if (null === $this->subtitleEditPath) {
-            $defaultPath = \implode(DIRECTORY_SEPARATOR, [
+            $defaultPath = implode(\DIRECTORY_SEPARATOR, [
                 'subtitleedit',
                 'SubtitleEdit.exe',
             ]);
 
-            return DIRECTORY_SEPARATOR.$defaultPath;
+            return \DIRECTORY_SEPARATOR.$defaultPath;
         }
 
         return $this->subtitleEditPath;
@@ -173,7 +167,7 @@ class SubtitleEditSubtitleConverter extends AbstractSubtitleConverter
 
         $process = new Process($cmd);
         $process->run();
-        $output = \strtolower($process->getOutput());
+        $output = strtolower($process->getOutput());
 
         if (str_contains($output, 'error')) {
             throw new ConversionFailedException();
@@ -182,12 +176,12 @@ class SubtitleEditSubtitleConverter extends AbstractSubtitleConverter
         $files = [];
 
         foreach (scandir($outputFolder) as $file) {
-            if (\is_file($outputFolder.DIRECTORY_SEPARATOR.$file)) {
+            if (is_file($outputFolder.\DIRECTORY_SEPARATOR.$file)) {
                 $files[] = $file;
             }
         }
 
-        $outputFile = $outputFolder.DIRECTORY_SEPARATOR.$files[0];
+        $outputFile = $outputFolder.\DIRECTORY_SEPARATOR.$files[0];
 
         $storage->addFile($task::STORAGE_OUTPUT, $outputFile);
     }

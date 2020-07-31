@@ -26,17 +26,12 @@ class ProcessSubtitleConversionTask extends AbstractJob
      */
     protected $task;
 
-    /**
-     * @param TaskInterface $task
-     */
     public function __construct(TaskInterface $task)
     {
         $this->task = $task;
     }
 
     /**
-     * @param SubtitleConverter $converter
-     *
      * @throws Throwable
      */
     public function handle(SubtitleConverter $converter): void

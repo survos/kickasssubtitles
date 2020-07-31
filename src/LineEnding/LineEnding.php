@@ -36,9 +36,6 @@ class LineEnding extends Enum
         self::MAC => 'cr',
     ];
 
-    /**
-     * @return string
-     */
     public function getControlCode(): string
     {
         return static::$controlCodes[$this->getValue()];

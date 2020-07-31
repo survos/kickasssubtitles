@@ -40,8 +40,8 @@ class ChardetEncodingDetector implements EncodingDetectorInterface
      */
     public function __construct()
     {
-        $chardetect = `which chardetect`;
-        $chardet = `which chardet`;
+        $chardetect = shell_exec('which chardetect');
+        $chardet = shell_exec('which chardet');
 
         if ($chardetect) {
             $this->executable = 'chardetect';

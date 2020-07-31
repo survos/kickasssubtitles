@@ -35,12 +35,6 @@ class SubtitleProvider extends BulkProcessor
      */
     protected $subtitleConverter;
 
-    /**
-     * @param array                   $processors
-     * @param TaskRepositoryInterface $taskRepository
-     * @param MovieProvider           $movieProvider
-     * @param SubtitleConverter       $subtitleConverter
-     */
     public function __construct(
         array $processors,
         TaskRepositoryInterface $taskRepository,
@@ -92,11 +86,6 @@ class SubtitleProvider extends BulkProcessor
         }
     }
 
-    /**
-     * @param TaskInterface $task
-     *
-     * @return ImdbId|null
-     */
     protected function getImdbId(TaskInterface $task): ?ImdbId
     {
         foreach ($task->getChildren()->filterByStatus(TaskStatus::COMPLETED()) as $childTask) {

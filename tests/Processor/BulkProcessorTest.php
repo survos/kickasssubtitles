@@ -58,9 +58,9 @@ class BulkProcessorTest extends TestCase
     {
         $task = $this->createTask();
 
-        \ob_start();
+        ob_start();
         $this->processor->processOne($task);
-        $contents = \ob_get_clean();
+        $contents = ob_get_clean();
 
         $this->assertEquals('lorem ipsum'.PHP_EOL.'LOREM IPSUM'.PHP_EOL.'lorem_ipsum'.PHP_EOL, $contents);
         $this->assertEquals(TaskStatus::COMPLETED, $task->getStatus()->getValue());
@@ -75,9 +75,9 @@ class BulkProcessorTest extends TestCase
 
         $this->processor->setStopAfterFirstCompletedTask(true);
 
-        \ob_start();
+        ob_start();
         $this->processor->processOne($task);
-        $contents = \ob_get_clean();
+        $contents = ob_get_clean();
 
         $this->assertEquals('lorem ipsum'.PHP_EOL, $contents);
         $this->assertEquals(TaskStatus::COMPLETED, $task->getStatus()->getValue());
@@ -92,9 +92,9 @@ class BulkProcessorTest extends TestCase
         $collection->addTask($this->createTask());
         $collection->addTask($this->createTask());
 
-        \ob_start();
+        ob_start();
         $this->processor->processMany($collection);
-        $contents = \ob_get_clean();
+        $contents = ob_get_clean();
 
         $expected = 'lorem ipsum'.PHP_EOL.'LOREM IPSUM'.PHP_EOL.'lorem_ipsum'.PHP_EOL.'lorem ipsum'.PHP_EOL.'LOREM IPSUM'.PHP_EOL.'lorem_ipsum'.PHP_EOL;
         $this->assertEquals($expected, $contents);
@@ -128,9 +128,9 @@ class BulkProcessorTest extends TestCase
     {
         $task = $this->createTask(TaskType::TEST());
 
-        \ob_start();
+        ob_start();
         $this->processor->processOne($task);
-        $contents = \ob_get_clean();
+        $contents = ob_get_clean();
 
         $this->assertEquals(TaskStatus::FAILED, $task->getStatus()->getValue());
         $error = $task->getError();

@@ -26,8 +26,8 @@ use Throwable;
  */
 class SubotageSubtitleConverterTest extends TestCase
 {
-    use RefreshDatabase;
     use CreatesTaskTrait;
+    use RefreshDatabase;
 
     /**
      * @var array

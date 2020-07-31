@@ -55,8 +55,6 @@ trait CreatesTaskTrait
     }
 
     /**
-     * @return TaskInterface
-     *
      * @throws Throwable
      */
     protected function createTask(): TaskInterface

@@ -696,7 +696,7 @@ class Encoding extends Enum
     public function __construct($value)
     {
         try {
-            parent::__construct(\strtolower($value));
+            parent::__construct(strtolower($value));
         } catch (UnexpectedValueException $e) {
             foreach (self::values() as $encoding) {
                 if ($encoding->hasAlias($value)) {
@@ -710,43 +710,32 @@ class Encoding extends Enum
         }
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return self::$names[$this->getValue()];
     }
 
-    /**
-     * @return array
-     */
     public function getAliases(): array
     {
         return self::$aliases[$this->getValue()];
     }
 
-    /**
-     * @return bool
-     */
     public function hasAlias(string $alias): bool
     {
         $normalize = function (string $value): string {
-            $value = \strtolower($value);
-            $value = \str_replace('-', '', $value);
-            $value = \str_replace('_', '', $value);
+            $value = strtolower($value);
+            $value = str_replace('-', '', $value);
+            $value = str_replace('_', '', $value);
 
             return $value;
         };
 
-        $aliases = \array_map($normalize, $this->getAliases());
+        $aliases = array_map($normalize, $this->getAliases());
 
         return \in_array($normalize($alias), $aliases, true);
     }
 
     /**
-     * @return bool
-     *
      * @throws Throwable
      */
     public function isWindows(): bool
@@ -755,8 +744,6 @@ class Encoding extends Enum
     }
 
     /**
-     * @return array
-     *
      * @throws Throwable
      */
     public function asArray(): array

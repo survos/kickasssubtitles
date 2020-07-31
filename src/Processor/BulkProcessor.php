@@ -31,7 +31,7 @@ class BulkProcessor extends AbstractProcessor
     protected $taskRepository;
 
     /**
-     * @var null|TaskType
+     * @var TaskType|null
      */
     protected $supportedTaskType;
 
@@ -40,10 +40,6 @@ class BulkProcessor extends AbstractProcessor
      */
     protected $stopAfterFirstCompletedTask = false;
 
-    /**
-     * @param array                   $processors
-     * @param TaskRepositoryInterface $taskRepository
-     */
     public function __construct(
         array $processors,
         TaskRepositoryInterface $taskRepository
@@ -58,19 +54,11 @@ class BulkProcessor extends AbstractProcessor
         $this->taskRepository = $taskRepository;
     }
 
-    /**
-     * @param bool $stop
-     */
     public function setStopAfterFirstCompletedTask(bool $stop): void
     {
         $this->stopAfterFirstCompletedTask = $stop;
     }
 
-    /**
-     * @param ProcessorInterface $processor
-     *
-     * @return self
-     */
     public function addProcessor(ProcessorInterface $processor): self
     {
         if (isset($this->processors[$processor->getName()->getName()])) {

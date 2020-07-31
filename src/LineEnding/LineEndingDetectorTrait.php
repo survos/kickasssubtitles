@@ -25,7 +25,7 @@ trait LineEndingDetectorTrait
      */
     public function detect(string $input): LineEnding
     {
-        $file = \sys_get_temp_dir().'/'.\uniqid();
+        $file = sys_get_temp_dir().'/'.uniqid();
         file_put_contents($file, $input);
         $type = $this->detectFile($file);
         unlink($file);

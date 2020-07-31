@@ -25,8 +25,8 @@ use Throwable;
  */
 class PhpSubtitleConverterTest extends TestCase
 {
-    use RefreshDatabase;
     use CreatesTaskTrait;
+    use RefreshDatabase;
 
     /**
      * @var array

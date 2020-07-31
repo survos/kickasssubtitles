@@ -24,8 +24,8 @@ use Throwable;
  */
 class NapiProjektSubtitleProviderTest extends TestCase
 {
-    use RefreshDatabase;
     use CreatesTaskTrait;
+    use RefreshDatabase;
 
     /**
      * @var array

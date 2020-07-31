@@ -40,8 +40,6 @@ class FileLineEndingDetectorTest extends AbstractTest
     }
 
     /**
-     * @param LineEnding $type
-     *
      * @throws Throwable
      * @dataProvider getDetections
      */
@@ -55,9 +53,6 @@ class FileLineEndingDetectorTest extends AbstractTest
         unlink($file);
     }
 
-    /**
-     * @return array
-     */
     public function getDetections(): array
     {
         return [

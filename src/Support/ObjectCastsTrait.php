@@ -67,11 +67,6 @@ trait ObjectCastsTrait
         return new $class($value);
     }
 
-    /**
-     * @param string $class
-     *
-     * @return array
-     */
     protected function normalizeClass(string $class): array
     {
         if (Str::startsWith($class, '?')) {
@@ -81,9 +76,6 @@ trait ObjectCastsTrait
         return [$class, false];
     }
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [];

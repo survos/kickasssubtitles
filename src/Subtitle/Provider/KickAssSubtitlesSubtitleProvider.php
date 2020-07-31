@@ -31,10 +31,6 @@ class KickAssSubtitlesSubtitleProvider extends AbstractSubtitleProvider
      */
     protected $tablelessSubtitleRepository;
 
-    /**
-     * @param SubtitleRepositoryInterface $subtitleRepository
-     * @param SubtitleRepository          $tablelessSubtitleRepository
-     */
     public function __construct(
         SubtitleRepositoryInterface $subtitleRepository,
         SubtitleRepository $tablelessSubtitleRepository

@@ -26,7 +26,7 @@ trait TaskTrait
     /**
      * Parent.
      *
-     * @var null|TaskInterface
+     * @var TaskInterface|null
      */
     protected $p;
 
@@ -148,9 +148,6 @@ trait TaskTrait
         return $options;
     }
 
-    /**
-     * @return Collection
-     */
     public function getResults(): Collection
     {
         $results = new Collection();

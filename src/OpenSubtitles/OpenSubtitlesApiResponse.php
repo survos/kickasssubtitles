@@ -33,9 +33,6 @@ class OpenSubtitlesApiResponse
 
     /**
      * Constructor.
-     *
-     * @param string $method
-     * @param array  $response
      */
     public function __construct(string $method, array $response)
     {
@@ -45,8 +42,6 @@ class OpenSubtitlesApiResponse
 
     /**
      * Return response as array.
-     *
-     * @return array
      */
     public function toArray(): array
     {

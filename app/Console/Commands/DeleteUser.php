@@ -36,9 +36,6 @@ class DeleteUser extends Command
      */
     protected $userRepository;
 
-    /**
-     * @param UserRepository $userRepository
-     */
     public function __construct(UserRepository $userRepository)
     {
         parent::__construct();

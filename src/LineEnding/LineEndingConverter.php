@@ -28,8 +28,6 @@ class LineEndingConverter implements LineEndingConverterInterface
     protected $converters = [];
 
     /**
-     * @return LineEndingConverterInterface
-     *
      * @throws Exception
      */
     public static function create(): LineEndingConverterInterface
@@ -45,9 +43,6 @@ class LineEndingConverter implements LineEndingConverterInterface
         return new static($converters);
     }
 
-    /**
-     * @param array $converters
-     */
     public function __construct(array $converters)
     {
         $this->converters = $converters;

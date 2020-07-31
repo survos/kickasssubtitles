@@ -41,11 +41,6 @@ class ImageRepository implements ImageRepositoryInterface
      */
     protected $filesystem;
 
-    /**
-     * @param string       $imageClass
-     * @param ImageManager $imageManager
-     * @param Filesystem   $filesystem
-     */
     public function __construct(
         string $imageClass,
         ImageManager $imageManager,
@@ -71,7 +66,7 @@ class ImageRepository implements ImageRepositoryInterface
         $filesystem->makeDirectory($tmpDirectory);
 
         try {
-            $tmpPath = $filesystem->path($tmpDirectory.DIRECTORY_SEPARATOR.$imdbId.'.'.$type.'.jpg');
+            $tmpPath = $filesystem->path($tmpDirectory.\DIRECTORY_SEPARATOR.$imdbId.'.'.$type.'.jpg');
 
             $img = $this->imageManager
                 ->make($urlOrPath)

@@ -25,12 +25,12 @@ class TaskFilters implements FiltersInterface
     use FiltersTrait;
 
     /**
-     * @var null|UserInterface
+     * @var UserInterface|null
      */
     protected $user;
 
     /**
-     * @var null|string
+     * @var string|null
      */
     protected $group;
 
@@ -47,11 +47,6 @@ class TaskFilters implements FiltersInterface
         return new static();
     }
 
-    /**
-     * @param UserInterface $user
-     *
-     * @return self
-     */
     public function setUser(UserInterface $user): self
     {
         $this->user = $user;
@@ -59,27 +54,16 @@ class TaskFilters implements FiltersInterface
         return $this;
     }
 
-    /**
-     * @return null|UserInterface
-     */
     public function getUser(): ?UserInterface
     {
         return $this->user;
     }
 
-    /**
-     * @return string|null
-     */
     public function getGroup(): ?string
     {
         return $this->group;
     }
 
-    /**
-     * @param string|null $group
-     *
-     * @return self
-     */
     public function setGroup(?string $group): self
     {
         $this->group = $group;
@@ -87,11 +71,6 @@ class TaskFilters implements FiltersInterface
         return $this;
     }
 
-    /**
-     * @param bool $flag
-     *
-     * @return self
-     */
     public function setGroupByGroup(bool $flag): self
     {
         $this->groupByGroup = $flag;
@@ -99,9 +78,6 @@ class TaskFilters implements FiltersInterface
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function getGroupByGroup(): bool
     {
         return $this->groupByGroup;

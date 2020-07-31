@@ -49,8 +49,6 @@ class DatabaseUrl
     protected $password = '';
 
     /**
-     * @param string $url
-     *
      * @throws Throwable
      */
     public function __construct(string $url)
@@ -71,45 +69,30 @@ class DatabaseUrl
         $this->password = $parts['pass'];
 
         if (isset($parts['path'])) {
-            $this->database = \trim($parts['path'], '/');
+            $this->database = trim($parts['path'], '/');
         }
     }
 
-    /**
-     * @return string
-     */
     public function getHost(): string
     {
         return $this->host;
     }
 
-    /**
-     * @return string
-     */
     public function getPort(): string
     {
         return (string) $this->port;
     }
 
-    /**
-     * @return string
-     */
     public function getDatabase(): string
     {
         return $this->database;
     }
 
-    /**
-     * @return string
-     */
     public function getUsername(): string
     {
         return $this->username;
     }
 
-    /**
-     * @return string
-     */
     public function getPassword(): string
     {
         return $this->password;

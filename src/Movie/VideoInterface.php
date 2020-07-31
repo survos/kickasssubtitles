@@ -29,48 +29,27 @@ interface VideoInterface
 
     const UPDATE_HASHES = 'update_hashes';
 
-    /**
-     * @return bool
-     */
     public function getUpdateHashes(): bool;
 
-    /**
-     * @param bool $flag
-     */
     public function setUpdateHashes(bool $flag): void;
 
-    /**
-     * @return int
-     */
     public function getFilesize(): int;
 
-    /**
-     * @return string
-     */
     public function getFilesizeHumanReadable(): string;
 
-    /**
-     * @return array
-     */
     public function getFilenames(): array;
 
     /**
-     * @param string $filename
-     *
      * @throws Throwable
      */
     public function addFilename(string $filename): void;
 
     /**
-     * @param SubtitleInterface $subtitle
-     *
      * @throws Throwable
      */
     public function addSubtitle(SubtitleInterface $subtitle): void;
 
     /**
-     * @return SubtitleCollection
-     *
      * @throws Throwable
      */
     public function getSubtitles(): SubtitleCollection;

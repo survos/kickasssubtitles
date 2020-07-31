@@ -20,19 +20,11 @@ use Throwable;
 interface LanguageDetectorInterface
 {
     /**
-     * @param string $input
-     *
-     * @return Language
-     *
      * @throws Throwable
      */
     public function detect(string $input): Language;
 
     /**
-     * @param string $file
-     *
-     * @return Language
-     *
      * @throws Throwable
      */
     public function detectFile(string $file): Language;

@@ -23,30 +23,15 @@ use Throwable;
  */
 class Preloader
 {
-    /**
-     * @var int
-     */
     private static int $count = 0;
 
-    /**
-     * @var array
-     */
     private array $ignores = [];
 
-    /**
-     * @var array
-     */
     private array $paths;
 
-    /**
-     * @var array
-     */
     private array $fileMap;
 
     /**
-     * @param string $classMapFile
-     * @param array  $paths
-     *
      * @throws Throwable
      */
     public function __construct(string $classMapFile, array $paths = [])
@@ -62,8 +47,6 @@ class Preloader
     }
 
     /**
-     * @param array $paths
-     *
      * @return $this
      */
     public function paths(array $paths): self
@@ -77,8 +60,6 @@ class Preloader
     }
 
     /**
-     * @param array $names
-     *
      * @return $this
      */
     public function ignore(array $names): self
@@ -108,8 +89,6 @@ class Preloader
     }
 
     /**
-     * @param string $path
-     *
      * @throws Throwable
      */
     private function loadPath(string $path): void
@@ -127,8 +106,6 @@ class Preloader
     }
 
     /**
-     * @param string $path
-     *
      * @throws Throwable
      */
     private function loadDir(string $path): void
@@ -139,7 +116,7 @@ class Preloader
         // in the current path,
         // and load them one by one
         while ($file = readdir($handle)) {
-            if (in_array($file, ['.', '..'], true)) {
+            if (\in_array($file, ['.', '..'], true)) {
                 continue;
             }
 
@@ -149,9 +126,6 @@ class Preloader
         closedir($handle);
     }
 
-    /**
-     * @param string $path
-     */
     private function loadFile(string $path): void
     {
         // We resolve the classname from composer's autoload mapping
@@ -171,11 +145,6 @@ class Preloader
         echo "[Preloader] Preloaded `{$class}`".PHP_EOL;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return bool
-     */
     private function shouldIgnore(?string $name): bool
     {
         if (null === $name) {

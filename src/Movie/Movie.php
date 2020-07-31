@@ -22,13 +22,10 @@ use KickAssSubtitles\Support\TablelessModel;
  */
 class Movie extends TablelessModel implements MovieInterface, HydratableInterface
 {
+    use HydratableTrait;
     use MovieTrait;
     use ObjectCastsTrait;
-    use HydratableTrait;
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

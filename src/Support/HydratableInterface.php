@@ -21,10 +21,6 @@ interface HydratableInterface
 
     /**
      * Hydrate plain array into an instance.
-     *
-     * @param array $array
-     *
-     * @return object
      */
     public static function hydrateFromArray(array $array = []): object;
 }

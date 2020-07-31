@@ -20,15 +20,10 @@ use Throwable;
 interface HasStorageInterface
 {
     /**
-     * @return StorageInterface
-     *
      * @throws Throwable
      */
     public function getStorage(): StorageInterface;
 
-    /**
-     * @param StorageInterface $storage
-     */
     public function setStorage(StorageInterface $storage): void;
 
     /**

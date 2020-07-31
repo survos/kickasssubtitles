@@ -40,8 +40,6 @@ class Dos2UnixConverterTest extends AbstractTest
     }
 
     /**
-     * @param LineEnding $from
-     * @param LineEnding $to
      * @dataProvider getConversions
      *
      * @throws Throwable
@@ -58,9 +56,6 @@ class Dos2UnixConverterTest extends AbstractTest
         unlink($toFile);
     }
 
-    /**
-     * @return array
-     */
     public function getConversions(): array
     {
         return [

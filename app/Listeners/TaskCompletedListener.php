@@ -73,14 +73,6 @@ class TaskCompletedListener extends AbstractListener implements ShouldQueue
      */
     protected $subtitleConverter;
 
-    /**
-     * @param TaskRepositoryInterface     $taskRepository
-     * @param MovieRepositoryInterface    $movieRepository
-     * @param ImageRepositoryInterface    $imageRepository
-     * @param VideoRepositoryInterface    $videoRepository
-     * @param SubtitleRepositoryInterface $subtitleRepository
-     * @param SubtitleConverter           $subtitleConverter
-     */
     public function __construct(
         TaskRepositoryInterface $taskRepository,
         MovieRepositoryInterface $movieRepository,
@@ -98,8 +90,6 @@ class TaskCompletedListener extends AbstractListener implements ShouldQueue
     }
 
     /**
-     * @param TaskCompleted $event
-     *
      * @throws Throwable
      */
     public function handle(TaskCompleted $event): void
@@ -157,8 +147,6 @@ class TaskCompletedListener extends AbstractListener implements ShouldQueue
     }
 
     /**
-     * @param MovieInterface $movie
-     *
      * @throws Throwable
      */
     protected function addMovie(MovieInterface $movie): void
@@ -177,8 +165,6 @@ class TaskCompletedListener extends AbstractListener implements ShouldQueue
     }
 
     /**
-     * @param ImageInterface $image
-     *
      * @throws Throwable
      */
     protected function addImage(ImageInterface $image): void
@@ -196,11 +182,6 @@ class TaskCompletedListener extends AbstractListener implements ShouldQueue
     }
 
     /**
-     * @param MovieInterface        $movie
-     * @param SubtitleSearchOptions $options
-     *
-     * @return VideoInterface
-     *
      * @throws Throwable
      */
     protected function addVideo(MovieInterface $movie, SubtitleSearchOptions $options): VideoInterface
@@ -230,10 +211,6 @@ class TaskCompletedListener extends AbstractListener implements ShouldQueue
     }
 
     /**
-     * @param SubtitleCollection    $subtitles
-     * @param VideoInterface        $video
-     * @param SubtitleSearchOptions $options
-     *
      * @throws Throwable
      */
     protected function addSubtitles(

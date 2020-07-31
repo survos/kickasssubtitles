@@ -21,9 +21,6 @@ use Illuminate\Http\Request;
 class Timezone
 {
     /**
-     * @param Request $request
-     * @param Closure $next
-     *
      * @return mixed
      */
     public function handle(Request $request, Closure $next)

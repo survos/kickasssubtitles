@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @author    grzesw <contact@kickasssubtitles.com>
  */
 
-\define('LARAVEL_START', \microtime(true));
+define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------

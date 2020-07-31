@@ -42,6 +42,6 @@ class Command extends BaseCommand
     {
         $info = sprintf('Running command [%s]', $this->signature);
         $this->info($info);
-        $this->info(str_repeat('=', strlen($info)));
+        $this->info(str_repeat('=', \strlen($info)));
     }
 }

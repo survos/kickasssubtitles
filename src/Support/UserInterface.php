@@ -29,23 +29,11 @@ interface UserInterface
 
     const ACTIVE = 'active';
 
-    /**
-     * @return bool
-     */
     public function isTemporary(): bool;
 
-    /**
-     * @return string
-     */
     public function getUsername(): string;
 
-    /**
-     * @return string|null
-     */
     public function getEmail(): ?string;
 
-    /**
-     * @return string
-     */
     public function getActivationToken(): string;
 }

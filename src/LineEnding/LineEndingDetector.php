@@ -45,9 +45,6 @@ class LineEndingDetector implements LineEndingDetectorInterface
         return new static($detectors);
     }
 
-    /**
-     * @param array $detectors
-     */
     public function __construct(array $detectors)
     {
         $this->detectors = $detectors;

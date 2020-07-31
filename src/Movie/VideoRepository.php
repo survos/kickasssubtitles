@@ -29,9 +29,6 @@ class VideoRepository implements VideoRepositoryInterface
      */
     protected $videoClass;
 
-    /**
-     * @param string $videoClass
-     */
     public function __construct(
         string $videoClass
     ) {

@@ -34,11 +34,6 @@ class SubtitleConverter extends BulkProcessor
      */
     protected $subtitleRepository;
 
-    /**
-     * @param array                       $processors
-     * @param TaskRepositoryInterface     $taskRepository
-     * @param SubtitleRepositoryInterface $subtitleRepository
-     */
     public function __construct(
         array $processors,
         TaskRepositoryInterface $taskRepository,
@@ -48,19 +43,12 @@ class SubtitleConverter extends BulkProcessor
         $this->subtitleRepository = $subtitleRepository;
     }
 
-    /**
-     * @return SubtitleRepositoryInterface
-     */
     public function getSubtitleRepository(): SubtitleRepositoryInterface
     {
         return $this->subtitleRepository;
     }
 
     /**
-     * @param SubtitleInterface $subtitle
-     * @param SubtitleFormat    $format
-     * @param Encoding          $encoding
-     *
      * @return SubtitleInterface[]
      *
      * @throws Throwable

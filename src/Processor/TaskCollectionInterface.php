@@ -21,37 +21,14 @@ interface TaskCollectionInterface
 {
     const ERR_TASK_ALREDY_ADDED = 'Task already added';
 
-    /**
-     * @param TaskInterface $task
-     *
-     * @return bool
-     */
     public function containsTask(TaskInterface $task): bool;
 
-    /**
-     * @param TaskInterface $task
-     *
-     * @return self
-     */
     public function addTask(TaskInterface $task): self;
 
-    /**
-     * @param TaskStatus $status
-     *
-     * @return self
-     */
     public function filterByStatus(TaskStatus $status): self;
 
-    /**
-     * @param TaskStatus $status
-     *
-     * @return bool
-     */
     public function isInStatus(TaskStatus $status): bool;
 
-    /**
-     * @return bool
-     */
     public function isProcessed(): bool;
 
     /**

@@ -22,21 +22,11 @@ interface EncodingConverterInterface
     const ERR_CONVERSION_FAILED = 'Conversion failed';
 
     /**
-     * @param string   $input
-     * @param Encoding $from
-     * @param Encoding $to
-     *
-     * @return string
-     *
      * @throws Throwable
      */
     public function convert(string $input, Encoding $from, Encoding $to): string;
 
     /**
-     * @param string   $file
-     * @param Encoding $from
-     * @param Encoding $to
-     *
      * @throws Throwable
      */
     public function convertFile(string $file, Encoding $from, Encoding $to): void;

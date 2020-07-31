@@ -33,7 +33,7 @@ class Dos2UnixLineEndingConverter implements LineEndingConverterInterface
      */
     public function __construct()
     {
-        $executable = `which dos2unix`;
+        $executable = shell_exec('which dos2unix');
 
         if (!$executable) {
             throw new Exception(static::ERR_MISSING_EXECUTABLE);

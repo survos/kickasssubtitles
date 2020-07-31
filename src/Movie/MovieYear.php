@@ -25,7 +25,7 @@ class MovieYear
     protected $from;
 
     /**
-     * @var null|int
+     * @var int|null
      */
     protected $to;
 
@@ -48,8 +48,8 @@ class MovieYear
         $segments = [];
         $currentSegment = '';
 
-        foreach (\str_split($year) as $char) {
-            if (!\is_numeric($char)) {
+        foreach (str_split($year) as $char) {
+            if (!is_numeric($char)) {
                 if (!empty($currentSegment)) {
                     $segments[] = $currentSegment;
                 }
@@ -94,37 +94,25 @@ class MovieYear
         }
     }
 
-    /**
-     * @return int
-     */
     public function getFrom(): int
     {
         return $this->from;
     }
 
-    /**
-     * @return null|int
-     */
     public function getTo(): ?int
     {
         return $this->to;
     }
 
-    /**
-     * @param int $year
-     */
     protected function isValidYear(int $year): void
     {
         $min = 1800;
-        $max = (int) \date('Y') + 50;
+        $max = (int) date('Y') + 50;
         if ($year < $min || $year > $max) {
             throw new InvalidArgumentException();
         }
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         $str = (string) $this->from;

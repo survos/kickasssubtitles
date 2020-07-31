@@ -32,10 +32,10 @@ class MovieSlugger implements SluggerInterface
     {
         $slug = Str::slug($input, static::SEPARATOR);
 
-        $slugArr = \explode(static::SEPARATOR, $slug);
+        $slugArr = explode(static::SEPARATOR, $slug);
         if (\in_array($slugArr[0], static::PREFIXES, true)) {
-            $prefix = \array_shift($slugArr);
-            $slug = \implode(static::SEPARATOR, $slugArr).static::SEPARATOR.$prefix;
+            $prefix = array_shift($slugArr);
+            $slug = implode(static::SEPARATOR, $slugArr).static::SEPARATOR.$prefix;
         }
 
         return $slug;

@@ -23,20 +23,16 @@ use Throwable;
 abstract class AbstractTest extends TestCase
 {
     /**
-     * @param string $filename
-     *
-     * @return string
-     *
      * @throws Throwable
      */
     public function loadFilename(string $filename): string
     {
-        $file = \sys_get_temp_dir().DIRECTORY_SEPARATOR.\uniqid().'.txt';
+        $file = sys_get_temp_dir().\DIRECTORY_SEPARATOR.uniqid().'.txt';
         $contents = file_get_contents(
             __DIR__.
-            DIRECTORY_SEPARATOR.
+            \DIRECTORY_SEPARATOR.
             'Files'.
-            DIRECTORY_SEPARATOR.
+            \DIRECTORY_SEPARATOR.
             $filename.
             '.txt'
         );

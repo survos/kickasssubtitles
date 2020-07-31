@@ -23,12 +23,6 @@ use Throwable;
 trait LineEndingConverterTrait
 {
     /**
-     * @param string     $input
-     * @param LineEnding $from
-     * @param LineEnding $to
-     *
-     * @return string
-     *
      * @throws Throwable
      */
     public function convert(string $input, LineEnding $from, LineEnding $to): string
@@ -37,7 +31,7 @@ trait LineEndingConverterTrait
             return $input;
         }
 
-        $file = \sys_get_temp_dir().'/'.\uniqid();
+        $file = sys_get_temp_dir().'/'.uniqid();
         file_put_contents($file, $input);
         $this->convertFile($file, $from, $to);
         $result = file_get_contents($file);

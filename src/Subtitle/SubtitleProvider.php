@@ -36,17 +36,11 @@ class SubtitleProvider extends Enum
         self::KICKASSSUBTITLES => 'KickAssSubtitles',
     ];
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return self::$names[$this->getValue()];
     }
 
-    /**
-     * @return string
-     */
     public function getHashStorageField(): string
     {
         return 'hash_'.$this->getValue();

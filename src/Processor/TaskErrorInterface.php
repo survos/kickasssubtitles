@@ -27,34 +27,16 @@ interface TaskErrorInterface
 
     const TRACE = 'trace';
 
-    /**
-     * @param Throwable $e
-     *
-     * @return self
-     */
     public static function createFromThrowable(Throwable $e): self;
 
     /**
-     * @param string      $class
-     * @param string|null $message
-     * @param array       $trace
-     *
      * @return static
      */
     public static function create(string $class, ?string $message, array $trace = []): self;
 
-    /**
-     * @return string
-     */
     public function getMessage(): string;
 
-    /**
-     * @return string
-     */
     public function getClassName(): string;
 
-    /**
-     * @return array
-     */
     public function getTrace(): array;
 }

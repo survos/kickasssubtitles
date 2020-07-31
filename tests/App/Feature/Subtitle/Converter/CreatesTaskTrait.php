@@ -52,12 +52,6 @@ trait CreatesTaskTrait
     }
 
     /**
-     * @param string         $contents
-     * @param SubtitleFormat $inputFormat
-     * @param SubtitleFormat $outptFormat
-     *
-     * @return TaskInterface
-     *
      * @throws Throwable
      */
     protected function createTask(
@@ -65,7 +59,7 @@ trait CreatesTaskTrait
         SubtitleFormat $inputFormat,
         SubtitleFormat $outptFormat
     ): TaskInterface {
-        $file = \sys_get_temp_dir().DIRECTORY_SEPARATOR.'input.'.$inputFormat->getExtensions()[0];
+        $file = sys_get_temp_dir().\DIRECTORY_SEPARATOR.'input.'.$inputFormat->getExtensions()[0];
         file_put_contents($file, $contents);
 
         /** @var TaskRepositoryInterface $taskRepository */

@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     /**
      * The Artisan application instance.
      *
-     * @var null|Artisan
+     * @var Artisan|null
      */
     protected $artisan;
 
@@ -44,14 +44,14 @@ class Kernel extends ConsoleKernel
      */
     protected function getArtisan()
     {
-        if (\is_null($this->artisan)) {
+        if (null === $this->artisan) {
             $artisan = new Artisan(
                 $this->app,
                 $this->events,
                 $this->app->version()
             );
             $artisan->resolveCommands($this->commands);
-            $artisan->setName(\implode(' - ', [
+            $artisan->setName(implode(' - ', [
                 config('app.name'),
                 $artisan->getName(),
             ]));
@@ -64,12 +64,10 @@ class Kernel extends ConsoleKernel
 
     /**
      * Define the application's command schedule.
-     *
-     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedulerLog = storage_path('logs'.DIRECTORY_SEPARATOR.'scheduler.log');
+        $schedulerLog = storage_path('logs'.\DIRECTORY_SEPARATOR.'scheduler.log');
 
         if (file_exists($schedulerLog) && (filesize($schedulerLog) > 10485760)) {
             unlink($schedulerLog);

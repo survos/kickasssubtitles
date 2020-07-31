@@ -48,10 +48,7 @@ class ResetPasswordController extends AbstractController
      *
      * If no token is present, display the link request form.
      *
-     * @param Request     $request
      * @param string|null $token
-     *
-     * @return Response
      */
     public function showResetForm(Request $request, $token = null): Response
     {

@@ -17,10 +17,10 @@ use function Safe\preg_match;
 require __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 
 $render = function (string $template, array $variables = []) {
-    \ob_start();
-    \extract($variables);
+    ob_start();
+    extract($variables);
     include $template;
-    $contents = \ob_get_clean();
+    $contents = ob_get_clean();
 
     return $contents;
 };
@@ -28,13 +28,13 @@ $render = function (string $template, array $variables = []) {
 $encodings = function () {
     $encodings = [];
 
-    foreach (\mb_list_encodings() as $encoding) {
-        if (\in_array($encoding, ['auto', 'pass'], true)) {
+    foreach (mb_list_encodings() as $encoding) {
+        if (in_array($encoding, ['auto', 'pass'], true)) {
             continue;
         }
-        $key = \strtoupper($encoding);
-        $key = \str_replace('-', '_', $key);
-        $key = \str_replace('#', '_', $key);
+        $key = strtoupper($encoding);
+        $key = str_replace('-', '_', $key);
+        $key = str_replace('#', '_', $key);
         if (1 === preg_match('/^\d/', $key)) {
             $key = 'ENCODING_'.$key;
         }

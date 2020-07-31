@@ -23,19 +23,11 @@ interface ProcessorInterface
 
     const ERR_PROCESSOR_ALREADY_ADDED = 'Processor already added';
 
-    /**
-     * @return ProcessorName
-     */
     public function getName(): ProcessorName;
 
-    /**
-     * @return TaskType
-     */
     public function getSupportedTaskType(): TaskType;
 
     /**
-     * @param TaskInterface $task
-     *
      * @throws Throwable
      */
     public function processOne(TaskInterface $task): void;

@@ -65,9 +65,6 @@ class EncodingDetector implements EncodingDetectorInterface
         return new static($detectors);
     }
 
-    /**
-     * @param array $detectors
-     */
     public function __construct(array $detectors)
     {
         $this->detectors = $detectors;
@@ -99,18 +96,13 @@ class EncodingDetector implements EncodingDetectorInterface
         }
     }
 
-    /**
-     * @param array $detectors
-     *
-     * @return array
-     */
     protected function sortByLanguageAwareDetectors(array $detectors): array
     {
         $languageAware = [];
         $other = [];
 
         foreach ($detectors as $detector) {
-            if (in_array(get_class($detector), $this->languageAwareDetectors, true)) {
+            if (\in_array(\get_class($detector), $this->languageAwareDetectors, true)) {
                 $languageAware[] = $detector;
             } else {
                 $other[] = $detector;

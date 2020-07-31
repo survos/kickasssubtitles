@@ -27,8 +27,6 @@ class SubtitleFormatDetector implements SubtitleFormatDetectorInterface
     protected $detectors = [];
 
     /**
-     * @return SubtitleFormatDetectorInterface
-     *
      * @throws Throwable
      */
     public static function create(): SubtitleFormatDetectorInterface
@@ -49,9 +47,6 @@ class SubtitleFormatDetector implements SubtitleFormatDetectorInterface
         return new static($detectors);
     }
 
-    /**
-     * @param array $detectors
-     */
     public function __construct(array $detectors)
     {
         $this->detectors = $detectors;

@@ -35,12 +35,12 @@ use Throwable;
  */
 class Image extends Model implements ModelInterface, ImageInterface, HasStorageInterface, HasMedia, HydratableInterface
 {
-    use ModelTrait;
-    use ImageTrait;
-    use ObjectCastsTrait;
-    use HasStorageTrait;
     use HasMediaTrait;
+    use HasStorageTrait;
     use HydratableTrait;
+    use ImageTrait;
+    use ModelTrait;
+    use ObjectCastsTrait;
 
     /**
      * @var array
@@ -70,8 +70,6 @@ class Image extends Model implements ModelInterface, ImageInterface, HasStorageI
     }
 
     /**
-     * @return StorageInterface
-     *
      * @throws Throwable
      */
     protected function createStorage(): StorageInterface
@@ -79,9 +77,6 @@ class Image extends Model implements ModelInterface, ImageInterface, HasStorageI
         return EloquentStorage::create($this);
     }
 
-    /**
-     * @return array
-     */
     protected function getObjectCasts(): array
     {
         return [

@@ -31,50 +31,21 @@ interface ImageInterface
 
     const PROVIDER_PREVIOUS = 'provider_previous';
 
-    /**
-     * @return ImdbId
-     */
     public function getImdbId(): ImdbId;
 
-    /**
-     * @return ImageType
-     */
     public function getType(): ImageType;
 
-    /**
-     * @param int|null $element
-     *
-     * @return string
-     */
     public function getFile(?int $element = null): string;
 
-    /**
-     * @return string
-     */
     public function getUrl(): string;
 
-    /**
-     * @return int
-     */
     public function getWidth(): int;
 
-    /**
-     * @return int
-     */
     public function getHeight(): int;
 
-    /**
-     * @return ImageProvider
-     */
     public function getProvider(): ImageProvider;
 
-    /**
-     * @param ImageProvider $provider
-     */
     public function setProvider(ImageProvider $provider): void;
 
-    /**
-     * @return null|ImageProvider
-     */
     public function getProviderPrevious(): ?ImageProvider;
 }

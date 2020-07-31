@@ -58,11 +58,6 @@ class TasksController extends AbstractController
      */
     protected $tablelessSubtitleRepository;
 
-    /**
-     * @param TaskRepositoryInterface     $taskRepository
-     * @param SubtitleRepositoryInterface $subtitleRepository
-     * @param SubtitleRepository          $tablelessSubtitleRepository
-     */
     public function __construct(
         TaskRepositoryInterface $taskRepository,
         SubtitleRepositoryInterface $subtitleRepository,
@@ -73,22 +68,15 @@ class TasksController extends AbstractController
         $this->tablelessSubtitleRepository = $tablelessSubtitleRepository;
     }
 
-    /**
-     * @return Response
-     */
     public function search(): Response
     {
         /** @var ResponseFactory $response */
-        $response = \response();
+        $response = response();
 
         return $response->view('controllers.tasks.search');
     }
 
     /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     *
      * @throws Throwable
      */
     public function createSearches(Request $request): JsonResponse
@@ -113,34 +101,27 @@ class TasksController extends AbstractController
         }
 
         /** @var ResponseFactory $response */
-        $response = \response();
+        $response = response();
 
         return $response->json([
-           'url' => \route(Route::TASKS_GROUP, [$group], false),
+           'url' => route(Route::TASKS_GROUP, [$group], false),
         ]);
     }
 
-    /**
-     * @return Response
-     */
     public function convert(): Response
     {
         /** @var ResponseFactory $response */
-        $response = \response();
+        $response = response();
 
         return $response->view('controllers.tasks.convert');
     }
 
     /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     *
      * @throws Throwable
      */
     public function createConversions(Request $request): JsonResponse
     {
-        $storage = \app(FilesystemManager::class);
+        $storage = app(FilesystemManager::class);
         /** @var FilesystemAdapter $disk */
         $disk = $storage->disk(Filesystem::UPLOADS);
         $group = Str::uuid();
@@ -188,18 +169,14 @@ class TasksController extends AbstractController
         }
 
         /** @var ResponseFactory $response */
-        $response = \response();
+        $response = response();
 
         return $response->json([
-           'url' => \route(Route::TASKS_GROUP, [$group], false),
+           'url' => route(Route::TASKS_GROUP, [$group], false),
         ]);
     }
 
     /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     *
      * @throws Throwable
      */
     public function createDownloads(Request $request): JsonResponse
@@ -215,12 +192,12 @@ class TasksController extends AbstractController
 
             /** @var SubtitleInterface $subtitle */
             $subtitle = $this->subtitleRepository->findByIdOrFail(
-                \hashid_decode($idHash)
+                hashid_decode($idHash)
             );
 
             $filenameWithoutExtension = $subtitle->getFile(PATHINFO_FILENAME);
             if ($subtitle->getVideo()) {
-                $filenameWithoutExtension = \pathinfo($subtitle->getVideo()->getFilenames()[0], PATHINFO_FILENAME);
+                $filenameWithoutExtension = pathinfo($subtitle->getVideo()->getFilenames()[0], PATHINFO_FILENAME);
             }
 
             $subtitleCopy = $this->tablelessSubtitleRepository->createFromSubtitle(
@@ -250,19 +227,13 @@ class TasksController extends AbstractController
         }
 
         /** @var ResponseFactory $response */
-        $response = \response();
+        $response = response();
 
         return $response->json([
-           'url' => \route(Route::TASKS_GROUP, [$group], false),
+           'url' => route(Route::TASKS_GROUP, [$group], false),
         ]);
     }
 
-    /**
-     * @param Request $request
-     * @param string  $group
-     *
-     * @return Response
-     */
     public function group(Request $request, string $group): Response
     {
         /** @var TaskFilters $filters */
@@ -285,7 +256,7 @@ class TasksController extends AbstractController
         ];
 
         /** @var ResponseFactory $response */
-        $response = \response();
+        $response = response();
 
         if ($request->ajax()) {
             $type = $tasks->first()->getType()->getValue();
@@ -297,10 +268,6 @@ class TasksController extends AbstractController
     }
 
     /**
-     * @param Request $request
-     *
-     * @return Response
-     *
      * @throws Throwable
      */
     public function history(Request $request): Response
@@ -308,12 +275,12 @@ class TasksController extends AbstractController
         $filters = (new TaskFilters())
             ->setGroupByGroup(true)
             ->setUser($request->user())
-            ->setLimit(\config('app.history.limit'))
+            ->setLimit(config('app.history.limit'))
         ;
         $tasks = $this->taskRepository->findAll($filters);
 
         /** @var ResponseFactory $response */
-        $response = \response();
+        $response = response();
 
         return $response->view('controllers.tasks.history', [
             'tasks' => $tasks,
