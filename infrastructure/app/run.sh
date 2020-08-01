@@ -17,6 +17,7 @@ then
     composer install --no-dev --no-interaction
 
     artisan migrate --force
+    artisan cache:clear
     artisan config:cache
     artisan route:trans:cache
 
@@ -28,6 +29,7 @@ else
     composer install --no-interaction
 
     artisan migrate
+    artisan cache:clear
     # artisan migrate --database=test
     # vnpm install
     # npm run development

@@ -42,7 +42,20 @@ class TemporaryUser
         }
 
         if (!$request->user()) {
-            $user = app(UserRepository::class)->registerTemporary();
+            /** @var UserRepository $userRepository */
+            $userRepository = app(UserRepository::class);
+
+            $temporaryCount = app('cache')->remember('temporary_count', 60 * 24, function () use ($userRepository) {
+                return $userRepository->countTemporary();
+            });
+
+            $temporaryCountLimit = config('app.temporary.limit');
+
+            if ($temporaryCount > $temporaryCountLimit) {
+                return $next($request);
+            }
+
+            $user = $userRepository->registerTemporary();
 
             /** @var StatefulGuard $auth */
             $auth = auth();

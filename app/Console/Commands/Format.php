@@ -65,6 +65,7 @@ class Format extends Command
         $this->stopSupervisor();
 
         $this->call('migrate:fresh');
+        $this->call('cache:clear');
 
         foreach (Filesystem::values() as $filesystem) {
             $this->formatDisk($filesystem);

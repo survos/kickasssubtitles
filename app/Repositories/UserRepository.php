@@ -76,6 +76,12 @@ class UserRepository implements RepositoryInterface
         ]);
     }
 
+    public function countTemporary(): int
+    {
+        $userClass = $this->userClass;
+        return $userClass::where(UserInterface::EMAIL, null)->count();
+    }
+
     /**
      * @throws Throwable
      */
@@ -83,7 +89,7 @@ class UserRepository implements RepositoryInterface
     {
         $randomUsernames = [];
         for ($i = 1; $i <= 10; ++$i) {
-            $randomUsernames[] = 'u'.rand(1, 100000);
+            $randomUsernames[] = 'u'.rand(1, 1000000);
         }
 
         $userClass = $this->userClass;

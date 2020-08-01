@@ -225,6 +225,10 @@ return [
         'limit' => 10,
     ],
 
+    'temporary' => [
+        'limit' => 500000,
+    ],
+
     'tracking' => [
         'google_analytics' => env('APP_TRACKING_GOOGLE_ANALYTICS', false),
     ],
