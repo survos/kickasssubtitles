@@ -35,7 +35,7 @@ class HealthcheckController extends AbstractController
     public function cache(): JsonResponse
     {
         $duration = 1; // one minute
-        $data = $this->cache->remember('healthcheck', 1, function () {
+        $data = $this->cache->remember('healthcheck', $duration, function () {
             $data = [];
             $data['generated'] = Carbon::now()->toISOString();
             $data['value'] = rand(1, 100);
