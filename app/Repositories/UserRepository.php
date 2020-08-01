@@ -79,6 +79,7 @@ class UserRepository implements RepositoryInterface
     public function countTemporary(): int
     {
         $userClass = $this->userClass;
+
         return $userClass::where(UserInterface::EMAIL, null)->count();
     }
 

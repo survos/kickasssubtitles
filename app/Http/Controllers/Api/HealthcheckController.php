@@ -18,8 +18,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Carbon;
 
 /**
- * Class HealthcheckController
- * @package App\Http\Controllers\Api
+ * Class HealthcheckController.
  */
 class HealthcheckController extends AbstractController
 {
