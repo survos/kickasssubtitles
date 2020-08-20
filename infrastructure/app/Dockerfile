@@ -12,7 +12,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG APP_ENV=production
 ARG APP_PHP_VER=7.4
 
-ENV PATH=$PATH:/app:/app/vendor/bin
+ENV PATH=/app:/app/vendor/bin:$PATH
 ENV APP_ENV=${APP_ENV}
 ENV APP_PHP_VER=${APP_PHP_VER}
 
