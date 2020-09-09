@@ -145,7 +145,8 @@ RUN apt-get update && apt-get install -y -qq --no-install-recommends \
     \
     cat /app/infrastructure/app/.bashrc >> /root/.bashrc; \
     \
-    printf '#!/bin/bash\nsupervisorctl $*' > /usr/bin/sv && chmod +x /usr/bin/sv; \
+    printf '#!/bin/bash\nsupervisorctl $*\n' > /usr/bin/sv && chmod +x /usr/bin/sv; \
+    printf '#!/bin/bash\nartisan $*\n' > /usr/bin/a && chmod +x /usr/bin/a; \
     \
     ln -sf /app/infrastructure/app/${APP_ENV}/php.ini /etc/php/${APP_PHP_VER}/cli/conf.d/00-php.ini; \
     ln -sf /app/infrastructure/app/${APP_ENV}/php-cli.ini /etc/php/${APP_PHP_VER}/cli/conf.d/01-php-cli.ini; \

@@ -29,6 +29,8 @@ interface UserInterface
 
     const ACTIVE = 'active';
 
+    const LAST_LOGIN = 'last_login';
+
     public function isTemporary(): bool;
 
     public function getUsername(): string;
@@ -36,4 +38,6 @@ interface UserInterface
     public function getEmail(): ?string;
 
     public function getActivationToken(): string;
+
+    public function updateLastLogin(): void;
 }

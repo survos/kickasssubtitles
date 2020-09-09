@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use DateTime;
 use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Carbon;
@@ -141,5 +142,22 @@ class UserRepository implements RepositoryInterface
         $user = $entity;
         $this->taskRepository->deleteTasksOlderThan(Carbon::now()->addDays(30), $user);
         $user->delete();
+    }
+
+    public function deleteTemporaryUsersInactiveSince(DateTime $cutOffDate): void
+    {
+        $userClass = $this->userClass;
+
+        $cutOffDateSql = $cutOffDate->format(ModelInterface::MYSQL_DATETIME);
+
+        $query = $userClass::whereNull(UserInterface::EMAIL)
+            ->where(UserInterface::LAST_LOGIN, '<', $cutOffDateSql)
+        ;
+
+        $users = $query->get();
+
+        foreach ($users as $user) {
+            $this->delete($user);
+        }
     }
 }

@@ -91,4 +91,13 @@ class User extends Authenticatable implements ModelInterface, UserInterface
     {
         $this->notify(new ResetPassword($token));
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function updateLastLogin(): void
+    {
+        $this->setAttribute(static::LAST_LOGIN, now());
+        $this->save();
+    }
 }

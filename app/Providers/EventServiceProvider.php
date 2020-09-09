@@ -13,6 +13,8 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Listeners\TaskCompletedListener;
+use App\Listeners\UserLoginListener;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use KickAssSubtitles\Processor\Event\TaskCompleted;
 
@@ -27,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
+        Login::class => [
+            UserLoginListener::class,
+        ],
         TaskCompleted::class => [
             TaskCompletedListener::class,
         ],

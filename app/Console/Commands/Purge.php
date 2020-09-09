@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Console\Command;
+use App\Repositories\UserRepository;
 use Illuminate\Support\Carbon;
 use KickAssSubtitles\Processor\TaskRepositoryInterface;
 
@@ -40,10 +41,18 @@ class Purge extends Command
      */
     protected $taskRepository;
 
-    public function __construct(TaskRepositoryInterface $taskRepository)
-    {
+    /**
+     * @var UserRepository
+     */
+    protected $userRepository;
+
+    public function __construct(
+        TaskRepositoryInterface $taskRepository,
+        UserRepository $userRepository
+    ) {
         parent::__construct();
         $this->taskRepository = $taskRepository;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -57,5 +66,8 @@ class Purge extends Command
 
         $this->info('Purging old tasks');
         $this->taskRepository->deleteTasksOlderThan(Carbon::now()->subDays(30));
+
+        $this->info('Purging inactive temporary users');
+        $this->userRepository->deleteTemporaryUsersInactiveSince(Carbon::now()->subDays(60));
     }
 }

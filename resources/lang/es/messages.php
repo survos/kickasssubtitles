@@ -13,9 +13,9 @@ declare(strict_types=1);
 return [
     'tagline' => 'Subtítulos de películas y TV',
 
-    'copyright' => 'All rights reserved',
+    'copyright' => 'Todos los derechos reservados',
 
-    'version' => 'version',
+    'version' => 'versión',
 
     'search' => 'Buscar',
     'search_hint' => 'Buscar subtítulos por archivo de video dado consultando servicios de subtítulos populares',
@@ -42,11 +42,11 @@ return [
     'password_confirm' => 'Confirm password',
 
     'login' => 'Inicia sesión',
-    'logout' => 'Logout',
-    'logged_as' => 'Logged in as',
+    'logout' => 'Cerrar sesión',
+    'logged_as' => 'Ahora usted está identificado como',
     'remember_me' => 'Remember me',
     'forgot_password' => 'Forgot your password?',
-    'reset_password' => 'Reset password',
+    'reset_password' => 'Restablecer la contraseña',
     'send_password_reset_link' => 'Send password reset link',
 
     'activate_account' => 'Activate account',
@@ -65,28 +65,28 @@ return [
 
     'limit_info' => 'You can add up to',
     'limit_left' => 'left',
-    'input_encoding' => 'Input encoding',
-    'output_encoding' => 'Output encoding',
-    'output_format' => 'Output format',
+    'input_encoding' => 'Codificación de entrada',
+    'output_encoding' => 'Codificación de salida',
+    'output_format' => 'Formato de salida',
     'fps' => 'Frame rate',
 
     'auto_detect' => 'auto-detect',
-    'working' => 'Working',
+    'working' => 'Trabajando',
 
-    'language' => 'Language',
+    'language' => 'Idioma',
 
     'recently_searched' => 'Subtítulos buscados recientemente',
 
     'empty_collection' => 'No items',
 
-    'download' => 'Download',
+    'download' => 'Descargar',
     'bulk_download' => 'Download all',
-    'video_file' => 'Video file',
-    'file_size' => 'File size',
-    'provider' => 'Provider',
-    'preview' => 'Preview',
+    'video_file' => 'Archivo de vídeo',
+    'file_size' => 'Tamaño del archivo',
+    'provider' => 'Proveedor',
+    'preview' => 'Preestrenar',
 
-    'poster' => 'Poster',
+    'poster' => 'Póster',
 
     'tasks_group_info' => 'Tasks group info',
 
@@ -96,7 +96,7 @@ return [
 
     'ignore' => 'ignore',
 
-    'choose' => 'choose...',
+    'choose' => 'seleccionar...',
 
     'pending_tasks' => 'pending tasks',
 
