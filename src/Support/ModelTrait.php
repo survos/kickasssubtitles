@@ -29,7 +29,7 @@ trait ModelTrait
         $reflection = new ReflectionClass(static::class);
         $shortName = $reflection->getShortName();
 
-        return Str::snake(Str::pluralStudly($shortName));
+        return Str::plural(Str::snake($shortName));
     }
 
     public function getId(): string
