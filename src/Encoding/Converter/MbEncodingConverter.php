@@ -16,6 +16,7 @@ use Exception;
 use KickAssSubtitles\Encoding\Encoding;
 use KickAssSubtitles\Encoding\EncodingConverterInterface;
 use KickAssSubtitles\Encoding\EncodingConverterTrait;
+use Throwable;
 
 /**
  * Class MbConverter.
@@ -48,12 +49,22 @@ class MbEncodingConverter implements EncodingConverterInterface
         set_error_handler(function (int $errno, string $errstr) {
             throw new Exception($errstr, $errno);
         });
-        $result = mb_convert_encoding(
-            $input,
-            $to->getValue(),
-            $from->getValue()
-        );
+
+        $exception = null;
+        try {
+            $result = mb_convert_encoding(
+                $input,
+                $to->getValue(),
+                $from->getValue()
+            );
+        } catch (Throwable $e) {
+            $exception = $e;
+        }
+
         restore_error_handler();
+        if ($exception !== null) {
+            throw $exception;
+        }
 
         return $result;
     }
