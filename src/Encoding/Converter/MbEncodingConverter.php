@@ -62,7 +62,7 @@ class MbEncodingConverter implements EncodingConverterInterface
         }
 
         restore_error_handler();
-        if ($exception !== null) {
+        if (null !== $exception) {
             throw $exception;
         }
 
