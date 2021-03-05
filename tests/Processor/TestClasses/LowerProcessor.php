@@ -27,6 +27,6 @@ class LowerProcessor extends AbstractProcessor implements ProcessorInterface
     protected function processTask(TaskInterface $task): void
     {
         $options = $task->getOptions();
-        echo strtolower($options['text']).PHP_EOL;
+        echo strtolower($options['text']).\PHP_EOL;
     }
 }

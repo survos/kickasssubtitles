@@ -63,7 +63,7 @@ class SubtitleConverter extends BulkProcessor
             SubtitleInterface::ENCODING => $encoding->getValue(),
             SubtitleInterface::LANGUAGE => $subtitle->getLanguage()->getValue(),
             SubtitleConversionOptions::INPUT_ENCODING => $subtitle->getEncoding()->getValue(),
-            SubtitleConversionOptions::FILENAME => $subtitle->getFile(PATHINFO_BASENAME),
+            SubtitleConversionOptions::FILENAME => $subtitle->getFile(\PATHINFO_BASENAME),
             SubtitleConversionOptions::FILESIZE => filesize($subtitle->getFile()),
         ]);
         $options->setFile($subtitle->getFile());

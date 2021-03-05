@@ -51,7 +51,7 @@ class SubotageSubtitleConverter extends AbstractSubtitleConverter
             '%s.%s',
             $storage->getFile(
                 $task::STORAGE_INPUT,
-                PATHINFO_FILENAME
+                \PATHINFO_FILENAME
             ),
             $options->getFormat()->getExtensions()[0]
         );

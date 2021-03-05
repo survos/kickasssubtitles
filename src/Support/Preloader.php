@@ -85,7 +85,7 @@ class Preloader
 
         $count = self::$count;
 
-        echo "[Preloader] Preloaded {$count} classes".PHP_EOL;
+        echo "[Preloader] Preloaded {$count} classes".\PHP_EOL;
     }
 
     /**
@@ -142,7 +142,7 @@ class Preloader
 
         ++self::$count;
 
-        echo "[Preloader] Preloaded `{$class}`".PHP_EOL;
+        echo "[Preloader] Preloaded `{$class}`".\PHP_EOL;
     }
 
     private function shouldIgnore(?string $name): bool

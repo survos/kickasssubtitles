@@ -123,7 +123,7 @@ class Format extends Command
             throw new ProcessFailedException();
         }
 
-        $output = explode(PHP_EOL, $process->getOutput());
+        $output = explode(\PHP_EOL, $process->getOutput());
         foreach ($output as $line) {
             $this->info($line);
         }

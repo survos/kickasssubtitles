@@ -27,5 +27,5 @@ return [
     /*
      * The default path to use for the generated javascript.
      */
-    'path' => resource_path('js'.DIRECTORY_SEPARATOR.'messages.js'),
+    'path' => resource_path('js'.\DIRECTORY_SEPARATOR.'messages.js'),
 ];

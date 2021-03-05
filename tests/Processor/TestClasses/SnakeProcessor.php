@@ -27,6 +27,6 @@ class SnakeProcessor extends AbstractProcessor implements ProcessorInterface
     protected function processTask(TaskInterface $task): void
     {
         $options = $task->getOptions();
-        echo snake_case($options['text']).PHP_EOL;
+        echo snake_case($options['text']).\PHP_EOL;
     }
 }

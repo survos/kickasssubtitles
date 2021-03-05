@@ -71,7 +71,7 @@ class OmdbMovieProvider extends AbstractMovieProvider
             (string) $response->getBody(),
             true,
             512,
-            JSON_THROW_ON_ERROR
+            \JSON_THROW_ON_ERROR
         );
         if (!empty($responseArray['Error'])) {
             throw new Exception($responseArray['Error']);

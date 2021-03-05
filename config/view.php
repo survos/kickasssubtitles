@@ -39,5 +39,5 @@ return [
     |
     */
 
-    'compiled' => realpath(storage_path('framework'.DIRECTORY_SEPARATOR.'views')),
+    'compiled' => realpath(storage_path('framework'.\DIRECTORY_SEPARATOR.'views')),
 ];

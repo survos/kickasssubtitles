@@ -171,7 +171,7 @@ class TaskRepository extends BaseTaskRepository
             }
         }
 
-        if ($ex !== null) {
+        if (null !== $ex) {
             throw $ex;
         }
     }

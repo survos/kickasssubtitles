@@ -90,7 +90,7 @@ class PhpSubtitleConverter extends AbstractSubtitleConverter
             '%s.%s',
             $storage->getFile(
                 $task::STORAGE_INPUT,
-                PATHINFO_FILENAME
+                \PATHINFO_FILENAME
             ),
             $outputSubtitleFormat
         );

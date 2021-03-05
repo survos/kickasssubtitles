@@ -150,7 +150,7 @@ class TaskDownloader implements TaskDownloaderInterface
         $storage = $taskWithStorage->getStorage();
         $name = $location.$storage->getFile(
             $task::STORAGE_INPUT,
-            PATHINFO_BASENAME
+            \PATHINFO_BASENAME
         );
         $path = $storage->getFile($task::STORAGE_INPUT);
         $zip->addFileFromPath($name, $path);
@@ -167,7 +167,7 @@ class TaskDownloader implements TaskDownloaderInterface
                 $childTask->getProcessorName()->getShortNameSnakeCase(),
                 $storage->getFile(
                     $childTask::STORAGE_OUTPUT,
-                    PATHINFO_BASENAME
+                    \PATHINFO_BASENAME
                 )
             );
             $path = $storage->getFile($childTask::STORAGE_OUTPUT);
@@ -214,13 +214,13 @@ class TaskDownloader implements TaskDownloaderInterface
                 $name = sprintf(
                     '%s/%s',
                     $folder,
-                    $childTask->getOptions()->getFilename(PATHINFO_FILENAME).'.'.$subtitle->getFormat()->getExtensions()[0]
+                    $childTask->getOptions()->getFilename(\PATHINFO_FILENAME).'.'.$subtitle->getFormat()->getExtensions()[0]
                 );
                 if (\in_array($name, $names, true)) {
                     $name = sprintf(
                         '%s/%s',
                         $folder,
-                        $childTask->getOptions()->getFilename(PATHINFO_FILENAME).'.'.__('messages.version').$counter.'.'.$subtitle->getFormat()->getExtensions()[0]
+                        $childTask->getOptions()->getFilename(\PATHINFO_FILENAME).'.'.__('messages.version').$counter.'.'.$subtitle->getFormat()->getExtensions()[0]
                     );
                     ++$counter;
                 }
@@ -231,7 +231,7 @@ class TaskDownloader implements TaskDownloaderInterface
                     $imageName = sprintf(
                         '%s/%s',
                         $folder,
-                        $childTask->getOptions()->getFilename(PATHINFO_FILENAME).'.'.$image->getFile(PATHINFO_EXTENSION)
+                        $childTask->getOptions()->getFilename(\PATHINFO_FILENAME).'.'.$image->getFile(\PATHINFO_EXTENSION)
                     );
                     $zip->addFileFromPath($location.$imageName, $image->getFile());
                     $imageAdded = true;

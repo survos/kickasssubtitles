@@ -62,7 +62,7 @@ class BulkProcessorTest extends TestCase
         $this->processor->processOne($task);
         $contents = ob_get_clean();
 
-        $this->assertEquals('lorem ipsum'.PHP_EOL.'LOREM IPSUM'.PHP_EOL.'lorem_ipsum'.PHP_EOL, $contents);
+        $this->assertEquals('lorem ipsum'.\PHP_EOL.'LOREM IPSUM'.\PHP_EOL.'lorem_ipsum'.\PHP_EOL, $contents);
         $this->assertEquals(TaskStatus::COMPLETED, $task->getStatus()->getValue());
     }
 
@@ -79,7 +79,7 @@ class BulkProcessorTest extends TestCase
         $this->processor->processOne($task);
         $contents = ob_get_clean();
 
-        $this->assertEquals('lorem ipsum'.PHP_EOL, $contents);
+        $this->assertEquals('lorem ipsum'.\PHP_EOL, $contents);
         $this->assertEquals(TaskStatus::COMPLETED, $task->getStatus()->getValue());
     }
 
@@ -96,7 +96,7 @@ class BulkProcessorTest extends TestCase
         $this->processor->processMany($collection);
         $contents = ob_get_clean();
 
-        $expected = 'lorem ipsum'.PHP_EOL.'LOREM IPSUM'.PHP_EOL.'lorem_ipsum'.PHP_EOL.'lorem ipsum'.PHP_EOL.'LOREM IPSUM'.PHP_EOL.'lorem_ipsum'.PHP_EOL;
+        $expected = 'lorem ipsum'.\PHP_EOL.'LOREM IPSUM'.\PHP_EOL.'lorem_ipsum'.\PHP_EOL.'lorem ipsum'.\PHP_EOL.'LOREM IPSUM'.\PHP_EOL.'lorem_ipsum'.\PHP_EOL;
         $this->assertEquals($expected, $contents);
         $this->assertEquals(true, $collection->isInStatus(TaskStatus::COMPLETED()));
     }

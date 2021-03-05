@@ -167,7 +167,7 @@ class UserRepository implements RepositoryInterface
             }
         }
 
-        if ($ex !== null) {
+        if (null !== $ex) {
             throw $ex;
         }
     }

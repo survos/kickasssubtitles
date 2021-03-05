@@ -14,7 +14,7 @@ use function Safe\file_put_contents;
 use function Safe\mb_encoding_aliases;
 use function Safe\preg_match;
 
-require __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
+require __DIR__.\DIRECTORY_SEPARATOR.'..'.\DIRECTORY_SEPARATOR.'..'.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'autoload.php';
 
 $render = function (string $template, array $variables = []) {
     ob_start();
@@ -47,8 +47,8 @@ $encodings = function () {
     return $encodings;
 };
 
-$filename = __DIR__.DIRECTORY_SEPARATOR.'Encoding.php';
-$template = __DIR__.DIRECTORY_SEPARATOR.'buildenumtemplate.txt';
+$filename = __DIR__.\DIRECTORY_SEPARATOR.'Encoding.php';
+$template = __DIR__.\DIRECTORY_SEPARATOR.'buildenumtemplate.txt';
 $variables = [
     'encodings' => $encodings(),
 ];

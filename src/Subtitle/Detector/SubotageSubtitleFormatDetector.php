@@ -48,7 +48,7 @@ class SubotageSubtitleFormatDetector implements SubtitleFormatDetectorInterface
             throw new Exception(static::ERR_DETECTION_FAILED);
         }
 
-        $output = explode(PHP_EOL, $process->getOutput());
+        $output = explode(\PHP_EOL, $process->getOutput());
 
         foreach ($output as $line) {
             if (Str::contains($line, 'IN_FORMAT')) {

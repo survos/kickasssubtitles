@@ -159,7 +159,7 @@ class LocalStorage implements StorageInterface, JsonSerializable, Arrayable, Hyd
 
         $resource = fopen($file, 'r');
 
-        $this->files[$key] = pathinfo($file, PATHINFO_BASENAME);
+        $this->files[$key] = pathinfo($file, \PATHINFO_BASENAME);
 
         $this->filesystem->writeStream($this->getKeyPathRelative($key), $resource, $this->filesystemConfig);
         fclose($resource);

@@ -66,7 +66,7 @@ return [
     |
     */
 
-    'files' => storage_path('framework'.DIRECTORY_SEPARATOR.'sessions'),
+    'files' => storage_path('framework'.\DIRECTORY_SEPARATOR.'sessions'),
 
     /*
     |--------------------------------------------------------------------------

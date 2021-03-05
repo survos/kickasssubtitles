@@ -60,7 +60,7 @@ class Str extends BaseStr
      */
     public static function parseDomain(string $url): string
     {
-        $host = parse_url($url, PHP_URL_HOST);
+        $host = parse_url($url, \PHP_URL_HOST);
 
         return str_ireplace('www.', '', $host);
     }

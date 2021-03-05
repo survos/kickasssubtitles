@@ -85,7 +85,7 @@ return [
 
         Filesystem::PUBLIC => [
             'driver' => 'local',
-            'root' => storage_path('app'.DIRECTORY_SEPARATOR.Filesystem::PUBLIC),
+            'root' => storage_path('app'.\DIRECTORY_SEPARATOR.Filesystem::PUBLIC),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],

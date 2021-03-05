@@ -62,7 +62,7 @@ trait StorageTestTrait
     {
         $addedFile = $this->storage->addFile(static::$keyInput, $this->file);
         $this->assertEquals($addedFile, $this->storage->getFile(static::$keyInput));
-        $this->assertEquals(static::$ext, $this->storage->getFile(static::$keyInput, PATHINFO_EXTENSION));
+        $this->assertEquals(static::$ext, $this->storage->getFile(static::$keyInput, \PATHINFO_EXTENSION));
     }
 
     /**

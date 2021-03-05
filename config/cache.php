@@ -54,7 +54,7 @@ return [
 
         'file' => [
             'driver' => 'file',
-            'path' => storage_path('framework'.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR.'data'),
+            'path' => storage_path('framework'.\DIRECTORY_SEPARATOR.'cache'.\DIRECTORY_SEPARATOR.'data'),
         ],
 
         'memcached' => [

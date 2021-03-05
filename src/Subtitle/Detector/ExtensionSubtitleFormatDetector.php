@@ -28,7 +28,7 @@ class ExtensionSubtitleFormatDetector implements SubtitleFormatDetectorInterface
     {
         $path = realpath($file);
 
-        $extension = pathinfo($path, PATHINFO_EXTENSION);
+        $extension = pathinfo($path, \PATHINFO_EXTENSION);
 
         return SubtitleFormat::createFromExtension($extension);
     }

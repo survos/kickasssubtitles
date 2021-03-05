@@ -130,7 +130,7 @@ return [
         'theme' => 'default',
 
         'paths' => [
-            resource_path('views'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'mail'),
+            resource_path('views'.\DIRECTORY_SEPARATOR.'vendor'.\DIRECTORY_SEPARATOR.'mail'),
         ],
     ],
 ];

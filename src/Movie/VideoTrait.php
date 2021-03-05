@@ -70,7 +70,7 @@ trait VideoTrait
         if (empty($filename)) {
             throw new InvalidVideoFilenameException('Filename is empty string');
         }
-        $extension = pathinfo($filename, PATHINFO_EXTENSION);
+        $extension = pathinfo($filename, \PATHINFO_EXTENSION);
         if (!VideoFormat::isValidExtension($extension)) {
             throw new InvalidVideoFilenameException(sprintf('Filename has invalid extension [%s]', $filename));
         }

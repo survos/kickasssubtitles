@@ -195,9 +195,9 @@ class TasksController extends AbstractController
                 hashid_decode($idHash)
             );
 
-            $filenameWithoutExtension = $subtitle->getFile(PATHINFO_FILENAME);
+            $filenameWithoutExtension = $subtitle->getFile(\PATHINFO_FILENAME);
             if ($subtitle->getVideo()) {
-                $filenameWithoutExtension = pathinfo($subtitle->getVideo()->getFilenames()[0], PATHINFO_FILENAME);
+                $filenameWithoutExtension = pathinfo($subtitle->getVideo()->getFilenames()[0], \PATHINFO_FILENAME);
             }
 
             $subtitleCopy = $this->tablelessSubtitleRepository->createFromSubtitle(
@@ -210,7 +210,7 @@ class TasksController extends AbstractController
                 SubtitleInterface::ENCODING => $item['encoding'],
                 SubtitleInterface::LANGUAGE => $subtitleCopy->getLanguage()->getValue(),
                 SubtitleConversionOptions::INPUT_ENCODING => $subtitleCopy->getEncoding()->getValue(),
-                SubtitleConversionOptions::FILENAME => $subtitleCopy->getFile(PATHINFO_BASENAME),
+                SubtitleConversionOptions::FILENAME => $subtitleCopy->getFile(\PATHINFO_BASENAME),
                 SubtitleConversionOptions::FILESIZE => filesize($subtitleCopy->getFile()),
             ]);
             $options->setFile($subtitleCopy->getFile());

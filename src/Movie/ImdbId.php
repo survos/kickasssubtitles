@@ -42,7 +42,7 @@ class ImdbId
      */
     public static function createFromUrl(string $url): self
     {
-        $path = parse_url($url, PHP_URL_PATH);
+        $path = parse_url($url, \PHP_URL_PATH);
 
         $path = trim($path, '/');
         $pathArr = explode('/', $path);
@@ -79,7 +79,7 @@ class ImdbId
             throw new InvalidArgumentException();
         }
 
-        if (filter_var($value, FILTER_VALIDATE_URL)) {
+        if (filter_var($value, \FILTER_VALIDATE_URL)) {
             $imdbId = static::createFromUrl($value);
             $this->numericId = $imdbId->getNumericId();
             $this->prefix = $imdbId->getPrefix();
@@ -111,7 +111,7 @@ class ImdbId
 
     public function getValue(): string
     {
-        return $this->prefix.str_pad((string) $this->numericId, 7, '0', STR_PAD_LEFT);
+        return $this->prefix.str_pad((string) $this->numericId, 7, '0', \STR_PAD_LEFT);
     }
 
     public function getPrefix(): string
