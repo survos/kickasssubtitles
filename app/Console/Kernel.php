@@ -74,7 +74,14 @@ class Kernel extends ConsoleKernel
         }
 
         $schedule
-            ->command('app:purge')
+            ->command('app:purge-tasks')
+            ->withoutOverlapping()
+            ->everyTenMinutes()
+            ->appendOutputTo($schedulerLog)
+        ;
+
+        $schedule
+            ->command('app:purge-users')
             ->withoutOverlapping()
             ->everyFifteenMinutes()
             ->appendOutputTo($schedulerLog)

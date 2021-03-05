@@ -45,5 +45,9 @@ interface TaskRepositoryInterface extends RepositoryInterface
     /**
      * @throws Throwable
      */
-    public function deleteTasksOlderThan(DateTime $cutOffDate, ?ModelInterface $user = null): void;
+    public function deleteTasksOlderThan(
+        DateTime $cutOffDate,
+        ?ModelInterface $user = null,
+        int $limit = 20
+    ): void;
 }

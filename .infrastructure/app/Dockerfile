@@ -46,8 +46,11 @@ RUN apt-get update && apt-get install -y -qq --no-install-recommends \
     p7zip-full \
     python-chardet \
     python-pip \
+    python3-pip \
     python-setuptools \
+    python3-setuptools \
     python-wheel \
+    python3-wheel \
     dos2unix \
     mono-complete \
     xvfb \
@@ -90,7 +93,7 @@ RUN apt-get update && apt-get install -y -qq --no-install-recommends \
 # cron
 ################################################################################
     \
-    cp /app/infrastructure/app/crontasks /etc/cron.d/crontasks; \
+    cp /app/.infrastructure/app/crontasks /etc/cron.d/crontasks; \
     chmod 0644 /etc/cron.d/crontasks; \
     \
 ################################################################################
@@ -130,7 +133,7 @@ RUN apt-get update && apt-get install -y -qq --no-install-recommends \
 # subtitle searcher: subliminal (https://github.com/Diaoul/subliminal)
 ################################################################################
     \
-    pip install https://github.com/Diaoul/subliminal/archive/76525cc2f6545aeeccf620ca46d40c2f0aa53c6d.zip; \
+    pip3 install subliminal==2.1.0; \
     \
 ################################################################################
 # clear apt-cache & tmp
@@ -143,27 +146,27 @@ RUN apt-get update && apt-get install -y -qq --no-install-recommends \
 # config files
 ################################################################################
     \
-    cat /app/infrastructure/app/.bashrc >> /root/.bashrc; \
+    cat /app/.infrastructure/app/.bashrc >> /root/.bashrc; \
     \
     printf '#!/bin/bash\nsupervisorctl $*\n' > /usr/bin/sv && chmod +x /usr/bin/sv; \
     printf '#!/bin/bash\nartisan $*\n' > /usr/bin/a && chmod +x /usr/bin/a; \
     \
-    ln -sf /app/infrastructure/app/${APP_ENV}/php.ini /etc/php/${APP_PHP_VER}/cli/conf.d/00-php.ini; \
-    ln -sf /app/infrastructure/app/${APP_ENV}/php-cli.ini /etc/php/${APP_PHP_VER}/cli/conf.d/01-php-cli.ini; \
-    ln -sf /app/infrastructure/app/${APP_ENV}/php.ini /etc/php/${APP_PHP_VER}/fpm/conf.d/00-php.ini; \
+    ln -sf /app/.infrastructure/app/${APP_ENV}/php.ini /etc/php/${APP_PHP_VER}/cli/conf.d/00-php.ini; \
+    ln -sf /app/.infrastructure/app/${APP_ENV}/php-cli.ini /etc/php/${APP_PHP_VER}/cli/conf.d/01-php-cli.ini; \
+    ln -sf /app/.infrastructure/app/${APP_ENV}/php.ini /etc/php/${APP_PHP_VER}/fpm/conf.d/00-php.ini; \
     \
     if [ -f /etc/php/${APP_PHP_VER}/fpm/php-fpm.conf ]; then mv /etc/php/${APP_PHP_VER}/fpm/php-fpm.conf /etc/php/${APP_PHP_VER}/fpm/php-fpm.conf.backup; fi; \
-    ln -sf /app/infrastructure/app/php-fpm.conf /etc/php/${APP_PHP_VER}/fpm/php-fpm.conf; \
+    ln -sf /app/.infrastructure/app/php-fpm.conf /etc/php/${APP_PHP_VER}/fpm/php-fpm.conf; \
     ln -sf /usr/sbin/php-fpm${APP_PHP_VER} /usr/local/bin/php-fpm; \
     \
     if [ -f /etc/nginx/nginx.conf ]; then mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup; fi; \
-    ln -sf /app/infrastructure/app/${APP_ENV}/nginx.conf /etc/nginx/nginx.conf; \
+    ln -sf /app/.infrastructure/app/${APP_ENV}/nginx.conf /etc/nginx/nginx.conf; \
     \
     if [ -f /etc/supervisor/supervisord.conf ]; then mv /etc/supervisor/supervisord.conf /etc/supervisor/supervisord.conf.backup; fi; \
-    ln -sf /app/infrastructure/app/supervisord.conf /etc/supervisor/supervisord.conf; \
+    ln -sf /app/.infrastructure/app/supervisord.conf /etc/supervisor/supervisord.conf; \
     \
-    chmod +x /app/infrastructure/app/run.sh \
-    && ln -sf /app/infrastructure/app/run.sh /usr/local/bin/run.sh;
+    chmod +x /app/.infrastructure/app/run.sh \
+    && ln -sf /app/.infrastructure/app/run.sh /usr/local/bin/run.sh;
 
 ################################################################################
 # run

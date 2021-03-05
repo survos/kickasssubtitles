@@ -144,8 +144,10 @@ class UserRepository implements RepositoryInterface
         $user->delete();
     }
 
-    public function deleteTemporaryUsersInactiveSince(DateTime $cutOffDate): void
-    {
+    public function deleteTemporaryUsersInactiveSince(
+        DateTime $cutOffDate,
+        int $limit = 20
+    ): void {
         $userClass = $this->userClass;
 
         $cutOffDateSql = $cutOffDate->format(ModelInterface::MYSQL_DATETIME);
@@ -154,10 +156,19 @@ class UserRepository implements RepositoryInterface
             ->where(UserInterface::LAST_LOGIN, '<', $cutOffDateSql)
         ;
 
-        $users = $query->get();
+        $users = $query->limit($limit)->get();
 
+        $ex = null;
         foreach ($users as $user) {
-            $this->delete($user);
+            try {
+                $this->delete($user);
+            } catch (Throwable $e) {
+                $ex = $e;
+            }
+        }
+
+        if ($ex !== null) {
+            throw $ex;
         }
     }
 }

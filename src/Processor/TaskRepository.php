@@ -138,8 +138,11 @@ class TaskRepository implements TaskRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function deleteTasksOlderThan(DateTime $cutOffDate, ?ModelInterface $user = null): void
-    {
+    public function deleteTasksOlderThan(
+        DateTime $cutOffDate,
+        ?ModelInterface $user = null,
+        int $limit = 20
+    ): void {
         throw new NotImplementedException();
     }
 }

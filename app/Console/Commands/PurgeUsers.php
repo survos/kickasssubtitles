@@ -15,43 +15,34 @@ namespace App\Console\Commands;
 use App\Console\Command;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Carbon;
-use KickAssSubtitles\Processor\TaskRepositoryInterface;
 
 /**
- * Class Purge.
+ * Class PurgeUsers.
  */
-class Purge extends Command
+class PurgeUsers extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:purge';
+    protected $signature = 'app:purge-users';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Purge app database from old items';
-
-    /**
-     * @var TaskRepositoryInterface
-     */
-    protected $taskRepository;
+    protected $description = 'Purge app database from old users';
 
     /**
      * @var UserRepository
      */
     protected $userRepository;
 
-    public function __construct(
-        TaskRepositoryInterface $taskRepository,
-        UserRepository $userRepository
-    ) {
+    public function __construct(UserRepository $userRepository)
+    {
         parent::__construct();
-        $this->taskRepository = $taskRepository;
         $this->userRepository = $userRepository;
     }
 
@@ -63,9 +54,6 @@ class Purge extends Command
     public function handle()
     {
         parent::handle();
-
-        $this->info('Purging old tasks');
-        $this->taskRepository->deleteTasksOlderThan(Carbon::now()->subDays(30));
 
         $this->info('Purging inactive temporary users');
         $this->userRepository->deleteTemporaryUsersInactiveSince(Carbon::now()->subDays(60));

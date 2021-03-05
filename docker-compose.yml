@@ -10,7 +10,7 @@ services:
         container_name: "${COMPOSE_PROJECT_NAME}_app"
         build:
             context: ./
-            dockerfile: infrastructure/app/Dockerfile
+            dockerfile: .infrastructure/app/Dockerfile
             args:
                 APP_ENV: ${APP_ENV}
         ports:
@@ -27,7 +27,7 @@ services:
 
     cache:
         container_name: "${COMPOSE_PROJECT_NAME}_cache"
-        build: ./infrastructure/cache
+        build: ./.infrastructure/cache
         volumes:
             - cache:/data
 
@@ -37,11 +37,11 @@ services:
 
     db:
         container_name: "${COMPOSE_PROJECT_NAME}_db"
-        build: ./infrastructure/db
+        build: ./.infrastructure/db
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
         volumes:
             - db:/var/lib/mysql
-            - ./infrastructure/db/init:/docker-entrypoint-initdb.d
+            - ./.infrastructure/db/init:/docker-entrypoint-initdb.d
         environment:
             - MYSQL_DATABASE=${COMPOSE_PROJECT_NAME}
             - MYSQL_USER=${COMPOSE_PROJECT_NAME}
@@ -56,7 +56,7 @@ services:
 
     dbadmin:
         container_name: "${COMPOSE_PROJECT_NAME}_dbadmin"
-        build: ./infrastructure/dbadmin
+        build: ./.infrastructure/dbadmin
         ports:
             - 8080:8080
 
@@ -66,7 +66,7 @@ services:
 
     mail:
         container_name: "${COMPOSE_PROJECT_NAME}_mail"
-        build: ./infrastructure/mail
+        build: ./.infrastructure/mail
         ports:
             - 8025:8025
 

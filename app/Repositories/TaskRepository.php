@@ -26,6 +26,7 @@ use KickAssSubtitles\Processor\TaskStatus;
 use KickAssSubtitles\Processor\TaskType;
 use KickAssSubtitles\Support\FiltersInterface;
 use KickAssSubtitles\Support\ModelInterface;
+use Throwable;
 
 /**
  * Class TaskRepository.
@@ -142,8 +143,11 @@ class TaskRepository extends BaseTaskRepository
     /**
      * {@inheritdoc}
      */
-    public function deleteTasksOlderThan(DateTime $cutOffDate, ?ModelInterface $user = null): void
-    {
+    public function deleteTasksOlderThan(
+        DateTime $cutOffDate,
+        ?ModelInterface $user = null,
+        int $limit = 20
+    ): void {
         $taskClass = $this->taskClass;
 
         $cutOffDateSql = $cutOffDate->format(ModelInterface::MYSQL_DATETIME);
@@ -156,10 +160,19 @@ class TaskRepository extends BaseTaskRepository
             $query->where(Task::USER_ID, (int) $user->getId());
         }
 
-        $tasks = $query->get();
+        $tasks = $query->limit($limit)->get();
 
+        $ex = null;
         foreach ($tasks as $task) {
-            $this->delete($task);
+            try {
+                $this->delete($task);
+            } catch (Throwable $e) {
+                $ex = $e;
+            }
+        }
+
+        if ($ex !== null) {
+            throw $ex;
         }
     }
 }
