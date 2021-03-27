@@ -26,7 +26,7 @@ class PurgeTasks extends Command
      *
      * @var string
      */
-    protected $signature = 'app:purge-tasks';
+    protected $signature = 'app:purge-tasks {--days=14}';
 
     /**
      * The console command description.
@@ -55,7 +55,9 @@ class PurgeTasks extends Command
     {
         parent::handle();
 
+        $days = intval($this->option('days'));
+
         $this->info('Purging old tasks');
-        $this->taskRepository->deleteTasksOlderThan(Carbon::now()->subDays(30));
+        $this->taskRepository->deleteTasksOlderThan(Carbon::now()->subDays($days));
     }
 }
