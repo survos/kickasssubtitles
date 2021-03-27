@@ -55,7 +55,7 @@ class PurgeTasks extends Command
     {
         parent::handle();
 
-        $days = intval($this->option('days'));
+        $days = (int) ($this->option('days'));
 
         $this->info('Purging old tasks');
         $this->taskRepository->deleteTasksOlderThan(Carbon::now()->subDays($days));
