@@ -27,7 +27,7 @@ WORKDIR /app
 # dependencies
 ################################################################################
 
-RUN apt-get update && apt-get install -y -qq --no-install-recommends \
+RUN apt-get update && apt-get -y upgrade && apt-get install -y -qq --no-install-recommends \
     apt-transport-https \
     lsb-release \
     ca-certificates \
@@ -79,7 +79,7 @@ RUN apt-get update && apt-get install -y -qq --no-install-recommends \
     php${APP_PHP_VER}-imagick \
     php${APP_PHP_VER}-redis \
     php${APP_PHP_VER}-cli; \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --version=1.10.17 --filename=composer; \
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --version=1.10.23 --filename=composer; \
     composer global require hirak/prestissimo; \
     \
 ################################################################################
