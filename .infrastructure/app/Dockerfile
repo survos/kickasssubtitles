@@ -65,7 +65,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y -qq --no-install-
     \
     curl https://packages.sury.org/php/apt.gpg --output /etc/apt/trusted.gpg.d/php.gpg; \
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list; \
-    apt-get update && apt-get install -y -qq --no-install-recommends \
+    apt-get update && apt-get dist-upgrade -y && apt-get install -y -qq --no-install-recommends \
     php${APP_PHP_VER}-fpm \
     php${APP_PHP_VER}-intl \
     php${APP_PHP_VER}-mbstring \
