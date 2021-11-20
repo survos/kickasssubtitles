@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
      *
      * @throws Exception
      */
-    public function report(Exception $exception)
+    public function report(\Throwable $exception)
     {
         if ($this->container->environment(Environment::PRODUCTION) &&
             $this->container->bound('sentry') &&
@@ -69,7 +69,7 @@ class Handler extends ExceptionHandler
      *
      * @return Response
      */
-    public function render($request, Exception $exception)
+    public function render($request, \Throwable $exception)
     {
         return parent::render($request, $exception);
     }

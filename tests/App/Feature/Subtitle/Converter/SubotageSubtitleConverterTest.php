@@ -39,7 +39,7 @@ class SubotageSubtitleConverterTest extends TestCase
      */
     protected $converter;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         /* @var SubotageSubtitleConverter converter */

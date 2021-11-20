@@ -38,7 +38,7 @@ class PhpSubtitleConverterTest extends TestCase
      */
     protected $converter;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         /* @var PhpSubtitleConverter converter */

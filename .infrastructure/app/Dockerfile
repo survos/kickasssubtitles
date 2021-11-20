@@ -10,7 +10,7 @@ FROM debian:10-slim
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG APP_ENV=production
-ARG APP_PHP_VER=7.4
+ARG APP_PHP_VER=8.0
 
 ENV PATH=/app:/app/vendor/bin:$PATH
 ENV APP_ENV=${APP_ENV}
@@ -79,7 +79,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y -qq --no-install-
     php${APP_PHP_VER}-imagick \
     php${APP_PHP_VER}-redis \
     php${APP_PHP_VER}-cli; \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --version=1.10.23 --filename=composer; \
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --version=2.1.6 --filename=composer; \
     composer global require hirak/prestissimo; \
     \
 ################################################################################

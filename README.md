@@ -6,6 +6,9 @@
     >
 </p>
 
+composer config repositories.list_generator '{"type": "vcs", "url": "git@github.com:tacman/list-generator.git"}'
+composer config repositories.tmdb_api '{"type": "vcs", "url": "git@github.com:tacman/api.git"}'
+
 KickAssSubtitles
 ================
 

@@ -29,7 +29,7 @@ class LocalStorageTest extends TestCase
     /**
      * @throws Throwable
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->storage = LocalStorage::create();
@@ -39,7 +39,7 @@ class LocalStorageTest extends TestCase
     /**
      * @throws Throwable
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->storage->tearDown();
         $this->removeTemporaryFile();

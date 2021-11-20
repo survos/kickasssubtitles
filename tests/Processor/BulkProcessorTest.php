@@ -40,7 +40,7 @@ class BulkProcessorTest extends TestCase
      */
     protected $processor;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $taskRepository = new TaskRepository(Task::class);
