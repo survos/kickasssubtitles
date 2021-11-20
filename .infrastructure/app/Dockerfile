@@ -97,7 +97,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y -qq --no-install-
     chmod 0644 /etc/cron.d/crontasks; \
     \
 ################################################################################
-# encoding detector: chared (http://corpus.tools/wiki/Chared)
+# encoding detector: chared (httptools/wiki/Chared)
 ################################################################################
     \
     export APP_CHARED_VER="1.2.2"; \

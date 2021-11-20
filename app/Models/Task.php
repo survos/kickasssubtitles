@@ -34,8 +34,8 @@ use KickAssSubtitles\Support\DownloadableInterface;
 use KickAssSubtitles\Support\ModelInterface;
 use KickAssSubtitles\Support\ModelTrait;
 use KickAssSubtitles\Support\ObjectCastsTrait;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Throwable;
 
 /**
@@ -43,7 +43,7 @@ use Throwable;
  */
 class Task extends Model implements ModelInterface, TaskInterface, HasStorageInterface, HasMedia, DownloadableInterface
 {
-    use HasMediaTrait;
+    use InteractsWithMedia;
     use HasStorageTrait {
         tearDownStorage as tearDownStorageTrait;
     }

@@ -49,7 +49,7 @@ class CharedEncodingDetector implements EncodingDetectorInterface
             throw new Exception(static::ERR_DETECTION_FAILED);
         }
 
-        $process = new Process('chared -m '.$language->getName());
+        $process = new Process(['chared', '-m ', $language->getName()]);
         $process->setInput($input);
         $process->run();
 

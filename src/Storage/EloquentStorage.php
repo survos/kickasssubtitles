@@ -18,7 +18,7 @@ use KickAssSubtitles\Support\Str;
 use function Safe\file_put_contents;
 use function Safe\touch;
 use function Safe\unlink;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia;
 
 /**
  * Class EloquentStorage.

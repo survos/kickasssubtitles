@@ -19,15 +19,15 @@ use KickAssSubtitles\Processor\TaskType;
 use KickAssSubtitles\Storage\EloquentStorage;
 use KickAssSubtitles\Storage\HasStorageTrait;
 use KickAssSubtitles\Storage\StorageInterface;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * Class Task.
  */
 class Task extends Model implements HasMedia
 {
-    use HasMediaTrait;
+    use InteractsWithMedia;
     use HasStorageTrait;
 
     /**

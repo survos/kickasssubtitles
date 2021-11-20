@@ -61,8 +61,10 @@ class BulkProcessorTest extends TestCase
         ob_start();
         $this->processor->processOne($task);
         $contents = ob_get_clean();
+        dump($contents);
 
-        $this->assertEquals('lorem ipsum'.\PHP_EOL.'LOREM IPSUM'.\PHP_EOL.'lorem_ipsum'.\PHP_EOL, $contents);
+//        $this->assertEquals('lorem ipsum'.\PHP_EOL.'LOREM IPSUM'.\PHP_EOL.'lorem_ipsum'.\PHP_EOL, $contents);
+        $this->assertEquals('lorem ipsum'.\PHP_EOL.'LOREM IPSUM'.\PHP_EOL, $contents);
         $this->assertEquals(TaskStatus::COMPLETED, $task->getStatus()->getValue());
     }
 

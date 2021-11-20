@@ -14,7 +14,8 @@ namespace App\Models;
 
 use KickAssSubtitles\Support\ModelInterface;
 use KickAssSubtitles\Support\ModelTrait;
-use Spatie\MediaLibrary\Models\Media as BaseMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media as BaseMedia;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Media.

@@ -34,16 +34,16 @@ use KickAssSubtitles\Support\HydratableTrait;
 use KickAssSubtitles\Support\ModelInterface;
 use KickAssSubtitles\Support\ModelTrait;
 use KickAssSubtitles\Support\ObjectCastsTrait;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Throwable;
 
 /**
  * Class Subtitle.
  */
-class Subtitle extends Model implements ModelInterface, SubtitleInterface, HasStorageInterface, HasMedia, HydratableInterface
+class Subtitle extends Model implements ModelInterface, SubtitleInterface, HasMedia, HasStorageInterface, HydratableInterface
 {
-    use HasMediaTrait;
+    use InteractsWithMedia;
     use HasStorageTrait;
     use HydratableTrait;
     use ModelTrait;

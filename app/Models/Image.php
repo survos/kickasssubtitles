@@ -26,8 +26,8 @@ use KickAssSubtitles\Support\HydratableTrait;
 use KickAssSubtitles\Support\ModelInterface;
 use KickAssSubtitles\Support\ModelTrait;
 use KickAssSubtitles\Support\ObjectCastsTrait;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Throwable;
 
 /**
@@ -35,7 +35,7 @@ use Throwable;
  */
 class Image extends Model implements ModelInterface, ImageInterface, HasStorageInterface, HasMedia, HydratableInterface
 {
-    use HasMediaTrait;
+    use InteractsWithMedia;
     use HasStorageTrait;
     use HydratableTrait;
     use ImageTrait;
