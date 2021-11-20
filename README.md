@@ -6,9 +6,6 @@
     >
 </p>
 
-composer config repositories.list_generator '{"type": "vcs", "url": "git@github.com:tacman/list-generator.git"}'
-composer config repositories.tmdb_api '{"type": "vcs", "url": "git@github.com:tacman/api.git"}'
-
 KickAssSubtitles
 ================
 
@@ -19,11 +16,15 @@ Development environment setup
 
 Follow these steps:
 
+
 - install [docker](https://www.docker.com/) and
 [docker-compose](https://docs.docker.com/compose/)
 - `git clone https://github.com/kickasssubtitles/kickasssubtitles.git`
 - `cd kickasssubtitles`
 - rename `.env_development` to `.env`
+- For php8, these libraries need to be added.
+- composer config repositories.list_generator '{"type": "vcs", "url": "git@github.com:tacman/list-generator.git"}'
+- composer config repositories.tmdb_api '{"type": "vcs", "url": "git@github.com:tacman/api.git"}
 - `docker-compose up`
 - add following entry to your hosts file: `127.0.0.1 kickasssubtitles.development`
 - visit `kickasssubtitles.development` in your browser
